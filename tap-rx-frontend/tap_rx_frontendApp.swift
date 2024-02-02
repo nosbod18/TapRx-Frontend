@@ -11,7 +11,7 @@ import SwiftUI
 struct tap_rx_frontendApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
