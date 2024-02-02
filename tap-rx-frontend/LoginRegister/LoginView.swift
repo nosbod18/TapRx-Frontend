@@ -31,15 +31,19 @@ struct LoginView: View {
                     Text("Welcome Back!")
                         .font(.largeTitle)
                         .foregroundColor(Color.medicalDarkBlue)
-                        .bold()
+                        .fontWeight(.black)
                     
                     Text("Please Log In")
-                        .font(.subheadline)
+                        .font(.title3)
                         .foregroundColor(Color.medicalLightBlue)
+                        .fontWeight(.semibold)
                 }.padding([.top,.bottom], 80)
                 
                 //Username Field
-                TextField("", text: $username,prompt: Text("Username, Email, or Phone Number").foregroundColor(Color.medicalLightBlue))
+                TextField("", text: $username,prompt: Text("Username, Email, or Phone Number")
+                    .foregroundColor(Color.medicalLightBlue))
+                    .fontWeight(.semibold)
+                    .font(.subheadline)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .padding([.leading,.trailing],15)
@@ -52,7 +56,10 @@ struct LoginView: View {
                     .padding(.bottom,5)
                 
                 //Password Field
-                SecureField("",text: $password,prompt: Text("Password").foregroundColor(Color.medicalLightBlue))
+                SecureField("",text: $password,prompt: Text("Password")
+                    .foregroundColor(Color.medicalLightBlue))
+                    .fontWeight(.semibold)
+                    .font(.subheadline)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .padding([.leading,.trailing],15)
@@ -68,10 +75,13 @@ struct LoginView: View {
                     Text("Remember Me")
                         .font(.subheadline)
                         .foregroundStyle(Color.medicalLightBlue)
+                        .fontWeight(.semibold)
                     Spacer()
                     Text("Forgot Password?")
                         .font(.subheadline)
                         .foregroundStyle(Color.medicalLightBlue)
+                        .fontWeight(.semibold)
+                        .underline()
                 }
                 
                 // Button for Log In Action
@@ -96,6 +106,7 @@ struct LoginView: View {
                 Text("Don't have an Account?")
                     .font(.subheadline)
                     .foregroundStyle(Color.medicalLightBlue)
+                    .fontWeight(.semibold)
                 Text("Sign Up")
                     .font(.subheadline)
                     .underline()
