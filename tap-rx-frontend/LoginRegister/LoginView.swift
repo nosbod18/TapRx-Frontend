@@ -17,107 +17,114 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack{
-            HStack{
-                LogoView()
-                Spacer()
-            }
-            
-            
+        NavigationView{
             VStack{
-                //Welcome Message
-                
-                VStack {
-                    Text("Welcome Back!")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.medicalDarkBlue)
-                        .fontWeight(.black)
-                    
-                    Text("Please Log In")
-                        .font(.title3)
-                        .foregroundColor(Color.medicalLightBlue)
-                        .fontWeight(.semibold)
-                }.padding([.top,.bottom], 80)
-                
-                //Username Field
-                TextField("", text: $username,prompt: Text("Username, Email, or Phone Number")
-                    .foregroundColor(Color.medicalLightBlue))
-                    .fontWeight(.semibold)
-                    .font(.subheadline)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .padding([.leading,.trailing],15)
-                    .padding([.top,.bottom],8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
-                    )
-                    
-                    .padding(.bottom,5)
-                
-                //Password Field
-                SecureField("",text: $password,prompt: Text("Password")
-                    .foregroundColor(Color.medicalLightBlue))
-                    .fontWeight(.semibold)
-                    .font(.subheadline)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .padding([.leading,.trailing],15)
-                    .padding([.top,.bottom],8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
-                    )
-                    .padding(.bottom,5)
-                
-                //Remember Me and Forgot Password Links
                 HStack{
-                    Text("Remember Me")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.medicalLightBlue)
-                        .fontWeight(.semibold)
+                    LogoView()
                     Spacer()
-                    Text("Forgot Password?")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.medicalLightBlue)
-                        .fontWeight(.semibold)
-                        .underline()
                 }
                 
-                // Button for Log In Action
-                ZStack{
-                    Button(action: logIn){
-                        Text(" ")
-                    }
+                
+                VStack{
+                    //Welcome Message
+                    
+                    VStack {
+                        Text("Welcome Back!")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.medicalDarkBlue)
+                            .fontWeight(.black)
+                        
+                        Text("Please Log In")
+                            .font(.title3)
+                            .foregroundColor(Color.medicalLightBlue)
+                            .fontWeight(.semibold)
+                    }.padding([.top,.bottom], 80)
+                    
+                    //Username Field
+                    TextField("", text: $username,prompt: Text("Username, Email, or Phone Number")
+                        .foregroundColor(Color.medicalLightBlue))
+                    .fontWeight(.semibold)
+                    .font(.subheadline)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .padding([.leading,.trailing],15)
                     .padding([.top,.bottom],8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
+                    )
+                    
+                    .padding(.bottom,5)
+                    
+                    //Password Field
+                    SecureField("",text: $password,prompt: Text("Password")
+                        .foregroundColor(Color.medicalLightBlue))
+                    .fontWeight(.semibold)
+                    .font(.subheadline)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .padding([.leading,.trailing],15)
+                    .padding([.top,.bottom],8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
+                    )
+                    .padding(.bottom,5)
+                    
+                    //Remember Me and Forgot Password Links
+                    HStack{
+                        Text("Remember Me")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.medicalLightBlue)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        NavigationLink {
+                            ForgotPasswordView()
+                        } label: {
+                            Text("Forgot Password")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.medicalDarkBlue)
+                                .bold()
+                                .underline()
+                        }
+                    }
+                    
+                    // Button for Log In Action
+                    ZStack{
+                        Button(action: logIn){
+                            Text(" ")
+                        }
+                        .padding([.top,.bottom],8)
                         .frame(maxWidth: .infinity)
                         .overlay(
                             RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.medicalRed)
-                    )
+                                .fill(Color.medicalRed)
+                        )
                         .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                    Text("Log In").foregroundColor(.white).zIndex(100.0)
-                }.padding(.top,15)
+                        Text("Log In").foregroundColor(.white).zIndex(100.0)
+                    }.padding(.top,15)
                     
-            }
-            
-            Spacer()
-            HStack {
-                Text("Don't have an Account?")
-                    .font(.subheadline)
-                    .foregroundStyle(Color.medicalLightBlue)
-                    .fontWeight(.semibold)
-                Text("Sign Up")
-                    .font(.subheadline)
-                    .underline()
-                    .foregroundStyle(Color.medicalDarkBlue)
-                    .bold()
+                }
                 
-                
-                    
+                Spacer()
+                HStack {
+                    Text("Don't have an Account?")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.medicalLightBlue)
+                        .fontWeight(.semibold)
+                    NavigationLink {
+                        RegisterView()
+                    } label: {
+                        Text("Sign Up")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.medicalDarkBlue)
+                            .bold()
+                            .underline()
+                    }
+                }
             }
-        }
-        .padding([.leading,.trailing],25)
+            .padding([.leading,.trailing],25)
+        }.navigationBarHidden(true)
     }
 }
 
