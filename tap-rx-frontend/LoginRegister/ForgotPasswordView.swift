@@ -10,8 +10,13 @@ import SwiftUI
 struct ForgotPasswordView: View {
     @State private var username: String = ""
     
+    func callForgotPassword(){
+        print("Button Click")
+        forgotPassword(username: self.username)
+    }
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 HStack{
                     LogoView()
@@ -55,7 +60,7 @@ struct ForgotPasswordView: View {
                     
                     
                     // Button for Log In Action
-                    Button(action: forgotPassword){
+                    Button(action: callForgotPassword){
                         Text("Reset Password")
                             .fontWeight(.semibold)
                             .font(.subheadline)
@@ -87,6 +92,7 @@ struct ForgotPasswordView: View {
                 }
             }
             .padding([.leading,.trailing],25)
+            .padding(.bottom,10)
         }
             .navigationBarHidden(true)
     }

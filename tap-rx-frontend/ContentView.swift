@@ -44,7 +44,7 @@ struct ContentView: View {
         Medicine(id: UUID(), name: "Medicine 4", dosage: 80, time: Date()),
     ]
     
-    var body: some View {
+    var body: some View {/*
         VStack {
             HStack {
                 Text("{Logo}")
@@ -81,12 +81,11 @@ struct ContentView: View {
                     Text("{Calendar}")
                 }
             }
-        }
+        }*/
+        LoginView()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

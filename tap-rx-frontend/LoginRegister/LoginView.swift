@@ -11,8 +11,13 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
+    func callLogIn(){
+        print("Button Clicked")
+        logIn(username: self.username, password: self.password)
+    }
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 HStack{
                     LogoView()
@@ -85,7 +90,7 @@ struct LoginView: View {
                     }
                     
                     // Button for Log In Action
-                    Button(action: logIn){
+                    Button(action: callLogIn){
                         Text("Log In")
                             .fontWeight(.semibold)
                             .font(.subheadline)
@@ -119,7 +124,9 @@ struct LoginView: View {
                 }
             }
             .padding([.leading,.trailing],25)
+            .padding(.bottom,10)
         }.navigationBarHidden(true)
+            
     }
 }
 

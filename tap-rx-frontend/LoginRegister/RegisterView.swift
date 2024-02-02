@@ -14,8 +14,13 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var confirm: String = ""
     
+    func callRegister(){
+        print("Button Clicked")
+        register(contact: self.contact, name: self.name, username: self.username, password: self.password, confirm: self.confirm)
+    }
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 HStack{
                     LogoView()
@@ -127,7 +132,7 @@ struct RegisterView: View {
                     .padding(.bottom,5)
                     
                     // Button for Log In Action
-                    Button(action: register){
+                    Button(action: callRegister){
                         Text("Sign Up")
                             .fontWeight(.semibold)
                             .font(.subheadline)
@@ -161,6 +166,7 @@ struct RegisterView: View {
                 }
             }
             .padding([.leading,.trailing],25)
+            .padding(.bottom,10)
         }.navigationBarHidden(true)
     }
 }
