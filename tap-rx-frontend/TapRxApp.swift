@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct tap_rx_frontendApp: App {
+struct TapRxApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
