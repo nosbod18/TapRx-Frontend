@@ -30,49 +30,51 @@ struct LoginView: View {
                 VStack {
                     Text("Welcome Back!")
                         .font(.largeTitle)
-                        .foregroundStyle(Color(red: 35/255, green: 64/255, blue: 142/255))
+                        .foregroundColor(Color.medicalDarkBlue)
                         .bold()
                     
                     Text("Please Log In")
                         .font(.subheadline)
-                        .foregroundStyle(Color(red: 56/255, green: 83/255, blue: 153/255))
+                        .foregroundColor(Color.medicalLightBlue)
                 }.padding([.top,.bottom], 80)
                 
-                //Username
-                TextField("", text: $username,prompt: Text("Username, Email, or Phone Number").foregroundColor(Color(red: 56/255, green: 83/255, blue: 153/255)))
+                //Username Field
+                TextField("", text: $username,prompt: Text("Username, Email, or Phone Number").foregroundColor(Color.medicalLightBlue))
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .padding([.leading,.trailing],15)
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color(red: 35/255, green: 64/255, blue: 142/255), lineWidth: 2)
+                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
                     )
                     
                     .padding(.bottom,5)
                 
-                //Password
-                SecureField("",text: $password,prompt: Text("Password").foregroundColor(Color(red: 56/255, green: 83/255, blue: 153/255)))
+                //Password Field
+                SecureField("",text: $password,prompt: Text("Password").foregroundColor(Color.medicalLightBlue))
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .padding([.leading,.trailing],15)
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color(red: 35/255, green: 64/255, blue: 142/255), lineWidth: 2)
+                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
                     )
                     .padding(.bottom,5)
                 
+                //Remember Me and Forgot Password Links
                 HStack{
                     Text("Remember Me")
                         .font(.subheadline)
-                        .foregroundStyle(Color(red: 56/255, green: 83/255, blue: 153/255))
+                        .foregroundStyle(Color.medicalLightBlue)
                     Spacer()
                     Text("Forgot Password?")
                         .font(.subheadline)
-                        .foregroundStyle(Color(red: 56/255, green: 83/255, blue: 153/255))
+                        .foregroundStyle(Color.medicalLightBlue)
                 }
                 
+                // Button for Log In Action
                 ZStack{
                     Button(action: logIn){
                         Text(" ")
@@ -81,7 +83,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity)
                         .overlay(
                             RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(red: 237/255, green: 27/255, blue:36/255))
+                            .fill(Color.medicalRed)
                     )
                         .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                     Text("Log In").foregroundColor(.white).zIndex(100.0)
@@ -93,11 +95,11 @@ struct LoginView: View {
             HStack {
                 Text("Don't have an Account?")
                     .font(.subheadline)
-                    .foregroundStyle(Color(red: 56/255, green: 83/255, blue: 153/255))
+                    .foregroundStyle(Color.medicalLightBlue)
                 Text("Sign Up")
                     .font(.subheadline)
                     .underline()
-                    .foregroundStyle(Color(red: 35/255, green: 64/255, blue: 142/255))
+                    .foregroundStyle(Color.medicalDarkBlue)
                     .bold()
                 
                 
