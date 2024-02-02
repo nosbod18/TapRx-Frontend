@@ -11,11 +11,6 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
-    func logIn(){
-        print("Log In Button Clicked")
-        return
-    }
-    
     var body: some View {
         NavigationView{
             VStack{
@@ -90,19 +85,19 @@ struct LoginView: View {
                     }
                     
                     // Button for Log In Action
-                    ZStack{
-                        Button(action: logIn){
-                            Text(" ")
-                        }
-                        .padding([.top,.bottom],8)
+                    Button(action: logIn){
+                        Text("Log In")
+                            .fontWeight(.semibold)
+                            .font(.subheadline)
+                    }
+                        .padding([.top,.bottom],10)
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .overlay(
+                        .background(
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(Color.medicalRed)
                         )
-                        .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                        Text("Log In").foregroundColor(.white).zIndex(100.0)
-                    }.padding(.top,15)
+                        .padding(.top,15)
                     
                 }
                 

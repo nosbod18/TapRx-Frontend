@@ -14,11 +14,6 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var confirm: String = ""
     
-    func logIn(){
-        print("Log In Button Clicked")
-        return
-    }
-    
     var body: some View {
         NavigationView{
             VStack{
@@ -132,19 +127,19 @@ struct RegisterView: View {
                     .padding(.bottom,5)
                     
                     // Button for Log In Action
-                    ZStack{
-                        Button(action: logIn){
-                            Text(" ")
-                        }
-                        .padding([.top,.bottom],8)
+                    Button(action: register){
+                        Text("Sign Up")
+                            .fontWeight(.semibold)
+                            .font(.subheadline)
+                    }
+                        .padding([.top,.bottom],10)
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .overlay(
+                        .background(
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(Color.medicalRed)
                         )
-                        .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                        Text("Sign Up").foregroundColor(.white).zIndex(100.0)
-                    }.padding(.top,5)
+                        .padding(.top,5)
                     
                 }
                 

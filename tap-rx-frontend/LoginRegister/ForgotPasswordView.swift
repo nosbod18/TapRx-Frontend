@@ -10,11 +10,6 @@ import SwiftUI
 struct ForgotPasswordView: View {
     @State private var username: String = ""
     
-    func forgotPassword(){
-        print("Forgot Password Button Clicked")
-        return
-    }
-    
     var body: some View {
         NavigationView{
             VStack{
@@ -60,19 +55,18 @@ struct ForgotPasswordView: View {
                     
                     
                     // Button for Log In Action
-                    ZStack{
-                        Button(action: forgotPassword){
-                            Text(" ")
-                        }
-                        .padding([.top,.bottom],8)
+                    Button(action: forgotPassword){
+                        Text("Reset Password")
+                            .fontWeight(.semibold)
+                            .font(.subheadline)
+                    }
+                        .padding([.top,.bottom],10)
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .overlay(
+                        .background(
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(Color.medicalRed)
-                        )
-                        .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                        Text("Reset Password").foregroundColor(.white).zIndex(100.0)
-                    }.padding(.top,15)
+                        ).padding(.top,10)
                     
                 }
                 
