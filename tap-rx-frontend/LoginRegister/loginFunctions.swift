@@ -10,7 +10,7 @@ import SwiftUI
 
 /*
  Assume that input is already checked in the caller function callLogIn()
- Takes username and password, and makes necessary requests to verify if the user exists
+ Takes email or phone number and password, and makes necessary requests to verify if the user exists
  */
 func logIn(username: String, password: String){
     print("username value:  \(username)")
@@ -19,19 +19,19 @@ func logIn(username: String, password: String){
 
 /*
  Assume that input is already validated in the caller function callRegister()
- Takes contact (phone/email), name, username, and password and sends a new account request
+ Takes contact (phone/email), name, and password and sends a new account request
  */
-func register(contact: String, name: String, username: String, password: String, confirm: String){
-    print("contact value:   \(contact)")
+func register(email: String, phone: String, name: String, password: String, confirm: String){
+    print("email value:   \(email)")
+    print("phone value:   \(phone)")
     print("name value:      \(name)")
-    print("username value:  \(username)")
     print("password value:  \(password)")
     print("confirm value:   \(confirm)")
 }
 
 /*
- Takes a username, email or phone number and sends a request to change password
+ Takes an email and sends a request firebase auth to get a sign-in link
  */
 func forgotPassword(username: String){
-    print("username value:  \(username)")
+    print("email value:  \(username)")
 }

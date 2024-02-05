@@ -36,7 +36,7 @@ struct ForgotPasswordView: View {
                         LockIcon()
                             .padding()
                         
-                        Text("Enter your email, phone, or username and we'll send you a link to change your password")
+                        Text("Enter your email and we'll send you a link to sign in.")
                             .font(.subheadline)
                             .foregroundColor(Color.medicalLightBlue)
                             .padding(.bottom,30)
@@ -45,7 +45,7 @@ struct ForgotPasswordView: View {
                     }.padding(.top, 80)
                     
                     //Username Field
-                    TextField("", text: $username,prompt: Text("Username, Email, or Phone Number")
+                    TextField("", text: $username,prompt: Text("Email")
                         .foregroundColor(Color.medicalLightBlue))
                     .fontWeight(.semibold)
                     .font(.subheadline)
@@ -61,7 +61,7 @@ struct ForgotPasswordView: View {
                     
                     // Button for Log In Action
                     Button(action: callForgotPassword){
-                        Text("Reset Password")
+                        Text("Send Email Link")
                             .fontWeight(.semibold)
                             .font(.subheadline)
                     }

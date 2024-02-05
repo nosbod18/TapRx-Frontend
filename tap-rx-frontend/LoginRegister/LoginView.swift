@@ -16,6 +16,14 @@ struct LoginView: View {
         logIn(username: self.username, password: self.password)
     }
     
+    func callGoogleLogIn(){
+        print("google log in")
+    }
+    
+    func callAppleLogIn(){
+        print("apple log in")
+    }
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -41,7 +49,7 @@ struct LoginView: View {
                     }.padding([.top,.bottom], 80)
                     
                     //Username Field
-                    TextField("", text: $username,prompt: Text("Username, Email, or Phone Number")
+                    TextField("", text: $username,prompt: Text("Email")
                         .foregroundColor(Color.medicalLightBlue))
                     .fontWeight(.semibold)
                     .font(.subheadline)
@@ -91,7 +99,7 @@ struct LoginView: View {
                     
                     // Button for Log In Action
                     Button(action: callLogIn){
-                        Text("Log In")
+                        Text("Sign In")
                             .fontWeight(.semibold)
                             .font(.subheadline)
                     }
@@ -103,6 +111,51 @@ struct LoginView: View {
                                 .fill(Color.medicalRed)
                         )
                         .padding(.top,15)
+                    
+                    VStack {
+                        Button(action: callAppleLogIn){
+                            HStack{
+                                Image(systemName: "apple.logo")
+                                    .offset(x: -3)
+                                Text("Sign in with Apple")
+                                    .fontWeight(.semibold)
+                                    .font(.subheadline)
+                                
+                            }
+                            
+                        }
+                            .padding([.top,.bottom],10)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .fill(Color.black)
+                            )
+                            .padding(.top,5)
+                        
+                        Button(action: callGoogleLogIn){
+                            HStack{
+                                Image("google.logo")
+                                    .resizable()
+                                    .frame(width: 22, height: 22)
+                                    .offset(x:2)
+                                Text("Sign in with Google")
+                                    .fontWeight(.semibold)
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                            }
+                            
+                        }
+                            .padding([.top,.bottom],7)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .padding(.top,5)
+                    }
+                    
                     
                 }
                 
