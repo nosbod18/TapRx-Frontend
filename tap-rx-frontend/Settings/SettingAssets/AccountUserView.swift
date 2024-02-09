@@ -1,18 +1,18 @@
 //
-//  CalendarView.swift
+//  AccountUserView.swift
 //  tap-rx-frontend
 //
-//  Created by Evan Dobson on 2/2/24.
+//  Created by Drew Clutes on 2/8/24.
 //
 
 import SwiftUI
 
-struct CalendarView: View {
+struct AccountUserView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    CalendarView()
+    AccountUserView()
 }
