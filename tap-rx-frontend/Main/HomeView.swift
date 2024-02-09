@@ -13,6 +13,8 @@ struct Medication: Identifiable {
     var dosage: Int
     var bottleDescription: String
     var time: Date
+    var doctorName: String
+    var days: [Int]
 }
 
 struct MedicationPreview: View {
@@ -61,15 +63,11 @@ struct MedicationPreview: View {
 struct HomeView: View {
     @State private var username = "<User>"
 
-    //let medications: [Medication]? = nil
-    let medications: [Medication]? = [
-        Medication(id: UUID(), name: "Medication 1", dosage: 20, bottleDescription: "Orange Bottle", time: Date()),
-        Medication(id: UUID(), name: "Medication 2", dosage: 40, bottleDescription: "Orange Bottle", time: Date()),
-        Medication(id: UUID(), name: "Medication 3", dosage: 60, bottleDescription: "Orange Bottle", time: Date()),
-        Medication(id: UUID(), name: "Medication 4", dosage: 80, bottleDescription: "Orange Bottle", time: Date()),
-        Medication(id: UUID(), name: "Medication 5", dosage: 80, bottleDescription: "Orange Bottle", time: Date()),
-        Medication(id: UUID(), name: "Medication 6", dosage: 80, bottleDescription: "Orange Bottle", time: Date()),
-    ]
+    let medications: [Medication]?
+
+    init (with medications: [Medication]?) {
+        self.medications = medications
+    }
     
     var body: some View {
         NavigationStack {
@@ -81,7 +79,7 @@ struct HomeView: View {
                         .foregroundColor(.medicalRed)
                         .fontWeight(.black)
                 }
-                .padding([.top, .bottom], 30)
+                .padding(.bottom, 20)
                 
                 // Today's medications and date
                 Section {
@@ -99,6 +97,7 @@ struct HomeView: View {
                         .foregroundColor(.medicalLightBlue)
                 }
                 
+                // Medications List
                 ScrollView {
                     if let meds = medications {
                         ForEach(meds) { item in
@@ -113,12 +112,13 @@ struct HomeView: View {
                 }
                 .mask {
                     LinearGradient(colors: [.black, .clear],
-                                    startPoint: UnitPoint(x: 0.5, y: 0),
+                                   startPoint: UnitPoint(x: 0.5, y: 0.25),
                                     endPoint: UnitPoint(x: 0.5, y: 1))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
             .frame(width: WIDTH)
+            .padding(.top, -30)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
@@ -137,5 +137,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(with: SAMPLE_MEDICATIONS)
 }
