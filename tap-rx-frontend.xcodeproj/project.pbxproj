@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		202DDA422B69F7CF00BD3109 /* TapRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202DDA412B69F7CF00BD3109 /* TapRxApp.swift */; };
+		20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20899E4F2B6CD59D00987CE5 /* HomeView.swift */; };
+		20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FA2B6D433900F0AD6B /* CalendarView.swift */; };
+		20E2C0FD2B6D466B00F0AD6B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FC2B6D466B00F0AD6B /* MainView.swift */; };
+		20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FE2B6D55FC00F0AD6B /* MedicationView.swift */; };
+		20E2C1012B6D59FA00F0AD6B /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C1002B6D59FA00F0AD6B /* ToolbarView.swift */; };
+		D72AA5862B71768700EE58E8 /* Photo Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */; };
+		D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72AA5872B752B7400EE58E8 /* AccountUserView.swift */; };
+		D7F4D3002B6C713D007B3B7C /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D2FF2B6C713D007B3B7C /* LogoView.swift */; };
+		D7F4D3042B6C8931007B3B7C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3032B6C8931007B3B7C /* Colors.swift */; };
+		D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */; };
+		D7F4D3082B6CA8A6007B3B7C /* loginFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3072B6CA8A6007B3B7C /* loginFunctions.swift */; };
+		D7F4D30D2B6CC070007B3B7C /* SettingsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */; };
+		D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */; };
+		D7F4D3112B6CC22B007B3B7C /* SettingsUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */; };
+		D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */; };
+		D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */; };
+		D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FAF8222B6B54CD00C0A303 /* LoginView.swift */; };
+		D7FAF8252B6B54DD00C0A303 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FAF8242B6B54DD00C0A303 /* RegisterView.swift */; };
+		D7FAF8272B6B54EE00C0A303 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FAF8262B6B54EE00C0A303 /* ForgotPasswordView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		202DDA3E2B69F7CF00BD3109 /* tap-rx-frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tap-rx-frontend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		202DDA412B69F7CF00BD3109 /* TapRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRxApp.swift; sourceTree = "<group>"; };
+		20899E4F2B6CD59D00987CE5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		20E2C0FA2B6D433900F0AD6B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		20E2C0FC2B6D466B00F0AD6B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		20E2C0FE2B6D55FC00F0AD6B /* MedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationView.swift; sourceTree = "<group>"; };
+		20E2C1002B6D59FA00F0AD6B /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Photo Assets.xcassets"; sourceTree = "<group>"; };
+		D72AA5872B752B7400EE58E8 /* AccountUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUserView.swift; sourceTree = "<group>"; };
+		D7F4D2FF2B6C713D007B3B7C /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		D7F4D3032B6C8931007B3B7C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockIcon.swift; sourceTree = "<group>"; };
+		D7F4D3072B6CA8A6007B3B7C /* loginFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginFunctions.swift; sourceTree = "<group>"; };
+		D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHomeView.swift; sourceTree = "<group>"; };
+		D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHistoryView.swift; sourceTree = "<group>"; };
+		D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserView.swift; sourceTree = "<group>"; };
+		D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountView.swift; sourceTree = "<group>"; };
+		D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageView.swift; sourceTree = "<group>"; };
+		D7FAF8222B6B54CD00C0A303 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D7FAF8242B6B54DD00C0A303 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		D7FAF8262B6B54EE00C0A303 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		202DDA3B2B69F7CF00BD3109 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		202DDA352B69F7CF00BD3109 = {
+			isa = PBXGroup;
+			children = (
+				202DDA402B69F7CF00BD3109 /* tap-rx-frontend */,
+				202DDA3F2B69F7CF00BD3109 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		202DDA3F2B69F7CF00BD3109 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				202DDA3E2B69F7CF00BD3109 /* tap-rx-frontend.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		202DDA402B69F7CF00BD3109 /* tap-rx-frontend */ = {
+			isa = PBXGroup;
+			children = (
+				20899E4E2B6CD54500987CE5 /* Main */,
+				D7F4D30B2B6CC03F007B3B7C /* Settings */,
+				D7F4D2FE2B6C712A007B3B7C /* Assets */,
+				D7FAF8212B6B54B500C0A303 /* LoginRegister */,
+				202DDA412B69F7CF00BD3109 /* TapRxApp.swift */,
+			);
+			path = "tap-rx-frontend";
+			sourceTree = "<group>";
+		};
+		20899E4E2B6CD54500987CE5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				20899E4F2B6CD59D00987CE5 /* HomeView.swift */,
+				20E2C0FA2B6D433900F0AD6B /* CalendarView.swift */,
+				20E2C0FC2B6D466B00F0AD6B /* MainView.swift */,
+				20E2C0FE2B6D55FC00F0AD6B /* MedicationView.swift */,
+				20E2C1002B6D59FA00F0AD6B /* ToolbarView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D7F4D2FE2B6C712A007B3B7C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */,
+				D7F4D2FF2B6C713D007B3B7C /* LogoView.swift */,
+				D7F4D3032B6C8931007B3B7C /* Colors.swift */,
+				D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D7F4D30B2B6CC03F007B3B7C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D7F4D3142B6CC97E007B3B7C /* SettingAssets */,
+				D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */,
+				D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */,
+				D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */,
+				D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D7F4D3142B6CC97E007B3B7C /* SettingAssets */ = {
+			isa = PBXGroup;
+			children = (
+				D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */,
+				D72AA5872B752B7400EE58E8 /* AccountUserView.swift */,
+			);
+			path = SettingAssets;
+			sourceTree = "<group>";
+		};
+		D7FAF8212B6B54B500C0A303 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				D7F4D3072B6CA8A6007B3B7C /* loginFunctions.swift */,
+				D7FAF8222B6B54CD00C0A303 /* LoginView.swift */,
+				D7FAF8242B6B54DD00C0A303 /* RegisterView.swift */,
+				D7FAF8262B6B54EE00C0A303 /* ForgotPasswordView.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		202DDA3D2B69F7CF00BD3109 /* tap-rx-frontend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 202DDA4C2B69F7D100BD3109 /* Build configuration list for PBXNativeTarget "tap-rx-frontend" */;
+			buildPhases = (
+				202DDA3A2B69F7CF00BD3109 /* Sources */,
+				202DDA3B2B69F7CF00BD3109 /* Frameworks */,
+				202DDA3C2B69F7CF00BD3109 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tap-rx-frontend";
+			productName = "tap-rx-frontend";
+			productReference = 202DDA3E2B69F7CF00BD3109 /* tap-rx-frontend.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		202DDA362B69F7CF00BD3109 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					202DDA3D2B69F7CF00BD3109 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 202DDA392B69F7CF00BD3109 /* Build configuration list for PBXProject "tap-rx-frontend" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 202DDA352B69F7CF00BD3109;
+			productRefGroup = 202DDA3F2B69F7CF00BD3109 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				202DDA3D2B69F7CF00BD3109 /* tap-rx-frontend */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		202DDA3C2B69F7CF00BD3109 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D72AA5862B71768700EE58E8 /* Photo Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		202DDA3A2B69F7CF00BD3109 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
+				D7F4D3112B6CC22B007B3B7C /* SettingsUserView.swift in Sources */,
+				D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */,
+				20E2C1012B6D59FA00F0AD6B /* ToolbarView.swift in Sources */,
+				D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */,
+				20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */,
+				20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */,
+				D7F4D3042B6C8931007B3B7C /* Colors.swift in Sources */,
+				20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */,
+				D7F4D30D2B6CC070007B3B7C /* SettingsHomeView.swift in Sources */,
+				D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */,
+				D7F4D3002B6C713D007B3B7C /* LogoView.swift in Sources */,
+				20E2C0FD2B6D466B00F0AD6B /* MainView.swift in Sources */,
+				D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */,
+				D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */,
+				D7FAF8252B6B54DD00C0A303 /* RegisterView.swift in Sources */,
+				D7F4D3082B6CA8A6007B3B7C /* loginFunctions.swift in Sources */,
+				D7FAF8272B6B54EE00C0A303 /* ForgotPasswordView.swift in Sources */,
+				202DDA422B69F7CF00BD3109 /* TapRxApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		202DDA4A2B69F7D100BD3109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		202DDA4B2B69F7D100BD3109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		202DDA4D2B69F7D100BD3109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3B9VE659MT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.taprx.tap-rx-frontend";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		202DDA4E2B69F7D100BD3109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3B9VE659MT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.taprx.tap-rx-frontend";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		202DDA392B69F7CF00BD3109 /* Build configuration list for PBXProject "tap-rx-frontend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				202DDA4A2B69F7D100BD3109 /* Debug */,
+				202DDA4B2B69F7D100BD3109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		202DDA4C2B69F7D100BD3109 /* Build configuration list for PBXNativeTarget "tap-rx-frontend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				202DDA4D2B69F7D100BD3109 /* Debug */,
+				202DDA4E2B69F7D100BD3109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 202DDA362B69F7CF00BD3109 /* Project object */;
+}
