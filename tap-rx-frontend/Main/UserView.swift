@@ -46,16 +46,16 @@ struct ToolbarItemView: View {
     }
 }
 
-struct ToolbarView: View {
+struct UserView: View {
     @State var selectedTab = ToolbarItems.home
 
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                MedicationView()
+                MedicationView(with: SAMPLE_MEDICATIONS)
                     .tag(ToolbarItems.medications)
                 
-                HomeView()
+                HomeView(with: SAMPLE_MEDICATIONS)
                     .tag(ToolbarItems.home)
                 
                 CalendarView()
@@ -75,5 +75,5 @@ struct ToolbarView: View {
 }
 
 #Preview {
-    ToolbarView()
+    UserView()
 }
