@@ -22,3 +22,4 @@ struct LogoView: View {
 #Preview {
     LogoView()
 }
+
