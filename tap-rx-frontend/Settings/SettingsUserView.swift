@@ -25,11 +25,11 @@ struct SettingsUserView: View {
                 .padding(.top,-10)
                 .padding(.bottom,5)
 
-            
+            /*
             AccountUserView(name: "Drew",relationship: "Guardian",date:"02/08/2002",color: 1.0)
             AccountUserView(name: "Ryan",relationship: "Sibling",date: "05/05/2004",color: 0.9)
             AccountUserView(name: "Jake",relationship: "Sibling",date:"10/02/2006",color: 0.8)
-            AccountUserView(name: "Chad",relationship: "Parent",date: "04/14/1971",color: 0.7)
+            AccountUserView(name: "Chad",relationship: "Parent",date: "04/14/1971",color: 0.7)*/
             Spacer()
             HStack{
                 Spacer()
