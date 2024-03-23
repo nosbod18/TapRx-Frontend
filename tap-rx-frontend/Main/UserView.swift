@@ -58,7 +58,7 @@ struct UserView: View {
                 HomeView(with: SAMPLE_MEDICATIONS)
                     .tag(ToolbarItems.home)
                 
-                CalendarView()
+                ContentView(calendar: Calendar(identifier: .gregorian))
                     .tag(ToolbarItems.calendar)
             }
             HStack {

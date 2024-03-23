@@ -74,9 +74,9 @@ struct RegisterView: View {
             validPasswords = false
             self.errorMessage="Password cannot be empty"
         }
-        else if(self.password != "" && self.password.count < 8){
+        else if(self.password != "" && self.password.count < 6){
             validPasswords=false
-            self.errorMessage="Password must be at least 8 characters"
+            self.errorMessage="Password must be at least 6 characters"
         } else if(self.password != self.confirm){
             validPasswords=false
             self.errorMessage = "Passwords do not match"

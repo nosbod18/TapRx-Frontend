@@ -23,7 +23,7 @@ struct User: Codable {
     var first_name: String
     var last_name: String
     var medications: [String: Medications]?
-    var phone: String
+    var phone: String?
     var user_id: String
 }
 
