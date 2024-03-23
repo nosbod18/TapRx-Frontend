@@ -6,16 +6,81 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
+    @State var pushActive = false
+    @State var isEmailValid: Bool = true
+    @State var isValidPassword: Bool = true
+    @State var userID: String = ""
     
-    func callLogIn(){
-        print("Button Clicked")
-        logIn(username: self.username, password: self.password)
+    private func validateEmail() {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        isEmailValid = emailPred.evaluate(with: username)
     }
     
+    func callLogIn(){
+        validateEmail()
+        if isEmailValid && !password.isEmpty {
+            isValidPassword = true
+            Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                print("User signed in successfully")
+                
+               
+                if let user = result?.user {
+                    self.userID = user.uid
+                    let url = URL(string: "https://taprx.xyz/users/\(self.userID)")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod="GET"
+                    user.getIDToken { idToken, error in
+                        if let error = error {
+                            print("error: \(error.localizedDescription)")
+                        } else if let idToken = idToken {
+                            request.setValue(idToken, forHTTPHeaderField: "Authorization")
+                            
+                            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                                if let error = error {
+                                    DispatchQueue.main.async {
+                                        print( "Network error: \(error.localizedDescription)")
+                                    }
+                                } else if let data = data {
+                                    let responseString = String(data: data, encoding: .utf8)
+                                    print("Response String: \(responseString ?? "Test")")
+    
+                                    do {
+                                        let response = try JSONDecoder().decode(APIResponse.self, from: data)
+                                        DispatchQueue.main.async {
+                                            print(response.data)
+                                            self.pushActive = true
+                                        }
+                                    } catch {
+                                        print("Decoding error: \(error)")
+                                    }
+                                }
+                            }
+                            task.resume()
+                        }
+                    }
+                    
+                }
+            }
+        } else {
+            isValidPassword = false
+        }
+
+    }
+    
+    func setEscape(_ condition: Bool){
+        self.pushActive = condition
+    }
     func callGoogleLogIn(){
         print("google log in")
     }
@@ -46,11 +111,18 @@ struct LoginView: View {
                             .font(.title3)
                             .foregroundColor(Color.medicalLightBlue)
                             .fontWeight(.semibold)
-                    }.padding([.top,.bottom], 80)
+                    }.padding([.top,.bottom], 60)
+                    
+                    Text("Invalid Crudentials")
+                        .foregroundColor(.red)
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .opacity(isEmailValid && isValidPassword ? 0 : 1)
+                        .frame(height: 20)
                     
                     //Username Field
                     TextField("", text: $username,prompt: Text("Email")
-                        .foregroundColor(Color.medicalLightBlue))
+                        .foregroundColor(isEmailValid ? Color.medicalLightBlue : Color.medicalRed))
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -59,14 +131,14 @@ struct LoginView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
+                            .stroke(isEmailValid ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
                     )
                     
                     .padding(.bottom,5)
                     
                     //Password Field
                     SecureField("",text: $password,prompt: Text("Password")
-                        .foregroundColor(Color.medicalLightBlue))
+                        .foregroundColor(isValidPassword ? Color.medicalLightBlue : Color.medicalRed))
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -75,7 +147,7 @@ struct LoginView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.medicalDarkBlue, lineWidth: 2)
+                            .stroke(isValidPassword ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
                     )
                     .padding(.bottom,5)
                     
@@ -111,7 +183,7 @@ struct LoginView: View {
                                 .fill(Color.medicalRed)
                         )
                         .padding(.top,15)
-                    
+                    /*
                     VStack {
                         Button(action: callAppleLogIn){
                             HStack{
@@ -155,7 +227,7 @@ struct LoginView: View {
                             )
                             .padding(.top,5)
                     }
-                    
+                    */
                     
                 }
                 
@@ -178,6 +250,11 @@ struct LoginView: View {
             }
             .padding([.leading,.trailing],25)
             .padding(.bottom,10)
+            
+            //hidden navigation link to push to home page on login
+            .navigationDestination(isPresented: self.$pushActive) {
+                MainView()
+            }
         }.navigationBarHidden(true)
             
     }

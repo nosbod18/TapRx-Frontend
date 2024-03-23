@@ -7,14 +7,18 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 /*
  Assume that input is already checked in the caller function callLogIn()
  Takes email or phone number and password, and makes necessary requests to verify if the user exists
- */
-func logIn(username: String, password: String){
+
+func logIn(username: String, password: String)  -> Bool {
     print("username value:  \(username)")
     print("password value:  \(password)")
+    var returnVal = false
+    
+    return returnVal
 }
 
 /*
@@ -35,3 +39,4 @@ func register(email: String, phone: String, name: String, password: String, conf
 func forgotPassword(username: String){
     print("email value:  \(username)")
 }
+*/
