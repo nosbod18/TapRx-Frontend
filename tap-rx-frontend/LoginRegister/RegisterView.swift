@@ -19,6 +19,9 @@ struct RegisterView: View {
     @State private var userID: String = ""
     @State private var errorMessage: String = "Invalid Crudentials"
     
+    @State private var errors: Int = 0
+    
+    @State private var showError: Bool = false
     @State private var isEmailValid: Bool = true
     @State private var validPasswords: Bool = true
     @State private var isValidPhone: Bool = true
@@ -44,20 +47,28 @@ struct RegisterView: View {
         //validate email
         self.isEmailValid = validateEmail()
         if(self.isEmailValid == false){
-            self.errorMessage = "Enter a valid email"
+            self.showError = true
+            self.errors += 1
+            self.errorMessage = "Enter a valid Email"
         }
         
-        //validate phone
-        self.isValidPhone = validatePhoneNumber()
-        if(isValidPhone==false){
-            self.errorMessage="Enter a valid email"
+        //validate phone (NOT REQUIRED)
+        if(self.phone.count > 0){
+            self.isValidPhone = validatePhoneNumber()
+            if(isValidPhone==false){
+                self.showError = true
+                self.errors += 1
+                self.errorMessage="Enter a valid Phone Number"
+            }
         }
         
         //validate first name
         if(self.name != ""){
             isValidName = true
         } else {
-            self.errorMessage = "First name is required."
+            self.showError = true
+            self.errors += 1
+            self.errorMessage = "First Name is required"
             isValidName = false
         }
         
@@ -65,26 +76,38 @@ struct RegisterView: View {
         if(self.last_name != ""){
             isValidLastName = true
         } else {
-            self.errorMessage = "Last name is required."
+            self.showError = true
+            self.errors += 1
+            self.errorMessage = "Last name is required"
             isValidLastName = false
         }
         
         //validate password
         if(self.password == ""){
             validPasswords = false
-            self.errorMessage="Password cannot be empty"
+            self.showError = true
+            self.errors += 1
+            self.errorMessage="Please enter a password"
         }
         else if(self.password != "" && self.password.count < 6){
             validPasswords=false
+            self.showError = true
+            self.errors += 1
             self.errorMessage="Password must be at least 6 characters"
         } else if(self.password != self.confirm){
             validPasswords=false
+            self.showError = true
+            self.errors += 1
             self.errorMessage = "Passwords do not match"
         } else {
             validPasswords = true
         }
+        if(self.errors > 1){
+            self.errorMessage = "Invalid Register Crudentials"
+        }
         
         if(isValidName && isValidLastName && isEmailValid && isValidPhone && validPasswords){
+            showError = false
             Auth.auth().createUser(withEmail: email, password: password){ (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -104,11 +127,15 @@ struct RegisterView: View {
                             //guard let self = self else { return }
                             
                             if let error = error {
+                                self.showError = true
+                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
                                 print("error: \(error.localizedDescription)")
                                 return
                             }
                             
                             guard let idToken = idToken else {
+                                self.showError = true
+                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
                                 print("Failed to retrieve ID token.")
                                 return
                             }
@@ -143,6 +170,8 @@ struct RegisterView: View {
                                 }
                                 task.resume()
                             } catch {
+                                self.showError = true
+                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
                                 print("Error serializing JSON: \(error.localizedDescription)")
                             }
                         }
@@ -192,13 +221,21 @@ struct RegisterView: View {
                         .foregroundColor(.red)
                         .font(.subheadline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+<<<<<<< HEAD
                         .opacity(isEmailValid && validPasswords && isValidName && isValidPhone ? 0 : 1)
+=======
+                        .opacity(showError ? 1 : 0)
+>>>>>>> dev
                         .frame(height: 20)
                     
                     
                     // Email Field
                     TextField("", text: $email, prompt: Text("Email Address")
+<<<<<<< HEAD
                         .foregroundColor(isEmailValid ? Color.medicalLightBlue : Color.red))
+=======
+                        .foregroundColor(isEmailValid ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
+>>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -207,7 +244,11 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
+<<<<<<< HEAD
                             .stroke(isEmailValid ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
+=======
+                            .stroke(isEmailValid ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
+>>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)
@@ -232,7 +273,11 @@ struct RegisterView: View {
                     
                     //First Name Field
                     TextField("", text: $name,prompt: Text("First Name")
+<<<<<<< HEAD
                         .foregroundColor(isValidName ? Color.medicalLightBlue : Color.medicalRed))
+=======
+                        .foregroundColor(isValidName ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
+>>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -247,7 +292,11 @@ struct RegisterView: View {
                     
                     //Last Name Field
                     TextField("", text: $last_name,prompt: Text("Last Name")
+<<<<<<< HEAD
                         .foregroundColor(isValidLastName ? Color.medicalLightBlue : Color.medicalRed))
+=======
+                        .foregroundColor(isValidLastName ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
+>>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -264,7 +313,11 @@ struct RegisterView: View {
                     
                     //Password Field
                     SecureField("",text: $password,prompt: Text("Password")
+<<<<<<< HEAD
                         .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.red))
+=======
+                        .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
+>>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -273,14 +326,22 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
+<<<<<<< HEAD
                             .stroke(validPasswords ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
+=======
+                            .stroke(validPasswords ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
+>>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)
                     
                     // Confirm Password Field
                     SecureField("",text: $confirm, prompt: Text("Confirm Password")
+<<<<<<< HEAD
                         .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.red))
+=======
+                        .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
+>>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -289,7 +350,11 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
+<<<<<<< HEAD
                             .stroke(validPasswords ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
+=======
+                            .stroke(validPasswords ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
+>>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)

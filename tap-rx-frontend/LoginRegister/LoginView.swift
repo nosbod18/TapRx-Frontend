@@ -15,6 +15,9 @@ struct LoginView: View {
     @State var isEmailValid: Bool = true
     @State var isValidPassword: Bool = true
     @State var userID: String = ""
+    @State var error: String = "Invalid Crudentials"
+    @State var showError: Bool = false
+
     
     private func validateEmail() {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -29,12 +32,15 @@ struct LoginView: View {
             Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
+                    self.showError = true;
+                    self.error = "Invalid Email or Password.. Please Try Again."
                     return
                 }
                 
                 print("User signed in successfully")
                 
-               
+
+                
                 if let user = result?.user {
                     self.userID = user.uid
                     let url = URL(string: "https://taprx.xyz/users/\(self.userID)")!
@@ -54,7 +60,7 @@ struct LoginView: View {
                                 } else if let data = data {
                                     let responseString = String(data: data, encoding: .utf8)
                                     print("Response String: \(responseString ?? "Test")")
-    
+
                                     do {
                                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
                                         DispatchQueue.main.async {
@@ -72,10 +78,20 @@ struct LoginView: View {
                     
                 }
             }
+        } else if (password.isEmpty && !isEmailValid && password.count < 6){
+            isValidPassword = false
+            self.error = "Invalid Login Crudentials"
+            showError = true
+        } else if(!isEmailValid){
+            isValidPassword = false
+             self.error = "Enter a Valid Email"
+            showError = true
         } else {
             isValidPassword = false
+            self.error = "Enter a Valid Password"
+            showError = true
+        
         }
-
     }
     
     func setEscape(_ condition: Bool){
@@ -113,11 +129,19 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                     }.padding([.top,.bottom], 60)
                     
+<<<<<<< HEAD
                     Text("Invalid Crudentials")
                         .foregroundColor(.red)
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .opacity(isEmailValid && isValidPassword ? 0 : 1)
+=======
+                    Text(self.error)
+                        .foregroundColor(.red)
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .opacity(showError ? 1 : 0)
+>>>>>>> dev
                         .frame(height: 20)
                     
                     //Username Field
