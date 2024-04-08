@@ -129,19 +129,11 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                     }.padding([.top,.bottom], 60)
                     
-<<<<<<< HEAD
-                    Text("Invalid Crudentials")
-                        .foregroundColor(.red)
-                        .font(.subheadline)
-                        .fontWeight(.bold)
-                        .opacity(isEmailValid && isValidPassword ? 0 : 1)
-=======
                     Text(self.error)
                         .foregroundColor(.red)
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .opacity(showError ? 1 : 0)
->>>>>>> dev
                         .frame(height: 20)
                     
                     //Username Field

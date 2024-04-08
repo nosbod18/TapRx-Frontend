@@ -221,21 +221,13 @@ struct RegisterView: View {
                         .foregroundColor(.red)
                         .font(.subheadline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-<<<<<<< HEAD
-                        .opacity(isEmailValid && validPasswords && isValidName && isValidPhone ? 0 : 1)
-=======
                         .opacity(showError ? 1 : 0)
->>>>>>> dev
                         .frame(height: 20)
                     
                     
                     // Email Field
                     TextField("", text: $email, prompt: Text("Email Address")
-<<<<<<< HEAD
-                        .foregroundColor(isEmailValid ? Color.medicalLightBlue : Color.red))
-=======
                         .foregroundColor(isEmailValid ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
->>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -244,11 +236,7 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-<<<<<<< HEAD
-                            .stroke(isEmailValid ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
-=======
                             .stroke(isEmailValid ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
->>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)
@@ -273,11 +261,7 @@ struct RegisterView: View {
                     
                     //First Name Field
                     TextField("", text: $name,prompt: Text("First Name")
-<<<<<<< HEAD
-                        .foregroundColor(isValidName ? Color.medicalLightBlue : Color.medicalRed))
-=======
                         .foregroundColor(isValidName ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
->>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -292,11 +276,7 @@ struct RegisterView: View {
                     
                     //Last Name Field
                     TextField("", text: $last_name,prompt: Text("Last Name")
-<<<<<<< HEAD
-                        .foregroundColor(isValidLastName ? Color.medicalLightBlue : Color.medicalRed))
-=======
                         .foregroundColor(isValidLastName ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
->>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -313,11 +293,7 @@ struct RegisterView: View {
                     
                     //Password Field
                     SecureField("",text: $password,prompt: Text("Password")
-<<<<<<< HEAD
-                        .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.red))
-=======
                         .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
->>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -326,22 +302,14 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-<<<<<<< HEAD
-                            .stroke(validPasswords ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
-=======
                             .stroke(validPasswords ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
->>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)
                     
                     // Confirm Password Field
                     SecureField("",text: $confirm, prompt: Text("Confirm Password")
-<<<<<<< HEAD
-                        .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.red))
-=======
                         .foregroundColor(validPasswords ? Color.medicalLightBlue : Color.medicalRed) + Text(" *").foregroundColor(Color.medicalRed))
->>>>>>> dev
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .textInputAutocapitalization(.never)
@@ -350,11 +318,7 @@ struct RegisterView: View {
                     .padding([.top,.bottom],8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-<<<<<<< HEAD
-                            .stroke(validPasswords ? Color.medicalDarkBlue : Color.red, lineWidth: 2)
-=======
                             .stroke(validPasswords ? Color.medicalDarkBlue : Color.medicalRed, lineWidth: 2)
->>>>>>> dev
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
                     .padding(.bottom,5)
