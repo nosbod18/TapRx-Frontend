@@ -1,2 +1,2 @@
 .DS_Store
-./tap-rx-frontend/*.plist
+**/GoogleService-Info.plist
