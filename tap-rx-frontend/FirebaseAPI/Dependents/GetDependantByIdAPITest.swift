@@ -27,7 +27,7 @@ struct GetDependantsByIdAPITest: View {
             
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/dependants/\(self.dependant_id)")!
+                let url = URL(string: "https://taprx.xyz/users/\(self.userID)/dependants/\(self.dependant_id)")!
                 var request = URLRequest(url: url)
                 request.httpMethod="GET"
                 user.getIDToken { idToken, error in
@@ -46,7 +46,7 @@ struct GetDependantsByIdAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(GetDependants.self, from: data)
+                                    let response = try JSONDecoder().decode(GetDependantByID.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         

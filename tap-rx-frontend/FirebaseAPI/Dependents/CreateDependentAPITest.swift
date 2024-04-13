@@ -49,7 +49,7 @@ struct CreateDependantAPITest: View {
                         return
                     }
                     
-                    let url = URL(string: "https://taprx.xyz/dependants/")!
+                    let url = URL(string: "https://taprx.xyz/users/\(self.userID)/dependants")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "POST"
                     request.setValue(idToken, forHTTPHeaderField: "Authorization")

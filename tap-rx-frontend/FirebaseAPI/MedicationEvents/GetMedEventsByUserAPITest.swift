@@ -1,18 +1,16 @@
 //
-//  GetDependantsAPITest.swift
+//  GetMedEventsByUserAPITest.swift
 //  tap-rx-frontend
 //
-//  Created by Drew Clutes on 4/9/24.
+//  Created by Drew Clutes on 4/12/24.
 //
-
-import SwiftUI
 import FirebaseAuth
+import SwiftUI
 
-struct GetDependantsAPITest: View {
+struct GetMedEventsByUserAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
-    //@State private var user_id: String = "j9rhfuqnarUc1cjM5squNSryW1o1"
     
     func get_dependants(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
@@ -27,7 +25,7 @@ struct GetDependantsAPITest: View {
             
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/users/\(self.userID)/dependants")!
+                let url = URL(string: "https://taprx.xyz/medications/events/users/\(self.userID)")!
                 var request = URLRequest(url: url)
                 print(url)
                 request.httpMethod="GET"
@@ -47,7 +45,7 @@ struct GetDependantsAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(GetDependants.self, from: data)
+                                    let response = try JSONDecoder().decode(GetMedEventsByUser.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         
@@ -74,5 +72,5 @@ struct GetDependantsAPITest: View {
 }
 
 #Preview {
-    GetDependantsAPITest()
+    GetMedEventsByUserAPITest()
 }

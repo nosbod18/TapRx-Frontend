@@ -56,6 +56,9 @@
 		D76003BF2BAE897300AC36F3 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76003BE2BAE897300AC36F3 /* FirebaseRemoteConfigSwift */; };
 		D76003C12BAE897300AC36F3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C02BAE897300AC36F3 /* FirebaseStorage */; };
 		D76003C32BAE897300AC36F3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C22BAE897300AC36F3 /* FirebaseStorageCombine-Community */; };
+		D7765A4D2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */; };
+		D7765A4F2BC9B3B500FBEB14 /* MedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */; };
+		D7D4B2012BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */; };
 		D7DB59702B83DEC800FF60FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DB596F2B83DEC800FF60FF /* User.swift */; };
 		D7DB59AE2B83E4DC00FF60FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */; };
 		D7DB59B12B83E57400FF60FF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D7DB59B02B83E57400FF60FF /* FirebaseAuth */; };
@@ -100,6 +103,9 @@
 		D70ED46A2BC651560095369F /* DeleteDependantByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDependantByIdAPITest.swift; sourceTree = "<group>"; };
 		D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Photo Assets.xcassets"; sourceTree = "<group>"; };
 		D72AA5872B752B7400EE58E8 /* AccountUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUserView.swift; sourceTree = "<group>"; };
+		D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMedEventAPITest.swift; sourceTree = "<group>"; };
+		D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedEvents.swift; sourceTree = "<group>"; };
+		D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMedEventsByUserAPITest.swift; sourceTree = "<group>"; };
 		D7DB596F2B83DEC800FF60FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7DB59B62B8459E200FF60FF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -237,13 +243,24 @@
 				D7DB596F2B83DEC800FF60FF /* User.swift */,
 				D70ED44D2BC634CD0095369F /* Medications.swift */,
 				D70ED4622BC64C5E0095369F /* Dependants.swift */,
+				D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */,
 			);
 			path = ClassDefinitions;
+			sourceTree = "<group>";
+		};
+		D7765A4B2BC9B07900FBEB14 /* MedicationEvents */ = {
+			isa = PBXGroup;
+			children = (
+				D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */,
+				D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */,
+			);
+			path = MedicationEvents;
 			sourceTree = "<group>";
 		};
 		D7DB59712B83E07A00FF60FF /* FirebaseAPI */ = {
 			isa = PBXGroup;
 			children = (
+				D7765A4B2BC9B07900FBEB14 /* MedicationEvents */,
 				D70ED45E2BC64A5C0095369F /* Dependents */,
 				D70ED4552BC63D080095369F /* Users */,
 				D70ED4462BC630000095369F /* Medications */,
@@ -398,6 +415,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70ED4502BC636800095369F /* GetMedicationsAPITest.swift in Sources */,
+				D7765A4F2BC9B3B500FBEB14 /* MedEvents.swift in Sources */,
+				D7765A4D2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift in Sources */,
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
 				D7F4D3112B6CC22B007B3B7C /* SettingsUserView.swift in Sources */,
 				D70ED45D2BC63D6A0095369F /* UpdateUserAPITest.swift in Sources */,
@@ -416,6 +435,7 @@
 				20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */,
 				D70ED4542BC6375E0095369F /* UpdateMedicationAPITest.swift in Sources */,
 				D7F4D30D2B6CC070007B3B7C /* SettingsHomeView.swift in Sources */,
+				D7D4B2012BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift in Sources */,
 				D70ED4692BC651470095369F /* UpdateDependantByIdAPITest.swift in Sources */,
 				D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */,
 				D7F4D3002B6C713D007B3B7C /* LogoView.swift in Sources */,
