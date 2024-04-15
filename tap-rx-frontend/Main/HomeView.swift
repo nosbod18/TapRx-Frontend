@@ -54,78 +54,55 @@ struct HomeView: View {
     @ObservedObject var user: User
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                // Welcome message
-                Section {
-                    Text("Welcome, \(user.first_name)!")
-                        .font(.largeTitle)
-                        .foregroundColor(.medicalRed)
-                        .fontWeight(.black)
-                }
-                .padding(.bottom, 20)
+        VStack {
+            // Welcome message
+            Section {
+                Text("Welcome, \(user.first_name)!")
+                    .font(.largeTitle)
+                    .foregroundColor(.medicalRed)
+                    .fontWeight(.black)
+            }
+            .padding(.bottom, 20)
+            
+            // Today's Medications and date
+            Section {
+                Text("Today's Medications:")
+                    .font(.title2)
+                    .foregroundColor(.medicalDarkBlue)
+                    .fontWeight(.black)
                 
-                // Today's Medications and date
-                Section {
-                    Text("Today's Medications:")
-                        .font(.title2)
-                        .foregroundColor(.medicalDarkBlue)
-                        .fontWeight(.black)
-                    
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.medicalRed)
-                        .frame(height: 5)
-                    
-                    Text(Date.now, style: .date)
-                        .font(.title2)
-                        .foregroundColor(.medicalLightBlue)
-                }
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.medicalRed)
+                    .frame(height: 5)
                 
-                // Medication List
-                ScrollView {
-                    // TODO: Check if the medications are for today using the schedule
-                    if let count = user.meds?.count, count > 0 {
-                        ForEach(Array(user.meds!.values), id: \.self) { value in
-                            MedPreview(item: value)
-                        }
-                    } else {
-                        Text("No Meds for today!")
-                            .padding(.vertical, 50)
-                            .foregroundStyle(Color.medicalLightBlue)
-                            .font(.title2)
+                Text(Date.now, style: .date)
+                    .font(.title2)
+                    .foregroundColor(.medicalLightBlue)
+            }
+            
+            // Medication List
+            ScrollView {
+                // TODO: Check if the medications are for today using the schedule
+                if let count = user.meds?.count, count > 0 {
+                    ForEach(Array(user.meds!.values), id: \.self) { value in
+                        MedPreview(item: value)
                     }
-                }
-                .mask {
-                    LinearGradient(colors: [.black, .clear],
-                                   startPoint: UnitPoint(x: 0.5, y: 0.25),
-                                    endPoint: UnitPoint(x: 0.5, y: 1))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    Text("No medications for today!")
+                        .padding(.vertical, 50)
+                        .foregroundStyle(Color.medicalLightBlue)
+                        .font(.title2)
                 }
             }
-            .frame(width: WIDTH)
-            .padding(.top, -30)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        LogoView()
-                        Spacer()
-                        NavigationStack{
-                            NavigationLink {
-                                SettingsHomeView()
-                            } label: {
-                                Image(systemName: "line.3.horizontal")
-                                    .resizable()
-                                    .frame(width: 25, height: 20)
-                                    .foregroundColor(.medicalRed)
-                                    .padding(.top, 5)
-                            }
-                        }
-                            .navigationBarHidden(true)
-                    }
-                }
+            .mask {
+                LinearGradient(colors: [.black, .clear],
+                               startPoint: UnitPoint(x: 0.5, y: 0.25),
+                                endPoint: UnitPoint(x: 0.5, y: 1))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-            .navigationBarHidden(true)
+        .frame(width: WIDTH)
+        .padding(.top, 30)
     }
 }
 

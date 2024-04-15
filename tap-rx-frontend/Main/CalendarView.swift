@@ -26,106 +26,85 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            HStack {
-                CalendarView(
-                    calendar: calendar,
-                    date: $selectedDate,
-                    content: { date in
-                        Button(action: { selectedDate = date }) {
-                            Text("00")
-                                .padding(8)
-                                .foregroundColor(.clear)
-                                .background(
-                                    calendar.isDate(date, inSameDayAs: selectedDate) ? Color.medicalRed
-                                    : calendar.isDateInToday(date) ? .green
-                                    : .clear
-                                )
-                                .cornerRadius(8)
-                                .accessibilityHidden(true)
-                                .overlay(
-                                    Text(dayFormatter.string(from: date))
-                                        .foregroundColor(.black)
-                                )
-                        }
-                    },
-                    trailing: { date in
-                        Text(dayFormatter.string(from: date))
-                            .foregroundColor(.secondary)
-                    },
-                    header: { date in
-                        Text(weekDayFormatter.string(from: date))
-                    },
-                    title: { date in
-                        HStack {
-                            Text(monthFormatter.string(from: date))
-                                .font(.headline)
-                                .padding()
-                            Spacer()
-                            Button {
-                                guard let newDate = calendar.date(
-                                    byAdding: .month,
-                                    value: -1,
-                                    to: selectedDate
-                                ) else {
-                                    return
-                                }
-                                selectedDate = newDate
-                            } label: {
-                                Label(
-                                    title: { Text("Previous") },
-                                    icon: { Image(systemName: "chevron.left") }
-                                )
-                                .labelStyle(IconOnlyLabelStyle())
-                                .padding(.horizontal)
-                                .frame(maxHeight: .infinity)
-                            }
-                            Button {
-                                guard let newDate = calendar.date(
-                                    byAdding: .month,
-                                    value: 1,
-                                    to: selectedDate
-                                ) else {
-                                    return
-                                }
-                                selectedDate = newDate
-                            } label: {
-                                Label(
-                                    title: { Text("Next") },
-                                    icon: { Image(systemName: "chevron.right") }
-                                )
-                                .labelStyle(IconOnlyLabelStyle())
-                                .padding(.horizontal)
-                                .frame(maxHeight: .infinity)
-                            }
-                        }
-                        .padding(.bottom, 6)
+        HStack {
+            CalendarView(
+                calendar: calendar,
+                date: $selectedDate,
+                content: { date in
+                    Button(action: { selectedDate = date }) {
+                        Text("00")
+                            .padding(8)
+                            .foregroundColor(.clear)
+                            .background(
+                                calendar.isDate(date, inSameDayAs: selectedDate) ? Color.medicalRed
+                                : calendar.isDateInToday(date) ? .green
+                                : .clear
+                            )
+                            .cornerRadius(8)
+                            .accessibilityHidden(true)
+                            .overlay(
+                                Text(dayFormatter.string(from: date))
+                                    .foregroundColor(.black)
+                            )
                     }
-                )
-                .equatable()
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
+                },
+                trailing: { date in
+                    Text(dayFormatter.string(from: date))
+                        .foregroundColor(.secondary)
+                },
+                header: { date in
+                    Text(weekDayFormatter.string(from: date))
+                },
+                title: { date in
                     HStack {
-                        LogoView()
+                        Text(monthFormatter.string(from: date))
+                            .font(.headline)
+                            .padding()
                         Spacer()
-                        NavigationStack{
-                            NavigationLink {
-                                SettingsHomeView()
-                            } label: {
-                                Image(systemName: "line.3.horizontal")
-                                    .resizable()
-                                    .frame(width: 25, height: 20)
-                                    .foregroundColor(.medicalRed)
-                                    .padding(.top, 5)
+                        Button {
+                            guard let newDate = calendar.date(
+                                byAdding: .month,
+                                value: -1,
+                                to: selectedDate
+                            ) else {
+                                return
                             }
+                            selectedDate = newDate
+                        } label: {
+                            Label(
+                                title: { Text("Previous") },
+                                icon: { Image(systemName: "chevron.left") }
+                            )
+                            .labelStyle(IconOnlyLabelStyle())
+                            .padding(.horizontal)
+                            .frame(maxHeight: .infinity)
                         }
-                        .navigationBarHidden(true)
+                        Button {
+                            guard let newDate = calendar.date(
+                                byAdding: .month,
+                                value: 1,
+                                to: selectedDate
+                            ) else {
+                                return
+                            }
+                            selectedDate = newDate
+                        } label: {
+                            Label(
+                                title: { Text("Next") },
+                                icon: { Image(systemName: "chevron.right") }
+                            )
+                            .labelStyle(IconOnlyLabelStyle())
+                            .padding(.horizontal)
+                            .frame(maxHeight: .infinity)
+                        }
                     }
+                    .padding(.bottom, 6)
                 }
-            }
+            )
+            .equatable()
         }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding(.top, 30)
     }
 }
 

@@ -77,7 +77,7 @@ struct MedFullview: View {
                 
                 Spacer()
                 
-                // TODO
+                // TODO: Get active days from schedule
                 HStack(alignment: .bottom) {
                     ForEach(0..<7) { day in
                         DayView(day: day, active: false)
@@ -121,57 +121,42 @@ struct MedView: View {
     @ObservedObject var user: User
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Section {
-                    Text("Your Meds")
-                        .font(.largeTitle)
-                        .foregroundColor(.medicalDarkBlue)
-                        .fontWeight(.black)
-                }
-                .padding(.bottom, 20)
-                
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.medicalRed)
-                    .frame(height: 5)
-                
-                ScrollView {
-                    if let count = user.meds?.count, count > 0 {
-                        ForEach(Array(user.meds!.values), id: \.self) { item in
-                            MedFullview(item: item)
-                        }
-                    } else {
-                        Text("No Meds added")
-                            .padding(.vertical, 50)
-                            .foregroundStyle(Color.medicalLightBlue)
-                            .font(.title2)
-                    }
-                }
-                .mask {
-                    LinearGradient(colors: [.black, .clear],
-                                   startPoint: UnitPoint(x: 0.5, y: 0.5),
-                                   endPoint: UnitPoint(x: 0.5, y: 1))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                
-                AddMedButton()
+        VStack {
+            Section {
+                Text("Your Meds")
+                    .font(.largeTitle)
+                    .foregroundColor(.medicalDarkBlue)
+                    .fontWeight(.black)
             }
-            .frame(width: WIDTH)
-            .padding(.top, -30)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        LogoView()
-                        Spacer()
-                        Image(systemName: "line.3.horizontal")
-                            .resizable()
-                            .frame(width: 25, height: 20)
-                            .foregroundColor(.medicalRed)
-                            .padding(.top, 5)
+            .padding(.bottom, 20)
+            
+            RoundedRectangle(cornerRadius: 5)
+                .fill(Color.medicalRed)
+                .frame(height: 5)
+            
+            ScrollView {
+                if let count = user.meds?.count, count > 0 {
+                    ForEach(Array(user.meds!.values), id: \.self) { item in
+                        MedFullview(item: item)
                     }
+                } else {
+                    Text("No Meds added")
+                        .padding(.vertical, 50)
+                        .foregroundStyle(Color.medicalLightBlue)
+                        .font(.title2)
                 }
             }
+            .mask {
+                LinearGradient(colors: [.black, .clear],
+                               startPoint: UnitPoint(x: 0.5, y: 0.5),
+                               endPoint: UnitPoint(x: 0.5, y: 1))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            
+            AddMedButton()
         }
+        .frame(width: WIDTH)
+        .padding(.top, 30)
     }
 }
 

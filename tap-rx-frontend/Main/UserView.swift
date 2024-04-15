@@ -72,6 +72,22 @@ struct UserView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                LogoView()
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SettingsHomeView()) {
+                    Image(systemName: "line.3.horizontal")
+                        .resizable()
+                        .frame(width: 25, height: 20)
+                        .foregroundColor(.medicalRed)
+                        .padding(.top, 5)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
