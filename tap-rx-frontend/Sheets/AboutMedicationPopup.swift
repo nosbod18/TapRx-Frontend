@@ -10,6 +10,7 @@ import FirebaseAuth
 
 struct AboutMedicationPopup: View {
     @Binding var isActive: Bool
+    
     @State private var email = "drewclutes@gmail.com"
     @State private var password = "123456"
     @State private var medication_id: String = "-Nv4zIQD4996vlxbeq25"
@@ -76,57 +77,61 @@ struct AboutMedicationPopup: View {
     }
     
     var body: some View {
+        ZStack {
+            Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+            
             VStack {
-                HStack{
-                    Spacer()
-                    Button{
-                        isActive.toggle()
-                    } label: {
-                        Image(systemName:"xmark.square.fill")
-                            .imageScale(.large)
-                            .foregroundColor(Color.medicalGrey)
-                    }
-                }.padding(0)
-                Text("About Medication")
-                    .font(.title2)
-                    .foregroundColor(.medicalDarkBlue)
-                    .fontWeight(.black)
-                
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.medicalRed)
-                    .frame(height: 5)
-                
-                Section{
                     HStack{
-                        Text("Name: ").fontWeight(.bold)
-                        Text(self.name)
-                    }
-                    HStack{
-                        Text("Nickname: ").fontWeight(.bold)
-                        Text(self.nickname)
-                    }
-                    HStack{
-                        Text("Dosage: ").fontWeight(.bold)
-                        Text(self.dosage)
-                    }
-                    HStack{
-                        Text("Schedule: ").fontWeight(.bold)
-                        Text(self.schedule)
-                    }
-                }
-                    .frame(maxWidth:.infinity,alignment:.leading)
-                    .foregroundColor(Color.medicalDarkBlue)
+                        Spacer()
+                        Button{
+                            isActive.toggle()
+                        } label: {
+                            Image(systemName:"xmark.square.fill")
+                                .imageScale(.large)
+                                .foregroundColor(Color.medicalGrey)
+                        }
+                    }.padding(0)
+                    Text("About Medication")
+                        .font(.title2)
+                        .foregroundColor(.medicalDarkBlue)
+                        .fontWeight(.black)
                     
-                
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.medicalRed)
+                        .frame(height: 5)
+                    
+                    Section{
+                        HStack{
+                            Text("Name: ").fontWeight(.bold)
+                            Text(self.name)
+                        }
+                        HStack{
+                            Text("Nickname: ").fontWeight(.bold)
+                            Text(self.nickname)
+                        }
+                        HStack{
+                            Text("Dosage: ").fontWeight(.bold)
+                            Text(self.dosage)
+                        }
+                        HStack{
+                            Text("Schedule: ").fontWeight(.bold)
+                            Text(self.schedule)
+                        }
+                    }
+                        .frame(maxWidth:.infinity,alignment:.leading)
+                        .foregroundColor(Color.medicalDarkBlue)
+                        
+                    
+                }
+                .frame(width: UIScreen.main.bounds.width*0.8)
+                .padding(20)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(radius: 20)
+                .onAppear{
+                    get_medication_by_id()
             }
-            .frame(width: UIScreen.main.bounds.width*0.8)
-            .padding(20)
-            .background(Color.white)
-            .cornerRadius(20)
-            .shadow(radius: 20)
-            .onAppear{
-                get_medication_by_id()
-            }
+        }
             
     }
 }

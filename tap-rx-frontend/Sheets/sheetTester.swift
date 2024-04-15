@@ -11,12 +11,18 @@ struct sheetTester: View {
     @State private var showSheet: Bool = false
     
     var body: some View {
-        Button("click me"){
-            showSheet.toggle()
+        ZStack{
+            Color.gray.edgesIgnoringSafeArea(.all)
+            Button("click me"){
+                showSheet.toggle()
+            }
+            .sheet(isPresented: $showSheet) {
+                AboutMedicationPopup(isActive: $showSheet)
+                    .background(Color.clear)
+                    .edgesIgnoringSafeArea(.all)
+            }
         }
-        .fullScreenCover(isPresented: $showSheet){
-            AboutMedicationPopup(isActive:$showSheet)
-        }.transition(.identity)
+        
     }
 }
 

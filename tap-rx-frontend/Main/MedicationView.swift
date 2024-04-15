@@ -53,13 +53,14 @@ struct MedFullview: View {
                             Spacer()
                             
                             Button {
-                                // Edit, delete
+                                
                             } label: {
                                 Image(systemName: "ellipsis.circle")
                                     .foregroundStyle(.white)
                                     .padding(.trailing, 10)
                                     .padding(.top, -5)
                             }
+                            
                         }
 //                        .border(.orange)
                         .frame(maxWidth: .infinity)
@@ -92,71 +93,87 @@ struct MedFullview: View {
 }
 
 struct AddMedButton: View {
+    @Binding var addMedModal: Bool
+
     var body: some View {
-        ZStack(alignment: .center) {
-            Capsule()
-                .stroke(Color.medicalRed)
-                .frame(width: WIDTH * 0.5, height: 35)
-            
-            Button {
+        ZStack{
+            ZStack(alignment: .center) {
+                Capsule()
+                    .stroke(Color.medicalRed)
+                    .frame(width: WIDTH * 0.5, height: 35)
                 
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                        .renderingMode(.template)
-                        .foregroundColor(.medicalRed)
-                    
-                    Text("Add Med")
-                        .foregroundColor(.medicalRed)
+                Button {
+                    addMedModal.toggle()
+                    print("button clicked: \(self.addMedModal)")
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                            .renderingMode(.template)
+                            .foregroundColor(.medicalRed)
+                        
+                        Text("Add Med")
+                            .foregroundColor(.medicalRed)
+                    }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.top, 10)
+            
+            
+            
+            
         }
-        .frame(maxWidth: .infinity, alignment: .center)
-        .padding(.top, 10)
-        
     }
 }
 
 struct MedView: View {
+    @State private var addMedModal: Bool = false
     @ObservedObject var user: User
     
     var body: some View {
-        VStack {
-            Section {
-                Text("Your Meds")
-                    .font(.largeTitle)
-                    .foregroundColor(.medicalDarkBlue)
-                    .fontWeight(.black)
-            }
-            .padding(.bottom, 20)
-            
-            RoundedRectangle(cornerRadius: 5)
-                .fill(Color.medicalRed)
-                .frame(height: 5)
-            
-            ScrollView {
-                if let count = user.meds?.count, count > 0 {
-                    ForEach(Array(user.meds!.values), id: \.self) { item in
-                        MedFullview(item: item)
-                    }
-                } else {
-                    Text("No Meds added")
-                        .padding(.vertical, 50)
-                        .foregroundStyle(Color.medicalLightBlue)
-                        .font(.title2)
+        
+        ZStack {
+            VStack {
+                Section {
+                    Text("Your Meds")
+                        .font(.largeTitle)
+                        .foregroundColor(.medicalDarkBlue)
+                        .fontWeight(.black)
                 }
+                .padding(.bottom, 20)
+                
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.medicalRed)
+                    .frame(height: 5)
+                
+                ScrollView {
+                    if let count = user.meds?.count, count > 0 {
+                        ForEach(Array(user.meds!.values), id: \.self) { item in
+                            MedFullview(item: item)
+                        }
+                    } else {
+                        Text("No Meds added")
+                            .padding(.vertical, 50)
+                            .foregroundStyle(Color.medicalLightBlue)
+                            .font(.title2)
+                    }
+                }
+                .mask {
+                    LinearGradient(colors: [.black, .clear],
+                                   startPoint: UnitPoint(x: 0.5, y: 0.5),
+                                   endPoint: UnitPoint(x: 0.5, y: 1))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                
+                AddMedButton(addMedModal: $addMedModal)
             }
-            .mask {
-                LinearGradient(colors: [.black, .clear],
-                               startPoint: UnitPoint(x: 0.5, y: 0.5),
-                               endPoint: UnitPoint(x: 0.5, y: 1))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
+            .frame(width: WIDTH)
+            .padding(.top, 30)
             
-            AddMedButton()
+            if addMedModal {
+                AboutMedicationPopup(isActive: $addMedModal)
+            }
         }
-        .frame(width: WIDTH)
-        .padding(.top, 30)
     }
 }
 
