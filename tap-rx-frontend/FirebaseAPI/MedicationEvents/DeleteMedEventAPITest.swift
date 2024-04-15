@@ -1,18 +1,22 @@
 //
-//  GetMedEventsByUserAPITest.swift
+//  DeleteMedEventAPITest.swift
 //  tap-rx-frontend
 //
-//  Created by Drew Clutes on 4/12/24.
+//  Created by Drew Clutes on 4/9/24.
 //
-import FirebaseAuth
-import SwiftUI
 
-struct GetMedEventsByUserAPITest: View {
+import SwiftUI
+import FirebaseAuth
+
+struct DeleteMedEventAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
     
-    func get_med_events_by_user(){
+    @State private var med_id: String = ""
+    @State private var event_id: String = ""
+    
+    func delete_med_event(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -20,15 +24,11 @@ struct GetMedEventsByUserAPITest: View {
                 return
             }
             
-            
-
-            
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/medications/events/users/\(self.userID)")!
+                let url = URL(string: "https://taprx.xyz/medications/\(self.med_id)/events/\(self.event_id)")!
                 var request = URLRequest(url: url)
-                print(url)
-                request.httpMethod="GET"
+                request.httpMethod="DELETE"
                 user.getIDToken { idToken, error in
                     if let error = error {
                         print("error: \(error.localizedDescription)")
@@ -45,7 +45,7 @@ struct GetMedEventsByUserAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(GetMedEventsByUser.self, from: data)
+                                    let response = try JSONDecoder().decode(DeleteDependantById.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         
@@ -65,12 +65,16 @@ struct GetMedEventsByUserAPITest: View {
     }
     
     var body: some View {
-        Button(action: get_med_events_by_user) {
-            Label("Get Med Events", systemImage: "folder.badge.plus")
-        }
+        VStack {
+            TextField("Medication Id",text: $med_id).padding([.top,.bottom],20)
+            TextField("Event Id",text: $event_id).padding([.top,.bottom],20)
+            Button(action: delete_med_event) {
+                Label("Delete Med Event", systemImage: "folder.badge.plus")
+            }
+        }.background(.gray).padding(10)
     }
 }
 
 #Preview {
-    GetMedEventsByUserAPITest()
+    DeleteMedEventAPITest()
 }

@@ -61,13 +61,13 @@ struct CreateMed: Codable {
 }
 
 struct GetMedById: Codable {
-    var data: [Med]?
+    var data: Med?
     var message: String
     var success: Bool?
 }
 
 struct DeleteMedById: Codable {
-    var data: [Med]?
+    var data: Med?
     var message: String
     var success: Bool?
 }

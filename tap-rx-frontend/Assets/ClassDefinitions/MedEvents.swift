@@ -30,6 +30,12 @@ struct GetMedEvents: Codable {
 
 typealias GetMedEventsByUser = GetMedEvents
 
+struct GetMedEventById : Codable {
+    var data: MedEvent?
+    var message: String
+    var success: Bool?
+}
+
 struct DeleteMedEvent: Codable {
     var message: String
     var success: Bool

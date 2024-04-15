@@ -14,23 +14,33 @@
 		20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FE2B6D55FC00F0AD6B /* MedicationView.swift */; };
 		20E2C1012B6D59FA00F0AD6B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C1002B6D59FA00F0AD6B /* UserView.swift */; };
 		D70ED44E2BC634CD0095369F /* Medications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED44D2BC634CD0095369F /* Medications.swift */; };
-		D70ED44F2BC636770095369F /* DeleteMedicationByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED44C2BC6346C0095369F /* DeleteMedicationByIdAPITest.swift */; };
-		D70ED4502BC636800095369F /* GetMedicationsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4472BC6300A0095369F /* GetMedicationsAPITest.swift */; };
-		D70ED4512BC636840095369F /* CreateMedicationAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED44A2BC6300A0095369F /* CreateMedicationAPITest.swift */; };
-		D70ED4522BC636880095369F /* GetMedicationByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4482BC6300A0095369F /* GetMedicationByIdAPITest.swift */; };
-		D70ED4542BC6375E0095369F /* UpdateMedicationAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4532BC6375E0095369F /* UpdateMedicationAPITest.swift */; };
-		D70ED4572BC63D260095369F /* GetUserByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4562BC63D260095369F /* GetUserByIdAPITest.swift */; };
-		D70ED4592BC63D350095369F /* GetUsersAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4582BC63D350095369F /* GetUsersAPITest.swift */; };
-		D70ED45B2BC63D550095369F /* CreateUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED45A2BC63D550095369F /* CreateUserAPITest.swift */; };
-		D70ED45D2BC63D6A0095369F /* UpdateUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED45C2BC63D6A0095369F /* UpdateUserAPITest.swift */; };
-		D70ED4602BC64AE80095369F /* CreateDependentAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED45F2BC64AE80095369F /* CreateDependentAPITest.swift */; };
 		D70ED4632BC64C5E0095369F /* Dependants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4622BC64C5E0095369F /* Dependants.swift */; };
-		D70ED4652BC651200095369F /* GetDependantsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4642BC651200095369F /* GetDependantsAPITest.swift */; };
-		D70ED4672BC651370095369F /* GetDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4662BC651370095369F /* GetDependantByIdAPITest.swift */; };
-		D70ED4692BC651470095369F /* UpdateDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4682BC651470095369F /* UpdateDependantByIdAPITest.swift */; };
-		D70ED46B2BC651560095369F /* DeleteDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED46A2BC651560095369F /* DeleteDependantByIdAPITest.swift */; };
 		D72AA5862B71768700EE58E8 /* Photo Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */; };
 		D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72AA5872B752B7400EE58E8 /* AccountUserView.swift */; };
+		D740F43B2BCD90CA0068CEF6 /* AboutMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */; };
+		D740F43C2BCD90CA0068CEF6 /* chatgbtExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4382BCD90CA0068CEF6 /* chatgbtExample.swift */; };
+		D740F43D2BCD90CA0068CEF6 /* sheetTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4392BCD90CA0068CEF6 /* sheetTester.swift */; };
+		D740F4642BCD91A30068CEF6 /* CreateDependentAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F44B2BCD91A30068CEF6 /* CreateDependentAPITest.swift */; };
+		D740F4652BCD91A30068CEF6 /* DeleteDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F44C2BCD91A30068CEF6 /* DeleteDependantByIdAPITest.swift */; };
+		D740F4662BCD91A30068CEF6 /* GetDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F44D2BCD91A30068CEF6 /* GetDependantByIdAPITest.swift */; };
+		D740F4672BCD91A30068CEF6 /* GetDependantsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F44E2BCD91A30068CEF6 /* GetDependantsAPITest.swift */; };
+		D740F4682BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F44F2BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift */; };
+		D740F4692BCD91A30068CEF6 /* CreateMedEventAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4512BCD91A30068CEF6 /* CreateMedEventAPITest.swift */; };
+		D740F46A2BCD91A30068CEF6 /* DeleteMedEventAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4522BCD91A30068CEF6 /* DeleteMedEventAPITest.swift */; };
+		D740F46B2BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4532BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift */; };
+		D740F46C2BCD91A30068CEF6 /* GetMedEventsByMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4542BCD91A30068CEF6 /* GetMedEventsByMedication.swift */; };
+		D740F46D2BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4552BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift */; };
+		D740F46E2BCD91A30068CEF6 /* UpdateMedEventAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4562BCD91A30068CEF6 /* UpdateMedEventAPITest.swift */; };
+		D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4582BCD91A30068CEF6 /* CreateMedicationAPITest.swift */; };
+		D740F4702BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4592BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift */; };
+		D740F4712BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F45A2BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift */; };
+		D740F4722BCD91A30068CEF6 /* GetMedicationsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F45B2BCD91A30068CEF6 /* GetMedicationsAPITest.swift */; };
+		D740F4732BCD91A30068CEF6 /* UpdateMedicationAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F45C2BCD91A30068CEF6 /* UpdateMedicationAPITest.swift */; };
+		D740F4742BCD91A30068CEF6 /* CreateUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F45E2BCD91A30068CEF6 /* CreateUserAPITest.swift */; };
+		D740F4752BCD91A30068CEF6 /* GetUserByIdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F45F2BCD91A30068CEF6 /* GetUserByIdAPITest.swift */; };
+		D740F4762BCD91A30068CEF6 /* GetUsersAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4602BCD91A30068CEF6 /* GetUsersAPITest.swift */; };
+		D740F4772BCD91A30068CEF6 /* UpdateUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4612BCD91A30068CEF6 /* UpdateUserAPITest.swift */; };
+		D740F4792BCD921C0068CEF6 /* MedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4782BCD921C0068CEF6 /* MedEvents.swift */; };
 		D76003932BAE897300AC36F3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D76003922BAE897300AC36F3 /* FirebaseAnalytics */; };
 		D76003952BAE897300AC36F3 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D76003942BAE897300AC36F3 /* FirebaseAnalyticsOnDeviceConversion */; };
 		D76003972BAE897300AC36F3 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76003962BAE897300AC36F3 /* FirebaseAnalyticsSwift */; };
@@ -56,9 +66,6 @@
 		D76003BF2BAE897300AC36F3 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76003BE2BAE897300AC36F3 /* FirebaseRemoteConfigSwift */; };
 		D76003C12BAE897300AC36F3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C02BAE897300AC36F3 /* FirebaseStorage */; };
 		D76003C32BAE897300AC36F3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C22BAE897300AC36F3 /* FirebaseStorageCombine-Community */; };
-		D7765A4D2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */; };
-		D7765A4F2BC9B3B500FBEB14 /* MedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */; };
-		D7D4B2012BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */; };
 		D7DB59702B83DEC800FF60FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DB596F2B83DEC800FF60FF /* User.swift */; };
 		D7DB59AE2B83E4DC00FF60FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */; };
 		D7DB59B12B83E57400FF60FF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D7DB59B02B83E57400FF60FF /* FirebaseAuth */; };
@@ -85,27 +92,34 @@
 		20E2C0FC2B6D466B00F0AD6B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		20E2C0FE2B6D55FC00F0AD6B /* MedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationView.swift; sourceTree = "<group>"; };
 		20E2C1002B6D59FA00F0AD6B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		D70ED4472BC6300A0095369F /* GetMedicationsAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMedicationsAPITest.swift; sourceTree = "<group>"; };
-		D70ED4482BC6300A0095369F /* GetMedicationByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMedicationByIdAPITest.swift; sourceTree = "<group>"; };
-		D70ED44A2BC6300A0095369F /* CreateMedicationAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMedicationAPITest.swift; sourceTree = "<group>"; };
-		D70ED44C2BC6346C0095369F /* DeleteMedicationByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMedicationByIdAPITest.swift; sourceTree = "<group>"; };
 		D70ED44D2BC634CD0095369F /* Medications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medications.swift; sourceTree = "<group>"; };
-		D70ED4532BC6375E0095369F /* UpdateMedicationAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMedicationAPITest.swift; sourceTree = "<group>"; };
-		D70ED4562BC63D260095369F /* GetUserByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAPITest.swift; sourceTree = "<group>"; };
-		D70ED4582BC63D350095369F /* GetUsersAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersAPITest.swift; sourceTree = "<group>"; };
-		D70ED45A2BC63D550095369F /* CreateUserAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAPITest.swift; sourceTree = "<group>"; };
-		D70ED45C2BC63D6A0095369F /* UpdateUserAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAPITest.swift; sourceTree = "<group>"; };
-		D70ED45F2BC64AE80095369F /* CreateDependentAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDependentAPITest.swift; sourceTree = "<group>"; };
 		D70ED4622BC64C5E0095369F /* Dependants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependants.swift; sourceTree = "<group>"; };
-		D70ED4642BC651200095369F /* GetDependantsAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDependantsAPITest.swift; sourceTree = "<group>"; };
-		D70ED4662BC651370095369F /* GetDependantByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDependantByIdAPITest.swift; sourceTree = "<group>"; };
-		D70ED4682BC651470095369F /* UpdateDependantByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDependantByIdAPITest.swift; sourceTree = "<group>"; };
-		D70ED46A2BC651560095369F /* DeleteDependantByIdAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDependantByIdAPITest.swift; sourceTree = "<group>"; };
 		D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Photo Assets.xcassets"; sourceTree = "<group>"; };
 		D72AA5872B752B7400EE58E8 /* AccountUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUserView.swift; sourceTree = "<group>"; };
-		D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMedEventAPITest.swift; sourceTree = "<group>"; };
-		D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedEvents.swift; sourceTree = "<group>"; };
-		D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMedEventsByUserAPITest.swift; sourceTree = "<group>"; };
+		D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMedicationPopup.swift; sourceTree = "<group>"; };
+		D740F4382BCD90CA0068CEF6 /* chatgbtExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatgbtExample.swift; sourceTree = "<group>"; };
+		D740F4392BCD90CA0068CEF6 /* sheetTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sheetTester.swift; sourceTree = "<group>"; };
+		D740F44B2BCD91A30068CEF6 /* CreateDependentAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDependentAPITest.swift; sourceTree = "<group>"; };
+		D740F44C2BCD91A30068CEF6 /* DeleteDependantByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteDependantByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F44D2BCD91A30068CEF6 /* GetDependantByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDependantByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F44E2BCD91A30068CEF6 /* GetDependantsAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDependantsAPITest.swift; sourceTree = "<group>"; };
+		D740F44F2BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateDependantByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F4512BCD91A30068CEF6 /* CreateMedEventAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMedEventAPITest.swift; sourceTree = "<group>"; };
+		D740F4522BCD91A30068CEF6 /* DeleteMedEventAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteMedEventAPITest.swift; sourceTree = "<group>"; };
+		D740F4532BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMedEventByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F4542BCD91A30068CEF6 /* GetMedEventsByMedication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMedEventsByMedication.swift; sourceTree = "<group>"; };
+		D740F4552BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMedEventsByUserAPITest.swift; sourceTree = "<group>"; };
+		D740F4562BCD91A30068CEF6 /* UpdateMedEventAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMedEventAPITest.swift; sourceTree = "<group>"; };
+		D740F4582BCD91A30068CEF6 /* CreateMedicationAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMedicationAPITest.swift; sourceTree = "<group>"; };
+		D740F4592BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteMedicationByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F45A2BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMedicationByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F45B2BCD91A30068CEF6 /* GetMedicationsAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMedicationsAPITest.swift; sourceTree = "<group>"; };
+		D740F45C2BCD91A30068CEF6 /* UpdateMedicationAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMedicationAPITest.swift; sourceTree = "<group>"; };
+		D740F45E2BCD91A30068CEF6 /* CreateUserAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserAPITest.swift; sourceTree = "<group>"; };
+		D740F45F2BCD91A30068CEF6 /* GetUserByIdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserByIdAPITest.swift; sourceTree = "<group>"; };
+		D740F4602BCD91A30068CEF6 /* GetUsersAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUsersAPITest.swift; sourceTree = "<group>"; };
+		D740F4612BCD91A30068CEF6 /* UpdateUserAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserAPITest.swift; sourceTree = "<group>"; };
+		D740F4782BCD921C0068CEF6 /* MedEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedEvents.swift; sourceTree = "<group>"; };
 		D7DB596F2B83DEC800FF60FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7DB59B62B8459E200FF60FF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -185,7 +199,8 @@
 				D7F4D2FE2B6C712A007B3B7C /* Assets */,
 				D7FAF8212B6B54B500C0A303 /* LoginRegister */,
 				202DDA412B69F7CF00BD3109 /* TapRxApp.swift */,
-				D7DB59712B83E07A00FF60FF /* FirebaseAPI */,
+				D740F4632BCD91A30068CEF6 /* FirebaseAPI */,
+				D740F43A2BCD90CA0068CEF6 /* Sheets */,
 			);
 			path = "tap-rx-frontend";
 			sourceTree = "<group>";
@@ -202,68 +217,82 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		D70ED4462BC630000095369F /* Medications */ = {
-			isa = PBXGroup;
-			children = (
-				D70ED44C2BC6346C0095369F /* DeleteMedicationByIdAPITest.swift */,
-				D70ED4472BC6300A0095369F /* GetMedicationsAPITest.swift */,
-				D70ED44A2BC6300A0095369F /* CreateMedicationAPITest.swift */,
-				D70ED4482BC6300A0095369F /* GetMedicationByIdAPITest.swift */,
-				D70ED4532BC6375E0095369F /* UpdateMedicationAPITest.swift */,
-			);
-			path = Medications;
-			sourceTree = "<group>";
-		};
-		D70ED4552BC63D080095369F /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				D70ED4562BC63D260095369F /* GetUserByIdAPITest.swift */,
-				D70ED4582BC63D350095369F /* GetUsersAPITest.swift */,
-				D70ED45A2BC63D550095369F /* CreateUserAPITest.swift */,
-				D70ED45C2BC63D6A0095369F /* UpdateUserAPITest.swift */,
-			);
-			path = Users;
-			sourceTree = "<group>";
-		};
-		D70ED45E2BC64A5C0095369F /* Dependents */ = {
-			isa = PBXGroup;
-			children = (
-				D70ED45F2BC64AE80095369F /* CreateDependentAPITest.swift */,
-				D70ED4642BC651200095369F /* GetDependantsAPITest.swift */,
-				D70ED4662BC651370095369F /* GetDependantByIdAPITest.swift */,
-				D70ED4682BC651470095369F /* UpdateDependantByIdAPITest.swift */,
-				D70ED46A2BC651560095369F /* DeleteDependantByIdAPITest.swift */,
-			);
-			path = Dependents;
-			sourceTree = "<group>";
-		};
 		D70ED4612BC64C340095369F /* ClassDefinitions */ = {
 			isa = PBXGroup;
 			children = (
+				D740F4782BCD921C0068CEF6 /* MedEvents.swift */,
 				D7DB596F2B83DEC800FF60FF /* User.swift */,
 				D70ED44D2BC634CD0095369F /* Medications.swift */,
 				D70ED4622BC64C5E0095369F /* Dependants.swift */,
-				D7765A4E2BC9B3B500FBEB14 /* MedEvents.swift */,
 			);
 			path = ClassDefinitions;
 			sourceTree = "<group>";
 		};
-		D7765A4B2BC9B07900FBEB14 /* MedicationEvents */ = {
+		D740F43A2BCD90CA0068CEF6 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				D7765A4C2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift */,
-				D7D4B2002BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift */,
+				D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */,
+				D740F4382BCD90CA0068CEF6 /* chatgbtExample.swift */,
+				D740F4392BCD90CA0068CEF6 /* sheetTester.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		D740F4502BCD91A30068CEF6 /* Dependents */ = {
+			isa = PBXGroup;
+			children = (
+				D740F44B2BCD91A30068CEF6 /* CreateDependentAPITest.swift */,
+				D740F44C2BCD91A30068CEF6 /* DeleteDependantByIdAPITest.swift */,
+				D740F44D2BCD91A30068CEF6 /* GetDependantByIdAPITest.swift */,
+				D740F44E2BCD91A30068CEF6 /* GetDependantsAPITest.swift */,
+				D740F44F2BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift */,
+			);
+			path = Dependents;
+			sourceTree = "<group>";
+		};
+		D740F4572BCD91A30068CEF6 /* MedicationEvents */ = {
+			isa = PBXGroup;
+			children = (
+				D740F4512BCD91A30068CEF6 /* CreateMedEventAPITest.swift */,
+				D740F4522BCD91A30068CEF6 /* DeleteMedEventAPITest.swift */,
+				D740F4532BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift */,
+				D740F4542BCD91A30068CEF6 /* GetMedEventsByMedication.swift */,
+				D740F4552BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift */,
+				D740F4562BCD91A30068CEF6 /* UpdateMedEventAPITest.swift */,
 			);
 			path = MedicationEvents;
 			sourceTree = "<group>";
 		};
-		D7DB59712B83E07A00FF60FF /* FirebaseAPI */ = {
+		D740F45D2BCD91A30068CEF6 /* Medications */ = {
 			isa = PBXGroup;
 			children = (
-				D7765A4B2BC9B07900FBEB14 /* MedicationEvents */,
-				D70ED45E2BC64A5C0095369F /* Dependents */,
-				D70ED4552BC63D080095369F /* Users */,
-				D70ED4462BC630000095369F /* Medications */,
+				D740F4582BCD91A30068CEF6 /* CreateMedicationAPITest.swift */,
+				D740F4592BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift */,
+				D740F45A2BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift */,
+				D740F45B2BCD91A30068CEF6 /* GetMedicationsAPITest.swift */,
+				D740F45C2BCD91A30068CEF6 /* UpdateMedicationAPITest.swift */,
+			);
+			path = Medications;
+			sourceTree = "<group>";
+		};
+		D740F4622BCD91A30068CEF6 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				D740F45E2BCD91A30068CEF6 /* CreateUserAPITest.swift */,
+				D740F45F2BCD91A30068CEF6 /* GetUserByIdAPITest.swift */,
+				D740F4602BCD91A30068CEF6 /* GetUsersAPITest.swift */,
+				D740F4612BCD91A30068CEF6 /* UpdateUserAPITest.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		D740F4632BCD91A30068CEF6 /* FirebaseAPI */ = {
+			isa = PBXGroup;
+			children = (
+				D740F4502BCD91A30068CEF6 /* Dependents */,
+				D740F4572BCD91A30068CEF6 /* MedicationEvents */,
+				D740F45D2BCD91A30068CEF6 /* Medications */,
+				D740F4622BCD91A30068CEF6 /* Users */,
 			);
 			path = FirebaseAPI;
 			sourceTree = "<group>";
@@ -414,44 +443,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70ED4502BC636800095369F /* GetMedicationsAPITest.swift in Sources */,
-				D7765A4F2BC9B3B500FBEB14 /* MedEvents.swift in Sources */,
-				D7765A4D2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift in Sources */,
+				D740F46A2BCD91A30068CEF6 /* DeleteMedEventAPITest.swift in Sources */,
+				D740F4742BCD91A30068CEF6 /* CreateUserAPITest.swift in Sources */,
+				D740F4672BCD91A30068CEF6 /* GetDependantsAPITest.swift in Sources */,
+				D740F4752BCD91A30068CEF6 /* GetUserByIdAPITest.swift in Sources */,
+				D740F4682BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift in Sources */,
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
+				D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */,
 				D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */,
-				D70ED45D2BC63D6A0095369F /* UpdateUserAPITest.swift in Sources */,
 				D7DB59B72B8459E200FF60FF /* SplashScreenView.swift in Sources */,
+				D740F4762BCD91A30068CEF6 /* GetUsersAPITest.swift in Sources */,
 				D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */,
 				20E2C1012B6D59FA00F0AD6B /* UserView.swift in Sources */,
-				D70ED4652BC651200095369F /* GetDependantsAPITest.swift in Sources */,
+				D740F46D2BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift in Sources */,
 				D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */,
-				D70ED4672BC651370095369F /* GetDependantByIdAPITest.swift in Sources */,
+				D740F46E2BCD91A30068CEF6 /* UpdateMedEventAPITest.swift in Sources */,
 				20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */,
 				20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */,
+				D740F4702BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift in Sources */,
+				D740F4712BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift in Sources */,
 				D7F4D3042B6C8931007B3B7C /* Colors.swift in Sources */,
-				D70ED4512BC636840095369F /* CreateMedicationAPITest.swift in Sources */,
-				D70ED4602BC64AE80095369F /* CreateDependentAPITest.swift in Sources */,
-				D70ED4592BC63D350095369F /* GetUsersAPITest.swift in Sources */,
+				D740F4652BCD91A30068CEF6 /* DeleteDependantByIdAPITest.swift in Sources */,
+				D740F43D2BCD90CA0068CEF6 /* sheetTester.swift in Sources */,
 				20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */,
-				D70ED4542BC6375E0095369F /* UpdateMedicationAPITest.swift in Sources */,
+				D740F4772BCD91A30068CEF6 /* UpdateUserAPITest.swift in Sources */,
+				D740F4662BCD91A30068CEF6 /* GetDependantByIdAPITest.swift in Sources */,
+				D740F4792BCD921C0068CEF6 /* MedEvents.swift in Sources */,
+				D740F4722BCD91A30068CEF6 /* GetMedicationsAPITest.swift in Sources */,
 				D7F4D30D2B6CC070007B3B7C /* SettingsUserView.swift in Sources */,
-				D7D4B2012BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift in Sources */,
-				D70ED4692BC651470095369F /* UpdateDependantByIdAPITest.swift in Sources */,
 				D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */,
 				D7F4D3002B6C713D007B3B7C /* LogoView.swift in Sources */,
-				D70ED4572BC63D260095369F /* GetUserByIdAPITest.swift in Sources */,
+				D740F43B2BCD90CA0068CEF6 /* AboutMedicationPopup.swift in Sources */,
 				20E2C0FD2B6D466B00F0AD6B /* MainView.swift in Sources */,
+				D740F4642BCD91A30068CEF6 /* CreateDependentAPITest.swift in Sources */,
 				D70ED4632BC64C5E0095369F /* Dependants.swift in Sources */,
-				D70ED45B2BC63D550095369F /* CreateUserAPITest.swift in Sources */,
+				D740F43C2BCD90CA0068CEF6 /* chatgbtExample.swift in Sources */,
 				D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */,
 				D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */,
 				D70ED44E2BC634CD0095369F /* Medications.swift in Sources */,
 				D7DB59702B83DEC800FF60FF /* User.swift in Sources */,
+				D740F4692BCD91A30068CEF6 /* CreateMedEventAPITest.swift in Sources */,
+				D740F4732BCD91A30068CEF6 /* UpdateMedicationAPITest.swift in Sources */,
 				D7FAF8252B6B54DD00C0A303 /* RegisterView.swift in Sources */,
-				D70ED4522BC636880095369F /* GetMedicationByIdAPITest.swift in Sources */,
+				D740F46B2BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift in Sources */,
 				D7FAF8272B6B54EE00C0A303 /* ForgotPasswordView.swift in Sources */,
-				D70ED44F2BC636770095369F /* DeleteMedicationByIdAPITest.swift in Sources */,
-				D70ED46B2BC651560095369F /* DeleteDependantByIdAPITest.swift in Sources */,
+				D740F46C2BCD91A30068CEF6 /* GetMedEventsByMedication.swift in Sources */,
 				202DDA422B69F7CF00BD3109 /* TapRxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
