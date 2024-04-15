@@ -7,22 +7,12 @@
 
 import SwiftUI
 
-struct Medication: Identifiable {
-    var id: UUID
-    var name: String
-    var dosage: Int
-    var bottleDescription: String
-    var time: Date
-    var doctorName: String
-    var days: [Int]
-}
-
-struct MedicationPreview: View {
+struct MedPreview: View {
     static let height = 80.0
     
-    let item: Medication
+    let item: Med
 
-    init(item: Medication) {
+    init(item: Med) {
         self.item = item
     }
     
@@ -30,25 +20,25 @@ struct MedicationPreview: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.medicalDarkBlue)
-                .frame(height: MedicationPreview.height)
+                .frame(height: MedPreview.height)
             
             HStack {
-                Text(item.time, style: .time)
+                Text("\(item.schedule?.month ?? "") \(item.schedule?.day_of_month ?? "")")
                     .font(.title3)
                     .foregroundColor(.white)
                 
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color.medicalRed)
-                    .frame(width: 2, height: MedicationPreview.height * 0.90)
+                    .frame(width: 2, height: MedPreview.height * 0.90)
                 
                 VStack(alignment: .leading) {
-                    Text(item.name)
+                    Text(item.name ?? "Medication")
                         .foregroundColor(.white)
                         .font(.title)
                     
                     Spacer()
                     
-                    Text("\(item.dosage)mg | \(item.bottleDescription)")
+                    Text("\(item.dosage ?? "0")mg")
                         .foregroundColor(.medicalGrey)
                         .font(.footnote)
                 }
@@ -61,27 +51,21 @@ struct MedicationPreview: View {
 }
 
 struct HomeView: View {
-    @State private var username = "<User>"
-
-    let medications: [Medication]?
-
-    init (with medications: [Medication]?) {
-        self.medications = medications
-    }
+    @ObservedObject var user: User
     
     var body: some View {
         NavigationStack {
             VStack {
                 // Welcome message
                 Section {
-                    Text("Welcome, \(username)!")
+                    Text("Welcome, \(user.first_name)!")
                         .font(.largeTitle)
                         .foregroundColor(.medicalRed)
                         .fontWeight(.black)
                 }
                 .padding(.bottom, 20)
                 
-                // Today's medications and date
+                // Today's Medications and date
                 Section {
                     Text("Today's Medications:")
                         .font(.title2)
@@ -97,14 +81,15 @@ struct HomeView: View {
                         .foregroundColor(.medicalLightBlue)
                 }
                 
-                // Medications List
+                // Medication List
                 ScrollView {
-                    if let meds = medications {
-                        ForEach(meds) { item in
-                            MedicationPreview(item: item)
+                    // TODO: Check if the medications are for today using the schedule
+                    if let count = user.meds?.count, count > 0 {
+                        ForEach(Array(user.meds!.values), id: \.self) { value in
+                            MedPreview(item: value)
                         }
                     } else {
-                        Text("No medications for today!")
+                        Text("No Meds for today!")
                             .padding(.vertical, 50)
                             .foregroundStyle(Color.medicalLightBlue)
                             .font(.title2)
@@ -145,5 +130,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(with: SAMPLE_MEDICATIONS)
+    HomeView(user: User())
 }

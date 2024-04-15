@@ -1,5 +1,5 @@
 //
-//  MedicationView.swift
+//  MedView.swift
 //  tap-rx-frontend
 //
 //  Created by Evan Dobson on 2/2/24.
@@ -28,12 +28,12 @@ struct DayView: View {
     }
 }
 
-struct MedicationFullview: View {
+struct MedFullview: View {
     static let height = 140.0
     
-    let item: Medication
+    let item: Med
     
-    init(item: Medication) {
+    init(item: Med) {
         self.item = item
     }
     
@@ -41,12 +41,12 @@ struct MedicationFullview: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.medicalDarkBlue)
-                .frame(height: MedicationFullview.height)
+                .frame(height: MedFullview.height)
             
             VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
-                            Text(item.name)
+                            Text(item.name ?? item.nickname ?? "<???>")
                                 .foregroundColor(.white)
                                 .font(.title2)
                             
@@ -64,22 +64,23 @@ struct MedicationFullview: View {
 //                        .border(.orange)
                         .frame(maxWidth: .infinity)
 
-                        Text("\(item.time.formatted(date: .omitted, time: .shortened)) | \(item.dosage)mg | \(item.bottleDescription)")
+                        Text("\(item.schedule?.hour ?? "??"):\(item.schedule?.minute ?? "??") | \(item.dosage ?? "0")mg")
                             .foregroundColor(.medicalGrey)
                             .font(.footnote)
                         
-                        Text(item.doctorName)
-                            .font(.footnote)
-                            .foregroundColor(.medicalGrey)
+//                        Text(item.doctorName)
+//                            .font(.footnote)
+//                            .foregroundColor(.medicalGrey)
                     }
 //                    .border(.green)
 //                .padding(.vertical, 10)
                 
                 Spacer()
                 
+                // TODO
                 HStack(alignment: .bottom) {
                     ForEach(0..<7) { day in
-                        DayView(day: day, active: item.days.contains(where: {$0 == day}))
+                        DayView(day: day, active: false)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -90,7 +91,7 @@ struct MedicationFullview: View {
     }
 }
 
-struct AddMedicationButton: View {
+struct AddMedButton: View {
     var body: some View {
         ZStack(alignment: .center) {
             Capsule()
@@ -105,7 +106,7 @@ struct AddMedicationButton: View {
                         .renderingMode(.template)
                         .foregroundColor(.medicalRed)
                     
-                    Text("Add Medication")
+                    Text("Add Med")
                         .foregroundColor(.medicalRed)
                 }
             }
@@ -116,18 +117,14 @@ struct AddMedicationButton: View {
     }
 }
 
-struct MedicationView: View {
-    let medications: [Medication]?
-    
-    init(with medications: [Medication]?) {
-        self.medications = medications
-    }
+struct MedView: View {
+    @ObservedObject var user: User
     
     var body: some View {
         NavigationStack {
             VStack {
                 Section {
-                    Text("Your Medications")
+                    Text("Your Meds")
                         .font(.largeTitle)
                         .foregroundColor(.medicalDarkBlue)
                         .fontWeight(.black)
@@ -139,12 +136,12 @@ struct MedicationView: View {
                     .frame(height: 5)
                 
                 ScrollView {
-                    if let meds = medications {
-                        ForEach(meds) { item in
-                            MedicationFullview(item: item)
+                    if let count = user.meds?.count, count > 0 {
+                        ForEach(Array(user.meds!.values), id: \.self) { item in
+                            MedFullview(item: item)
                         }
                     } else {
-                        Text("No medications added")
+                        Text("No Meds added")
                             .padding(.vertical, 50)
                             .foregroundStyle(Color.medicalLightBlue)
                             .font(.title2)
@@ -157,7 +154,7 @@ struct MedicationView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 
-                AddMedicationButton()
+                AddMedButton()
             }
             .frame(width: WIDTH)
             .padding(.top, -30)
@@ -179,5 +176,5 @@ struct MedicationView: View {
 }
 
 #Preview {
-    MedicationView(with: SAMPLE_MEDICATIONS)
+    MedView(user: User())
 }

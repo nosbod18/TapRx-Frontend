@@ -1,5 +1,5 @@
 //
-//  CreateMedicationAPITest.swift
+//  CreateMedAPITest.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -8,13 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 
-struct UpdateMedicationAPITest: View {
+struct UpdateMedAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
     
     
-    @State private var medication_id: String = ""
+    @State private var Med_id: String = ""
     @State private var name: String = ""
     @State private var nickname: String = ""
     @State private var dosage: String = ""
@@ -26,7 +26,7 @@ struct UpdateMedicationAPITest: View {
     
     
     
-    func update_medication() {
+    func update_Med() {
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -41,7 +41,7 @@ struct UpdateMedicationAPITest: View {
             if let user = result?.user {
                 self.userID = user.uid
                 let postData: [String: Any] = [
-                    //"medication_id": self.medication_id,
+                    //"Med_id": self.Med_id,
                     "name": self.name,
                     "nickname": self.nickname,
                     "dosage": self.dosage,
@@ -67,7 +67,7 @@ struct UpdateMedicationAPITest: View {
                         return
                     }
                     
-                    let url = URL(string: "https://taprx.xyz/medications/\(medication_id)")!
+                    let url = URL(string: "https://taprx.xyz/Meds/\(Med_id)")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "PUT"
                     request.setValue(idToken, forHTTPHeaderField: "Authorization")
@@ -85,7 +85,7 @@ struct UpdateMedicationAPITest: View {
                                 } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
                                     print("Response String: \(responseString)")
                                     do {
-                                        let response = try JSONDecoder().decode(CreateMedication.self, from: data)
+                                        let response = try JSONDecoder().decode(CreateMed.self, from: data)
                                         //self.registerSuccess = true
                                         print(response)
                                     } catch {
@@ -109,8 +109,8 @@ struct UpdateMedicationAPITest: View {
         VStack {
             
             TextField(
-                    "medication id",
-                    text: $medication_id
+                    "Med id",
+                    text: $Med_id
                 ).padding([.top,.bottom],20)
             TextField(
                     "name",
@@ -147,8 +147,8 @@ struct UpdateMedicationAPITest: View {
             
             
             
-            Button(action: update_medication) {
-                Label("Update Medication", systemImage: "folder.badge.plus")
+            Button(action: update_Med) {
+                Label("Update Med", systemImage: "folder.badge.plus")
             }.padding([.top,.bottom],20)
         }
             .background(.gray)
@@ -158,5 +158,5 @@ struct UpdateMedicationAPITest: View {
 }
 
 #Preview {
-    UpdateMedicationAPITest()
+    UpdateMedAPITest()
 }

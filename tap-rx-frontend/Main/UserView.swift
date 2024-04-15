@@ -8,13 +8,13 @@
 import SwiftUI
 
 enum ToolbarItems: Int, CaseIterable {
-    case medications = 0
+    case Meds = 0
     case home
     case calendar
     
     var icon: String{
         switch self {
-            case .medications:
+            case .Meds:
                 return "pill.fill"
             case .home:
                 return "house"
@@ -47,15 +47,16 @@ struct ToolbarItemView: View {
 }
 
 struct UserView: View {
+    @ObservedObject var user: User
     @State var selectedTab = ToolbarItems.home
 
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                MedicationView(with: SAMPLE_MEDICATIONS)
-                    .tag(ToolbarItems.medications)
+                MedView(user: user)
+                    .tag(ToolbarItems.Meds)
                 
-                HomeView(with: SAMPLE_MEDICATIONS)
+                HomeView(user: user)
                     .tag(ToolbarItems.home)
                 
                 ContentView(calendar: Calendar(identifier: .gregorian))
@@ -75,5 +76,5 @@ struct UserView: View {
 }
 
 #Preview {
-    UserView()
+    UserView(user: User())
 }

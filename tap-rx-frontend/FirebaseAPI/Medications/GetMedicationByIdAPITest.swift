@@ -1,5 +1,5 @@
 //
-//  GetMedicationByIdAPITest.swift
+//  GetMedByIdAPITest.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -8,13 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 
-struct GetMedicationByIdAPITest: View {
+struct GetMedByIdAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
-    @State private var medication_id: String = "-Nv4c6l0o55NdrXryvdz"
+    @State private var Med_id: String = "-Nv4c6l0o55NdrXryvdz"
     
-    func get_medication_by_id(){
+    func get_Med_by_id(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -27,7 +27,7 @@ struct GetMedicationByIdAPITest: View {
             
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/medications/\(self.medication_id)")!
+                let url = URL(string: "https://taprx.xyz/Meds/\(self.Med_id)")!
                 var request = URLRequest(url: url)
                 request.httpMethod="GET"
                 user.getIDToken { idToken, error in
@@ -46,7 +46,7 @@ struct GetMedicationByIdAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(GetMedicationById.self, from: data)
+                                    let response = try JSONDecoder().decode(GetMedById.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         
@@ -66,12 +66,12 @@ struct GetMedicationByIdAPITest: View {
     }
     
     var body: some View {
-        Button(action: get_medication_by_id) {
-                Label("Get Medication By ID", systemImage: "folder.badge.plus")
+        Button(action: get_Med_by_id) {
+                Label("Get Med By ID", systemImage: "folder.badge.plus")
             }
     }
 }
 
 #Preview {
-    GetMedicationByIdAPITest()
+    GetMedByIdAPITest()
 }

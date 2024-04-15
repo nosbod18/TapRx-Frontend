@@ -1,5 +1,5 @@
 //
-//  CreateMedicationAPITest.swift
+//  CreateMedAPITest.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 
-struct CreateMedicationAPITest: View {
+struct CreateMedAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
@@ -25,7 +25,7 @@ struct CreateMedicationAPITest: View {
     
     
     
-    func create_medication() {
+    func create_Med() {
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -65,7 +65,7 @@ struct CreateMedicationAPITest: View {
                         return
                     }
                     
-                    let url = URL(string: "https://taprx.xyz/medications/")!
+                    let url = URL(string: "https://taprx.xyz/Meds/")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "POST"
                     request.setValue(idToken, forHTTPHeaderField: "Authorization")
@@ -83,7 +83,7 @@ struct CreateMedicationAPITest: View {
                                 } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
                                     print("Response String: \(responseString)")
                                     do {
-                                        let response = try JSONDecoder().decode(CreateMedication.self, from: data)
+                                        let response = try JSONDecoder().decode(CreateMed.self, from: data)
                                         //self.registerSuccess = true
                                         print(response)
                                     } catch {
@@ -142,8 +142,8 @@ struct CreateMedicationAPITest: View {
             
             
             
-            Button(action: create_medication) {
-                Label("Create Medication", systemImage: "folder.badge.plus")
+            Button(action: create_Med) {
+                Label("Create Med", systemImage: "folder.badge.plus")
             }.padding([.top,.bottom],20)
         }
             .background(.gray)
@@ -153,5 +153,5 @@ struct CreateMedicationAPITest: View {
 }
 
 #Preview {
-    CreateMedicationAPITest()
+    CreateMedAPITest()
 }

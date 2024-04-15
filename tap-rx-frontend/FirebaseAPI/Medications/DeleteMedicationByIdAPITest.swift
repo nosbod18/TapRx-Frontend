@@ -1,5 +1,5 @@
 //
-//  DeleteMedicationByIdAPITest.swift
+//  DeleteMedByIdAPITest.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -8,13 +8,13 @@
 import SwiftUI
 import FirebaseAuth
 
-struct DeleteMedicationByIdAPITest: View {
+struct DeleteMedByIdAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
-    @State private var medication_id: String = ""
+    @State private var Med_id: String = ""
     
-    func delete_medication_by_id(){
+    func delete_Med_by_id(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -27,7 +27,7 @@ struct DeleteMedicationByIdAPITest: View {
             
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/medications/\(self.medication_id)")!
+                let url = URL(string: "https://taprx.xyz/Meds/\(self.Med_id)")!
                 var request = URLRequest(url: url)
                 request.httpMethod="DELETE"
                 user.getIDToken { idToken, error in
@@ -46,7 +46,7 @@ struct DeleteMedicationByIdAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(DeleteMedicationById.self, from: data)
+                                    let response = try JSONDecoder().decode(DeleteMedById.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         
@@ -67,10 +67,10 @@ struct DeleteMedicationByIdAPITest: View {
     
     var body: some View {
         VStack{
-            TextField("medication to delete",text: $medication_id).padding(10)
+            TextField("Med to delete",text: $Med_id).padding(10)
             
-            Button(action: delete_medication_by_id) {
-                    Label("Delete Medication", systemImage: "folder.badge.plus")
+            Button(action: delete_Med_by_id) {
+                    Label("Delete Med", systemImage: "folder.badge.plus")
                 }
         }.padding(10)
         
@@ -78,5 +78,5 @@ struct DeleteMedicationByIdAPITest: View {
 }
 
 #Preview {
-    DeleteMedicationByIdAPITest()
+    DeleteMedByIdAPITest()
 }

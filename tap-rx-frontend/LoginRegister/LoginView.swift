@@ -18,6 +18,7 @@ struct LoginView: View {
     @State var error: String = "Invalid Crudentials"
     @State var showError: Bool = false
 
+    @State var user: User = User()
     
     private func validateEmail() {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -25,10 +26,12 @@ struct LoginView: View {
         isEmailValid = emailPred.evaluate(with: username)
     }
     
-    func callLogIn(){
+    func callLogIn() {
         validateEmail()
+        
         if isEmailValid && !password.isEmpty {
             isValidPassword = true
+            
             Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -36,10 +39,6 @@ struct LoginView: View {
                     self.error = "Invalid Email or Password.. Please Try Again."
                     return
                 }
-                
-                print("User signed in successfully")
-                
-
                 
                 if let user = result?.user {
                     self.userID = user.uid
@@ -65,6 +64,7 @@ struct LoginView: View {
                                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
                                         DispatchQueue.main.async {
                                             print(response.data)
+                                            self.user = response.data
                                             self.pushActive = true
                                         }
                                     } catch {
@@ -264,12 +264,12 @@ struct LoginView: View {
                     }
                 }
             }
-            .padding([.leading,.trailing],25)
-            .padding(.bottom,10)
+            .padding([.leading, .trailing], 25)
+            .padding(.bottom, 10)
             
             //hidden navigation link to push to home page on login
             .navigationDestination(isPresented: self.$pushActive) {
-                MainView()
+                MainView(user: self.user)
             }
         }.navigationBarHidden(true)
             
@@ -277,5 +277,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(user: User())
 }

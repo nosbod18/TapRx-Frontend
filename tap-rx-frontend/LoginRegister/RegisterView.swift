@@ -10,14 +10,14 @@ import Foundation
 import FirebaseAuth
 
 struct RegisterView: View {
-    @State private var email: String = ""
-    @State private var phone: String = ""
-    @State private var name: String = ""
-    @State private var last_name: String = ""
-    @State private var password: String = ""
-    @State private var confirm: String = ""
-    @State private var userID: String = ""
-    @State private var errorMessage: String = "Invalid Crudentials"
+    @State private var email = ""
+    @State private var phone = ""
+    @State private var name = ""
+    @State private var last_name = ""
+    @State private var password = ""
+    @State private var confirm = ""
+    @State private var userID = ""
+    @State private var errorMessage = "Invalid Crudentials"
     
     @State private var errors: Int = 0
     
@@ -108,75 +108,71 @@ struct RegisterView: View {
         
         if(isValidName && isValidLastName && isEmailValid && isValidPhone && validPasswords){
             showError = false
-            Auth.auth().createUser(withEmail: email, password: password){ (result, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     self.registerSuccess = false
-                } else {
-                    print("User registered successfully")
-                    if let user = result?.user {
-                        self.userID = user.uid
-                        let postData: [String: Any] = [
-                            "first_name": self.name,
-                            "last_name": self.last_name,
-                            "phone": self.phone,
-                            "user_id": self.userID
-                        ]
+                    return
+                }
+                
+                if let user = result?.user {
+                    self.userID = user.uid
+
+                    user.getIDToken { (idToken, error) in
+                        //guard let self = self else { return }
                         
-                        user.getIDToken { (idToken, error) in
-                            //guard let self = self else { return }
-                            
-                            if let error = error {
-                                self.showError = true
-                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
-                                print("error: \(error.localizedDescription)")
-                                return
-                            }
-                            
-                            guard let idToken = idToken else {
-                                self.showError = true
-                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
-                                print("Failed to retrieve ID token.")
-                                return
-                            }
-                            
-                            let url = URL(string: "https://taprx.xyz/users/")!
-                            var request = URLRequest(url: url)
-                            request.httpMethod = "POST"
-                            request.setValue(idToken, forHTTPHeaderField: "Authorization")
-                            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                            
-                            do {
-                                let jsonData = try JSONSerialization.data(withJSONObject: postData)
-                                request.httpBody = jsonData
-                                
-                                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                                    DispatchQueue.main.async {
-                                        if let error = error {
-                                            print("Network error: \(error.localizedDescription)")
+                        if let error = error {
+                            self.showError = true
+                            self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
+                            print("error: \(error.localizedDescription)")
+                            return
+                        }
+                        
+                        guard let idToken = idToken else {
+                            self.showError = true
+                            self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
+                            print("Failed to retrieve ID token.")
+                            return
+                        }
+                        
+                        let url = URL(string: "https://taprx.xyz/users/")!
+                        var request = URLRequest(url: url)
+                        request.httpMethod = "POST"
+                        request.setValue(idToken, forHTTPHeaderField: "Authorization")
+                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                        
+                        let body = User(first_name: self.name, last_name: self.last_name, meds: ["__null__": Med()], phone: self.phone, user_id: self.userID)
+                        
+                        do {
+                            request.httpBody = try JSONEncoder().encode(body)
+
+                            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                                DispatchQueue.main.async {
+                                    if let error = error {
+                                        print("Network error: \(error.localizedDescription)")
+                                        self.registerSuccess = false
+                                    } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                                        print("Response String: \(responseString)")
+                                        do {
+                                            let response = try JSONDecoder().decode(APIResponse.self, from: data)
+                                            self.registerSuccess = true
+                                            print(response)
+                                            print("User registered successfully")
+                                        } catch {
+                                            print("Decoding error: \(error)")
                                             self.registerSuccess = false
-                                        } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                                            print("Response String: \(responseString)")
-                                            do {
-                                                let response = try JSONDecoder().decode(APIResponse.self, from: data)
-                                                self.registerSuccess = true
-                                                print(response)
-                                            } catch {
-                                                print("Decoding error: \(error)")
-                                                self.registerSuccess = false
-                                            }
                                         }
                                     }
                                 }
-                                task.resume()
-                            } catch {
-                                self.showError = true
-                                self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
-                                print("Error serializing JSON: \(error.localizedDescription)")
                             }
+                            task.resume()
+                            
+                        } catch {
+                            self.showError = true
+                            self.errorMessage = "An Unknown Error Occurred.. Try Again Later"
+                            print("Error serializing JSON: \(error.localizedDescription)")
                         }
                     }
-
                 }
             }
         }
@@ -220,7 +216,7 @@ struct RegisterView: View {
                     Text(self.errorMessage)
                         .foregroundColor(.red)
                         .font(.subheadline)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.bold)
                         .opacity(showError ? 1 : 0)
                         .frame(height: 20)
                     

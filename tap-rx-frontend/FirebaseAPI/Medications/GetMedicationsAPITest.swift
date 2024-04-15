@@ -1,5 +1,5 @@
 //
-//  GetMedicationsAPITest.swift
+//  GetMedsAPITest.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -8,12 +8,12 @@
 import SwiftUI
 import FirebaseAuth
 
-struct GetMedicationsAPITest: View {
+struct GetMedsAPITest: View {
     @State private var email: String = "drewclutes@gmail.com"
     @State private var password: String = "123456"
     @State private var userID: String = ""
     
-    func get_medications(){
+    func get_Meds(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -26,7 +26,7 @@ struct GetMedicationsAPITest: View {
             
             if let user = result?.user {
                 self.userID = user.uid
-                let url = URL(string: "https://taprx.xyz/medications/")!
+                let url = URL(string: "https://taprx.xyz/Meds/")!
                 var request = URLRequest(url: url)
                 request.httpMethod="GET"
                 user.getIDToken { idToken, error in
@@ -45,7 +45,7 @@ struct GetMedicationsAPITest: View {
                                 print("Response String: \(responseString ?? "Test")")
 
                                 do {
-                                    let response = try JSONDecoder().decode(GetMedications.self, from: data)
+                                    let response = try JSONDecoder().decode(GetMeds.self, from: data)
                                     DispatchQueue.main.async {
                                         print(response)
                                         
@@ -65,12 +65,12 @@ struct GetMedicationsAPITest: View {
     }
     
     var body: some View {
-        Button(action: get_medications) {
-                Label("Get Medications", systemImage: "folder.badge.plus")
+        Button(action: get_Meds) {
+                Label("Get Meds", systemImage: "folder.badge.plus")
             }
     }
 }
 
 #Preview {
-    GetMedicationsAPITest()
+    GetMedsAPITest()
 }
