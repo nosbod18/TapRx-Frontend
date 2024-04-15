@@ -1,5 +1,5 @@
 //
-//  SettingsUserView.swift
+//  SettingsHomeView.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 2/2/24.
@@ -7,53 +7,100 @@
 
 import SwiftUI
 
-struct SettingsUserView: View {
+enum SettingsToolbarItems: Int, CaseIterable {
+    case authorized_users = 0
+    case home
+    case history
     
-    func addUser(){
-        
-    }
-    
-    var body: some View {
-        VStack {
-            Text("Authorized Users")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .foregroundColor(Color.medicalDarkBlue)
-            RoundedRectangle(cornerRadius: 5)
-                .fill(Color.medicalRed)
-                .frame(height: 5)
-                .padding(.top,-10)
-                .padding(.bottom,5)
-
-            /*
-            AccountUserView(name: "Drew",relationship: "Guardian",date:"02/08/2002",color: 1.0)
-            AccountUserView(name: "Ryan",relationship: "Sibling",date: "05/05/2004",color: 0.9)
-            AccountUserView(name: "Jake",relationship: "Sibling",date:"10/02/2006",color: 0.8)
-            AccountUserView(name: "Chad",relationship: "Parent",date: "04/14/1971",color: 0.7)*/
-            Spacer()
-            HStack{
-                Spacer()
-                Button(action: addUser){
-                    HStack{
-                        Image(systemName: "person.crop.circle.badge.plus")
-                        Text("Add User")
-                    }
-                        .padding([.top,.bottom],4)
-                        .padding([.leading,.trailing],7)
-                }
-                    .foregroundColor(.medicalRed)
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(lineWidth: 2)
-                            .foregroundColor(Color.medicalRed)
-                    ).padding()
-                Spacer()
-            }
+    var icon: String{
+        switch self {
+            case .authorized_users:
+                return "person.badge.plus.fill"
+            case .home:
+                return "person.fill"
+            case .history:
+                return "clock.fill"
         }
-            .padding([.leading,.trailing],25)
     }
 }
 
+struct SettingsHomeView: View {
+    @ObservedObject var user: User
+    @State var selectedTab = SettingsToolbarItems.home
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                SettingsAuthorizedUserView(user: user)
+                    .tag(SettingsToolbarItems.authorized_users)
+                
+                SettingsAccountView(user: user)
+                    .tag(SettingsToolbarItems.home)
+                
+                SettingsHistoryView()
+                    .tag(SettingsToolbarItems.history)
+            }
+            HStack {
+                ForEach(SettingsToolbarItems.allCases, id: \.self) { item in
+                    Button {
+                        selectedTab = item
+                    } label: {
+                        ToolbarItemView(systemImageName: item.icon, isActive: (selectedTab == item))
+                    }
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                LogoView()
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: UserView(user: user)) {
+                    Image(systemName: "house")
+                        .resizable()
+                        .frame(width: 25, height: 20)
+                        .foregroundColor(.medicalRed)
+                        .padding(.top, 5)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+}
+
+//struct SettingsHomeView: View {
+//    var body: some View {
+//        VStack{
+//            TabView{
+//                Group {
+//                    SettingsAccountView()
+//                        .tabItem {
+//                            Label("Account",systemImage: "person")
+//                        }
+//                    
+//                    
+//                    SettingsUserView()
+//                        .tabItem {
+//                            Label("Authorized Users",systemImage: "person.badge.plus")
+//                        }
+//                            
+//                    
+//                    SettingsHistoryView()
+//                        .tabItem {
+//                            Label("History",systemImage: "clock")
+//                        }
+//                }
+//            }
+//            Spacer()
+//        }
+//            .ignoresSafeArea()
+//            .padding(.bottom,10)
+//            .padding(.top,-100.0)
+//    
+//    }
+//}
+
 #Preview {
-    SettingsUserView()
+    SettingsHomeView(user: User())
 }

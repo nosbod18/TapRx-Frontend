@@ -32,7 +32,8 @@ struct SettingsHistoryView: View {
             }
             Spacer()
         }
-            .padding([.leading,.trailing],25)
+        .frame(width: WIDTH)
+        .padding(.top, 30)
     }
 }
 

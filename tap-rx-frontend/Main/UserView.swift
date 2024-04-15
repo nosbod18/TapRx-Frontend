@@ -78,7 +78,7 @@ struct UserView: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SettingsHomeView()) {
+                NavigationLink(destination: SettingsHomeView(user: user)) {
                     Image(systemName: "line.3.horizontal")
                         .resizable()
                         .frame(width: 25, height: 20)

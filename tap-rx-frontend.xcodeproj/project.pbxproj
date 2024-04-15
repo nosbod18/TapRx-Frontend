@@ -67,9 +67,9 @@
 		D7F4D3002B6C713D007B3B7C /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D2FF2B6C713D007B3B7C /* LogoView.swift */; };
 		D7F4D3042B6C8931007B3B7C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3032B6C8931007B3B7C /* Colors.swift */; };
 		D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */; };
-		D7F4D30D2B6CC070007B3B7C /* SettingsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */; };
+		D7F4D30D2B6CC070007B3B7C /* SettingsUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */; };
 		D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */; };
-		D7F4D3112B6CC22B007B3B7C /* SettingsUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */; };
+		D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */; };
 		D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */; };
 		D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */; };
 		D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FAF8222B6B54CD00C0A303 /* LoginView.swift */; };
@@ -112,9 +112,9 @@
 		D7F4D2FF2B6C713D007B3B7C /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		D7F4D3032B6C8931007B3B7C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockIcon.swift; sourceTree = "<group>"; };
-		D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHomeView.swift; sourceTree = "<group>"; };
+		D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserView.swift; sourceTree = "<group>"; };
 		D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHistoryView.swift; sourceTree = "<group>"; };
-		D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserView.swift; sourceTree = "<group>"; };
+		D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorizedUserView.swift; sourceTree = "<group>"; };
 		D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountView.swift; sourceTree = "<group>"; };
 		D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageView.swift; sourceTree = "<group>"; };
 		D7FAF8222B6B54CD00C0A303 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -285,10 +285,10 @@
 			isa = PBXGroup;
 			children = (
 				D7F4D3142B6CC97E007B3B7C /* SettingAssets */,
-				D7F4D30C2B6CC070007B3B7C /* SettingsHomeView.swift */,
+				D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */,
 				D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */,
 				D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */,
-				D7F4D3102B6CC22B007B3B7C /* SettingsUserView.swift */,
+				D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				D7765A4F2BC9B3B500FBEB14 /* MedEvents.swift in Sources */,
 				D7765A4D2BC9B14F00FBEB14 /* CreateMedEventAPITest.swift in Sources */,
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
-				D7F4D3112B6CC22B007B3B7C /* SettingsUserView.swift in Sources */,
+				D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */,
 				D70ED45D2BC63D6A0095369F /* UpdateUserAPITest.swift in Sources */,
 				D7DB59B72B8459E200FF60FF /* SplashScreenView.swift in Sources */,
 				D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */,
@@ -434,7 +434,7 @@
 				D70ED4592BC63D350095369F /* GetUsersAPITest.swift in Sources */,
 				20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */,
 				D70ED4542BC6375E0095369F /* UpdateMedicationAPITest.swift in Sources */,
-				D7F4D30D2B6CC070007B3B7C /* SettingsHomeView.swift in Sources */,
+				D7F4D30D2B6CC070007B3B7C /* SettingsUserView.swift in Sources */,
 				D7D4B2012BC9F74C00E03C01 /* GetMedEventsByUserAPITest.swift in Sources */,
 				D70ED4692BC651470095369F /* UpdateDependantByIdAPITest.swift in Sources */,
 				D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */,

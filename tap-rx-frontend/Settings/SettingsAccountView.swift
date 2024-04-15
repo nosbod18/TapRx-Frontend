@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct SettingsAccountView: View {
+    @ObservedObject var user: User
+    
+    init(user: User) {
+        self.user = user
+    }
+    
     var body: some View {
-        
         VStack {
             Text("Account Settings")
                 .font(.largeTitle)
@@ -21,6 +26,7 @@ struct SettingsAccountView: View {
                 .frame(height: 5)
                 .padding(.top,-10)
                 .padding(.bottom,5)
+
             AccountManageView(label: "Name",value: "Drew Clutes",type: "edit")
             AccountManageView(label: "Email",value: "drewclutes@gmail.com",type: "edit")
             AccountManageView(label: "Phone",value: "314-960-8228",type: "edit")
@@ -28,15 +34,14 @@ struct SettingsAccountView: View {
             AccountManageView(label: "Doctor",value: "Dr. John Adams",type: "edit")
             AccountManageView(label: "Auto-Refill Prescription",value: "",type: "toggle")
             AccountManageView(label: "Allow Anonymous Data Usage",value: "",type: "toggle")
+
             Spacer()
         }
-            .padding([.leading,.trailing],25)
-        
-        
-        
+        .frame(width: WIDTH)
+        .padding(.top, 30)
     }
 }
 
 #Preview {
-    SettingsAccountView()
+    SettingsAccountView(user: User())
 }
