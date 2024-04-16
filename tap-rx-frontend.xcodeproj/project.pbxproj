@@ -41,7 +41,6 @@
 		D740F4762BCD91A30068CEF6 /* GetUsersAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4602BCD91A30068CEF6 /* GetUsersAPITest.swift */; };
 		D740F4772BCD91A30068CEF6 /* UpdateUserAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4612BCD91A30068CEF6 /* UpdateUserAPITest.swift */; };
 		D740F4792BCD921C0068CEF6 /* MedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4782BCD921C0068CEF6 /* MedEvents.swift */; };
-		D740F47B2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F47A2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift */; };
 		D740F47E2BCDE0640068CEF6 /* DeleteMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */; };
 		D740F4802BCDE3950068CEF6 /* EditMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */; };
 		D740F4822BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */; };
@@ -71,6 +70,7 @@
 		D76003BF2BAE897300AC36F3 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76003BE2BAE897300AC36F3 /* FirebaseRemoteConfigSwift */; };
 		D76003C12BAE897300AC36F3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C02BAE897300AC36F3 /* FirebaseStorage */; };
 		D76003C32BAE897300AC36F3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D76003C22BAE897300AC36F3 /* FirebaseStorageCombine-Community */; };
+		D76634EC2BCEB56500FEE6E4 /* CreateMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76634EB2BCEB56500FEE6E4 /* CreateMedicationPopup.swift */; };
 		D7DB59702B83DEC800FF60FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DB596F2B83DEC800FF60FF /* User.swift */; };
 		D7DB59AE2B83E4DC00FF60FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */; };
 		D7DB59B12B83E57400FF60FF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D7DB59B02B83E57400FF60FF /* FirebaseAuth */; };
@@ -125,11 +125,11 @@
 		D740F4602BCD91A30068CEF6 /* GetUsersAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUsersAPITest.swift; sourceTree = "<group>"; };
 		D740F4612BCD91A30068CEF6 /* UpdateUserAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserAPITest.swift; sourceTree = "<group>"; };
 		D740F4782BCD921C0068CEF6 /* MedEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedEvents.swift; sourceTree = "<group>"; };
-		D740F47A2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateMedicationPopup.swift; path = ../../../changes/Sheets/CreateMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMedicationEventPopup.swift; sourceTree = "<group>"; };
 		D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsPopup.swift; sourceTree = "<group>"; };
+		D76634EB2BCEB56500FEE6E4 /* CreateMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMedicationPopup.swift; sourceTree = "<group>"; };
 		D7DB596F2B83DEC800FF60FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7DB59B62B8459E200FF60FF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 			children = (
 				D740F47C2BCD9D1E0068CEF6 /* Archive */,
 				D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */,
-				D740F47A2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift */,
+				D76634EB2BCEB56500FEE6E4 /* CreateMedicationPopup.swift */,
 				D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */,
 				D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */,
 				D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */,
@@ -471,7 +471,6 @@
 				D740F4672BCD91A30068CEF6 /* GetDependantsAPITest.swift in Sources */,
 				D740F4752BCD91A30068CEF6 /* GetUserByIdAPITest.swift in Sources */,
 				D740F4682BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift in Sources */,
-				D740F47B2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift in Sources */,
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
 				D740F4842BCE2E1C0068CEF6 /* CalendarEventsPopup.swift in Sources */,
 				D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */,
@@ -485,6 +484,7 @@
 				D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */,
 				D740F4822BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift in Sources */,
 				D740F46E2BCD91A30068CEF6 /* UpdateMedEventAPITest.swift in Sources */,
+				D76634EC2BCEB56500FEE6E4 /* CreateMedicationPopup.swift in Sources */,
 				20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */,
 				20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */,
 				D740F4702BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift in Sources */,
