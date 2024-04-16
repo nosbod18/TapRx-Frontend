@@ -21,6 +21,39 @@ struct AboutMedicationPopup: View {
     @State private var dosage: String = "loading.."
     @State private var schedule: String = "loading.."
     
+    func describeCron(item: Med) -> String {
+        var minute = ""
+        if let minuteInt = item.schedule?.minute {
+            if(Int(minuteInt)! < 9) {
+                minute = "0\(minuteInt)"
+            } else {
+                minute = item.schedule!.minute
+            }
+        }
+        
+        var hour = ""
+        if let hourInt = item.schedule?.hour {
+            if(Int(hourInt)! < 9) {
+                hour = "0\(hourInt)"
+            } else {
+                hour = item.schedule!.hour
+            }
+        }
+        let dayOfMonthDesc = item.schedule?.day_of_month == "*" ? "every day" : "on the \(item.schedule?.day_of_month ?? "") day of the month"
+        let dayOfWeekDesc = item.schedule?.day_of_week == "*" ? "every day of the week" : "on \(item.schedule?.day_of_week ?? "")"
+
+        if(item.schedule?.day_of_month == "*"){
+            return "Taken daily at \(hour):\(minute)"
+        } else if (item.schedule?.day_of_week != ""){
+            return "Taken weekly at \(hour):\(minute) \(dayOfWeekDesc)"
+        } else if (item.schedule?.day_of_month != ""){
+            return "Taken monthly at \(hour):\(minute) \(dayOfMonthDesc)"
+        } else {
+            return "Taken at \(hour):\(minute)"
+        }
+        
+    }
+    
     func get_medication_by_id(){
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
             if let error = error {
@@ -56,11 +89,12 @@ struct AboutMedicationPopup: View {
                                 do {
                                     let response = try JSONDecoder().decode(GetMedById.self, from: data)
                                     DispatchQueue.main.async {
-                                        if let medication = response.data {
-                                            self.name = medication.name ?? "None"
-                                            self.nickname = medication.nickname ?? "None"
-                                            self.dosage = medication.dosage ?? "None"
-                                            self.schedule = "tbd"
+                                        if response.success==true{
+                                            let medication = response.data
+                                            self.name = medication?.name ?? "None"
+                                            self.nickname = medication?.nickname ?? "None"
+                                            self.dosage = medication?.dosage ?? "None"
+                                            self.schedule = describeCron(item: medication!)
                                         }
                                     }
                                 } catch {
@@ -101,20 +135,16 @@ struct AboutMedicationPopup: View {
                     
                     Section{
                         HStack{
-                            Text("Name: ").fontWeight(.bold)
-                            Text(self.name)
+                            Text("Name: \(self.name)").fontWeight(.semibold)
                         }
                         HStack{
-                            Text("Nickname: ").fontWeight(.bold)
-                            Text(self.nickname)
+                            Text("Nickname: \(self.dosage)").fontWeight(.semibold)
                         }
                         HStack{
-                            Text("Dosage: ").fontWeight(.bold)
-                            Text(self.dosage)
+                            Text("Dosage: \(self.dosage)").fontWeight(.semibold)
                         }
                         HStack{
-                            Text("Schedule: ").fontWeight(.bold)
-                            Text(self.schedule)
+                            Text("Schedule: \(self.schedule)").fontWeight(.semibold)
                         }
                     }
                         .frame(maxWidth:.infinity,alignment:.leading)

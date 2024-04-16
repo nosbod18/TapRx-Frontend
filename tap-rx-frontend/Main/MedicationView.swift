@@ -30,7 +30,26 @@ struct DayView: View {
 }
 
 struct MedFullview: View {
-    
+    func getTime() -> String {
+        var minute = ""
+        if let minuteInt = item.schedule?.minute {
+            if(Int(minuteInt)! < 9) {
+                minute = "0\(minuteInt)"
+            } else {
+                minute = item.schedule!.minute
+            }
+        }
+        
+        var hour = ""
+        if let hourInt = item.schedule?.hour {
+            if(Int(hourInt)! < 9) {
+                hour = "0\(hourInt)"
+            } else {
+                hour = item.schedule!.hour
+            }
+        }
+        return "\(hour):\(minute)"
+    }
     func describeCron() -> String {
         var minute = ""
         if let minuteInt = item.schedule?.minute {
@@ -49,13 +68,9 @@ struct MedFullview: View {
                 hour = item.schedule!.hour
             }
         }
-        let minuteDesc = item.schedule?.minute == "*" ? "every minute" : "at minute \(item.schedule?.minute ?? "")"
-        let hourDesc = item.schedule?.hour == "*" ? "every hour" : "at \(item.schedule?.hour ?? "") o'clock"
         let dayOfMonthDesc = item.schedule?.day_of_month == "*" ? "every day" : "on the \(item.schedule?.day_of_month ?? "") day of the month"
-        let monthDesc = item.schedule?.month == "*" ? "every month" : "in \(item.schedule?.month ?? "")"
         let dayOfWeekDesc = item.schedule?.day_of_week == "*" ? "every day of the week" : "on \(item.schedule?.day_of_week ?? "")"
 
-//        return "Schedule: \(minuteDesc), \(hourDesc), \(dayOfMonthDesc), \(monthDesc), \(dayOfWeekDesc)"
         if(item.schedule?.day_of_month == "*"){
             return "Taken daily at \(hour):\(minute)"
         } else if (item.schedule?.day_of_week != ""){
@@ -65,7 +80,6 @@ struct MedFullview: View {
         } else {
             return "Taken at \(hour):\(minute)"
         }
-        
     }
     
     
@@ -94,63 +108,74 @@ struct MedFullview: View {
                 .frame(height: MedFullview.height)
             
             VStack(alignment: .leading) {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .top) {
-                            Text(item.name ?? item.nickname ?? "<???>")
+                VStack(alignment: .leading) {
+                    HStack(alignment: .bottom) {
+                        if(item.name != nil && item.nickname != nil){
+                            Text(item.name ?? "")
                                 .foregroundColor(.white)
                                 .font(.title2)
                             
-                            Spacer()
-                            
-                            Menu {
-                                Button{
-                                    medication_id = item.medication_id ?? ""
-                                    aboutMedModal.toggle()
-                                } label: {
-                                    Label("About",systemImage:"i.circle")
-                                }
-                                Button{
-                                    medication_id = item.medication_id ?? ""
-                                    editMedModal.toggle()
-                                } label: {
-                                    Label("Edit",systemImage:"pencil")
-                                        
-                                }
-                                Button{
-                                    medication_id = item.medication_id ?? ""
-                                    deleteMedModal.toggle()
-                                } label: {
-                                    Label("Delete",systemImage:"trash")
-                                        .foregroundColor(.red)
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
-                                    .foregroundStyle(.white)
-                                    .padding(.trailing, 10)
-                                    .padding(.top, -5)
-                            }
-                            
+                            Text(item.nickname ?? "")
+                                .foregroundColor(Color.medicalGrey)
+                                .font(.title3)
+                        } else {
+                            Text(item.name ?? item.nickname ?? "<??>")
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-                        .frame(maxWidth: .infinity)
+                        Spacer()
                         
-                        
-                        
-                        
-                        Text("\(item.schedule?.hour ?? "??"):\(item.schedule?.minute ?? "??") | \(item.dosage ?? "0mg")")
-                            .foregroundColor(.medicalGrey)
-                            .font(.footnote)
+                        Menu {
+                            Button{
+                                medication_id = item.medication_id ?? ""
+                                aboutMedModal.toggle()
+                            } label: {
+                                Label("About",systemImage:"i.circle")
+                            }
+                            Button{
+                                medication_id = item.medication_id ?? ""
+                                editMedModal.toggle()
+                            } label: {
+                                Label("Edit",systemImage:"pencil")
+                                    
+                            }
+                            Button{
+                                medication_id = item.medication_id ?? ""
+                                deleteMedModal.toggle()
+                            } label: {
+                                Label("Delete",systemImage:"trash")
+                                    .foregroundColor(.red)
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .foregroundStyle(.white)
+                                .padding(.trailing, 10)
+                                .padding(.top, -5)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    
+                    
+                    
+                    Text("\(getTime()) | \(item.dosage ?? "0mg")")
+                        .foregroundColor(.medicalGrey)
+                        .font(.footnote)
 
                     }
                 
-                Spacer()
                 
                 // TODO: Get active days from schedule
                 HStack{
                     Text(describeCron())
                         .foregroundColor(.white)
                         .font(.subheadline)
+                    
+                
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Spacer()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.leading, .vertical])

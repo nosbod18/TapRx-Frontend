@@ -61,6 +61,7 @@ struct CreateMedEventAPITest: View {
                     do {
                         let jsonData = try JSONSerialization.data(withJSONObject: postData)
                         request.httpBody = jsonData
+                        print(jsonData)
                         
                         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                             DispatchQueue.main.async {
