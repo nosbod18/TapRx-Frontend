@@ -45,6 +45,7 @@
 		D740F47E2BCDE0640068CEF6 /* DeleteMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */; };
 		D740F4802BCDE3950068CEF6 /* EditMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */; };
 		D740F4822BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */; };
+		D740F4842BCE2E1C0068CEF6 /* CalendarEventsPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */; };
 		D76003932BAE897300AC36F3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D76003922BAE897300AC36F3 /* FirebaseAnalytics */; };
 		D76003952BAE897300AC36F3 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D76003942BAE897300AC36F3 /* FirebaseAnalyticsOnDeviceConversion */; };
 		D76003972BAE897300AC36F3 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76003962BAE897300AC36F3 /* FirebaseAnalyticsSwift */; };
@@ -128,6 +129,7 @@
 		D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMedicationEventPopup.swift; sourceTree = "<group>"; };
+		D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsPopup.swift; sourceTree = "<group>"; };
 		D7DB596F2B83DEC800FF60FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7DB59AD2B83E4DC00FF60FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7DB59B62B8459E200FF60FF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */,
 				D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */,
 				D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */,
+				D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				D740F4682BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift in Sources */,
 				D740F47B2BCD9CFE0068CEF6 /* CreateMedicationPopup.swift in Sources */,
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
+				D740F4842BCE2E1C0068CEF6 /* CalendarEventsPopup.swift in Sources */,
 				D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */,
 				D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */,
 				D7DB59B72B8459E200FF60FF /* SplashScreenView.swift in Sources */,

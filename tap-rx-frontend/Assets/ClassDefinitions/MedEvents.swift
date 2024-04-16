@@ -42,3 +42,13 @@ struct DeleteMedEvent: Codable {
 }
 
 typealias UpdateMedEvent = DeleteMedEvent
+
+struct MedicationEvent: Identifiable, Decodable {
+    var id: String { medication_event_id }
+    let dosage: String
+    let medication_event_id: String
+    let medication_id: String
+    let timestamp: String
+    let user_id: String
+}
+
