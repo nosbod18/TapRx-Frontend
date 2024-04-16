@@ -249,7 +249,7 @@ struct MedView: View {
                     .frame(height: 5)
                 
                 ScrollView {
-                    if var count = user.medications?.count, count > 0 {
+                    if let count = user.medications?.count, count > 0 {
                         ForEach(Array(user.medications!.values), id: \.self) { item in
                             MedFullview(item: item,aboutMedModal: $aboutMedModal, editMedModal: $editMedModal, deleteMedModal: $deleteMedModal, medication_id: $selectedMedication)
                         }
@@ -332,7 +332,7 @@ struct MedicationView_Previews: PreviewProvider {
                                     }
                                 } else if let data = data {
                                     let responseString = String(data: data, encoding: .utf8)
-                                    //print("Response String: \(responseString ?? "Test")")
+                                    print("Response String: \(responseString ?? "Test")")
 
                                     do {
                                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
