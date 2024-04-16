@@ -10,10 +10,10 @@ import FirebaseAuth
 
 struct AboutMedicationPopup: View {
     @Binding var isActive: Bool
+    @Binding var medication_id: String
     
     @State private var email = "drewclutes@gmail.com"
     @State private var password = "123456"
-    @State private var medication_id: String = "-Nv4zIQD4996vlxbeq25"
     @State private var userID: String = ""
     
     @State private var name: String = "loading.."
@@ -35,6 +35,7 @@ struct AboutMedicationPopup: View {
             if let user = result?.user {
                 self.userID = user.uid
                 let url = URL(string: "https://taprx.xyz/medications/\(self.medication_id)")!
+                print(url)
                 var request = URLRequest(url: url)
                 request.httpMethod="GET"
                 user.getIDToken { idToken, error in
@@ -77,9 +78,7 @@ struct AboutMedicationPopup: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
-            
+        ZStack {            
             VStack {
                     HStack{
                         Spacer()
@@ -139,9 +138,9 @@ struct AboutMedicationPopup: View {
 struct AboutMedicationPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
-
+        @State private var medication_id = "-Nv4zIQD4996vlxbeq25"
         var body: some View {
-            AboutMedicationPopup(isActive: $showSheet)
+            AboutMedicationPopup(isActive: $showSheet,medication_id: $medication_id)
         }
     }
 

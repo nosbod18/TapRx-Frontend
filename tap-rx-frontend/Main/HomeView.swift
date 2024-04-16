@@ -83,8 +83,8 @@ struct HomeView: View {
             // Medication List
             ScrollView {
                 // TODO: Check if the medications are for today using the schedule
-                if let count = user.meds?.count, count > 0 {
-                    ForEach(Array(user.meds!.values), id: \.self) { value in
+                if let count = user.medications?.count, count > 0 {
+                    ForEach(Array(user.medications!.values), id: \.self) { value in
                         MedPreview(item: value)
                     }
                 } else {

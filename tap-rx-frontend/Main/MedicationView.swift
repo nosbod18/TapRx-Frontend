@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct DayView: View {
-    static let days = ["m.square", "t.square", "w.square", "t.square", "f.square", "s.square", "s.square"]
+    static let days = ["s.square","m.square", "t.square", "w.square", "t.square", "f.square", "s.square"]
 
     let name: String
     let color: Color
@@ -29,13 +30,62 @@ struct DayView: View {
 }
 
 struct MedFullview: View {
-    static let height = 140.0
     
+    func describeCron() -> String {
+        var minute = ""
+        if let minuteInt = item.schedule?.minute {
+            if(Int(minuteInt)! < 9) {
+                minute = "0\(minuteInt)"
+            } else {
+                minute = item.schedule!.minute
+            }
+        }
+        
+        var hour = ""
+        if let hourInt = item.schedule?.hour {
+            if(Int(hourInt)! < 9) {
+                hour = "0\(hourInt)"
+            } else {
+                hour = item.schedule!.hour
+            }
+        }
+        let minuteDesc = item.schedule?.minute == "*" ? "every minute" : "at minute \(item.schedule?.minute ?? "")"
+        let hourDesc = item.schedule?.hour == "*" ? "every hour" : "at \(item.schedule?.hour ?? "") o'clock"
+        let dayOfMonthDesc = item.schedule?.day_of_month == "*" ? "every day" : "on the \(item.schedule?.day_of_month ?? "") day of the month"
+        let monthDesc = item.schedule?.month == "*" ? "every month" : "in \(item.schedule?.month ?? "")"
+        let dayOfWeekDesc = item.schedule?.day_of_week == "*" ? "every day of the week" : "on \(item.schedule?.day_of_week ?? "")"
+
+//        return "Schedule: \(minuteDesc), \(hourDesc), \(dayOfMonthDesc), \(monthDesc), \(dayOfWeekDesc)"
+        if(item.schedule?.day_of_month == "*"){
+            return "Taken daily at \(hour):\(minute)"
+        } else if (item.schedule?.day_of_week != ""){
+            return "Taken weekly at \(hour):\(minute) \(dayOfWeekDesc)"
+        } else if (item.schedule?.day_of_month != ""){
+            return "Taken monthly at \(hour):\(minute) \(dayOfMonthDesc)"
+        } else {
+            return "Taken at \(hour):\(minute)"
+        }
+        
+    }
+    
+    
+    
+    
+    static let height = 140.0
+    @Binding var aboutMedModal: Bool
+    @Binding var editMedModal: Bool
+    @Binding var deleteMedModal: Bool
+    @Binding var medication_id: String
     let item: Med
     
-    init(item: Med) {
+    init(item: Med, aboutMedModal: Binding<Bool>, editMedModal: Binding<Bool>, deleteMedModal: Binding<Bool>,medication_id: Binding<String>) {
         self.item = item
+        self._aboutMedModal = aboutMedModal
+        self._editMedModal = editMedModal
+        self._deleteMedModal = deleteMedModal
+        self._medication_id = medication_id
     }
+
     
     var body: some View {
         ZStack {
@@ -52,8 +102,27 @@ struct MedFullview: View {
                             
                             Spacer()
                             
-                            Button {
-                                
+                            Menu {
+                                Button{
+                                    medication_id = item.medication_id ?? ""
+                                    aboutMedModal.toggle()
+                                } label: {
+                                    Label("About",systemImage:"i.circle")
+                                }
+                                Button{
+                                    medication_id = item.medication_id ?? ""
+                                    editMedModal.toggle()
+                                } label: {
+                                    Label("Edit",systemImage:"pencil")
+                                        
+                                }
+                                Button{
+                                    medication_id = item.medication_id ?? ""
+                                    deleteMedModal.toggle()
+                                } label: {
+                                    Label("Delete",systemImage:"trash")
+                                        .foregroundColor(.red)
+                                }
                             } label: {
                                 Image(systemName: "ellipsis.circle")
                                     .foregroundStyle(.white)
@@ -62,27 +131,24 @@ struct MedFullview: View {
                             }
                             
                         }
-//                        .border(.orange)
                         .frame(maxWidth: .infinity)
-
-                        Text("\(item.schedule?.hour ?? "??"):\(item.schedule?.minute ?? "??") | \(item.dosage ?? "0")mg")
+                        
+                        
+                        
+                        
+                        Text("\(item.schedule?.hour ?? "??"):\(item.schedule?.minute ?? "??") | \(item.dosage ?? "0mg")")
                             .foregroundColor(.medicalGrey)
                             .font(.footnote)
-                        
-//                        Text(item.doctorName)
-//                            .font(.footnote)
-//                            .foregroundColor(.medicalGrey)
+
                     }
-//                    .border(.green)
-//                .padding(.vertical, 10)
                 
                 Spacer()
                 
                 // TODO: Get active days from schedule
-                HStack(alignment: .bottom) {
-                    ForEach(0..<7) { day in
-                        DayView(day: day, active: false)
-                    }
+                HStack{
+                    Text(describeCron())
+                        .foregroundColor(.white)
+                        .font(.subheadline)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
@@ -100,11 +166,10 @@ struct AddMedButton: View {
             ZStack(alignment: .center) {
                 Capsule()
                     .stroke(Color.medicalRed)
-                    .frame(width: WIDTH * 0.5, height: 35)
+                    .frame(width: WIDTH * 0.4, height: 35)
                 
                 Button {
                     addMedModal.toggle()
-                    print("button clicked: \(self.addMedModal)")
                 } label: {
                     HStack {
                         Image(systemName: "plus")
@@ -119,17 +184,65 @@ struct AddMedButton: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             
-            
-            
-            
         }
     }
 }
 
 struct MedView: View {
     @State private var addMedModal: Bool = false
-    @ObservedObject var user: User
+    @State private var editMedModal: Bool = false
+    @State private var aboutMedModal: Bool = false
+    @State private var deleteMedModal: Bool = false
+    @State private var selectedMedication: String = ""
+    //@ObservedObject var user: User
+    @State var user: User
     
+    @State private var userID: String = ""
+    func login(){
+        Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let user = result?.user {
+                self.userID = user.uid
+                let url = URL(string: "https://taprx.xyz/users/\(self.userID)")!
+                var request = URLRequest(url: url)
+                request.httpMethod="GET"
+                user.getIDToken { idToken, error in
+                    if let error = error {
+                        print("error: \(error.localizedDescription)")
+                    } else if let idToken = idToken {
+                        request.setValue(idToken, forHTTPHeaderField: "Authorization")
+                        
+                        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                            if let error = error {
+                                DispatchQueue.main.async {
+                                    print( "Network error: \(error.localizedDescription)")
+                                }
+                            } else if let data = data {
+                                let responseString = String(data: data, encoding: .utf8)
+                                print("Response String: \(responseString ?? "Test")")
+
+                                do {
+                                    let response = try JSONDecoder().decode(APIResponse.self, from: data)
+                                    DispatchQueue.main.async {
+                                        print(response.data)
+                                        self.user = response.data
+                                    }
+                                } catch {
+                                    print("Decoding error: \(error)")
+                                }
+                            }
+                        }
+                        task.resume()
+                    }
+                }
+                
+            }
+        }
+    }
     var body: some View {
         
         ZStack {
@@ -147,9 +260,9 @@ struct MedView: View {
                     .frame(height: 5)
                 
                 ScrollView {
-                    if let count = user.meds?.count, count > 0 {
-                        ForEach(Array(user.meds!.values), id: \.self) { item in
-                            MedFullview(item: item)
+                    if let count = user.medications?.count, count > 0 {
+                        ForEach(Array(user.medications!.values), id: \.self) { item in
+                            MedFullview(item: item,aboutMedModal: $aboutMedModal, editMedModal: $editMedModal, deleteMedModal: $deleteMedModal, medication_id: $selectedMedication)
                         }
                     } else {
                         Text("No Meds added")
@@ -171,12 +284,46 @@ struct MedView: View {
             .padding(.top, 30)
             
             if addMedModal {
-                AboutMedicationPopup(isActive: $addMedModal)
+                CreateMedicationPopup(isActive: $addMedModal)
             }
+            if aboutMedModal {
+                AboutMedicationPopup(isActive: $aboutMedModal,medication_id: $selectedMedication)
+            }
+            if editMedModal {
+                EditMedicationPopup(isActive: $editMedModal,medication_id: $selectedMedication)
+            }
+            if deleteMedModal {
+                DeleteMedicationPopup(isActive: $deleteMedModal,medication_id: $selectedMedication)
+            }
+        }.onAppear {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted  // Set output formatting to pretty printed for easier readability
+
+            do {
+                let jsonData = try encoder.encode(user)  // Encode the user object to JSON data
+                if let jsonString = String(data: jsonData, encoding: .utf8) {  // Convert JSON data to String
+                    print(jsonString)  // Print the JSON string
+                } else {
+                    print("Failed to convert data to string.")
+                }
+            } catch {
+                    print("Encoding error: \(error)")  // Print the error if encoding fails
+            }
+            login()
         }
     }
 }
 
-#Preview {
-    MedView(user: User())
+struct MedicationView_Previews: PreviewProvider {
+    struct WrapperView: View {
+        @State var user: User = User()
+        
+        var body: some View {
+            MedView(user: User())
+        }
+    }
+    
+    static var previews: some View {
+        WrapperView()  // Embed the view within a wrapper to manage the state
+    }
 }

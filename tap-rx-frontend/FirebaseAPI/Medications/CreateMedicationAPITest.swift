@@ -79,16 +79,13 @@ struct CreateMedAPITest: View {
                             DispatchQueue.main.async {
                                 if let error = error {
                                     print("Network error: \(error.localizedDescription)")
-                                    //self.registerSuccess = false
                                 } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
                                     print("Response String: \(responseString)")
                                     do {
                                         let response = try JSONDecoder().decode(CreateMed.self, from: data)
-                                        //self.registerSuccess = true
                                         print(response)
                                     } catch {
                                         print("Decoding error: \(error)")
-                                        //self.registerSuccess = false
                                     }
                                 }
                             }

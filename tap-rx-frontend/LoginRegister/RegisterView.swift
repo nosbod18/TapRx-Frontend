@@ -141,7 +141,7 @@ struct RegisterView: View {
                         request.setValue(idToken, forHTTPHeaderField: "Authorization")
                         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                         
-                        let body = User(first_name: self.name, last_name: self.last_name, meds: ["__null__": Med()], phone: self.phone, user_id: self.userID)
+                        let body = User(first_name: self.name, last_name: self.last_name, medications: ["__null__": Med()], phone: self.phone, user_id: self.userID)
                         
                         do {
                             request.httpBody = try JSONEncoder().encode(body)
