@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		202DDA422B69F7CF00BD3109 /* TapRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202DDA412B69F7CF00BD3109 /* TapRxApp.swift */; };
+		2045E5772BCED981000D383D /* CreateDependentPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E5762BCED981000D383D /* CreateDependentPopup.swift */; };
+		2045E57B2BCEEBB4000D383D /* EditDependantPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E57A2BCEEBB4000D383D /* EditDependantPopup.swift */; };
+		2045E57D2BCEEF3A000D383D /* DeleteDependantPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E57C2BCEEF3A000D383D /* DeleteDependantPopup.swift */; };
 		20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20899E4F2B6CD59D00987CE5 /* HomeView.swift */; };
 		20E2C0FB2B6D433900F0AD6B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FA2B6D433900F0AD6B /* CalendarView.swift */; };
 		20E2C0FD2B6D466B00F0AD6B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C0FC2B6D466B00F0AD6B /* MainView.swift */; };
@@ -81,7 +84,7 @@
 		D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */; };
 		D7F4D30D2B6CC070007B3B7C /* SettingsUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */; };
 		D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */; };
-		D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */; };
+		D7F4D3112B6CC22B007B3B7C /* SettingsDependentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3102B6CC22B007B3B7C /* SettingsDependentsView.swift */; };
 		D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */; };
 		D7F4D3162B6CC99F007B3B7C /* AccountManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */; };
 		D7FAF8232B6B54CD00C0A303 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FAF8222B6B54CD00C0A303 /* LoginView.swift */; };
@@ -92,6 +95,9 @@
 /* Begin PBXFileReference section */
 		202DDA3E2B69F7CF00BD3109 /* tap-rx-frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tap-rx-frontend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		202DDA412B69F7CF00BD3109 /* TapRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRxApp.swift; sourceTree = "<group>"; };
+		2045E5762BCED981000D383D /* CreateDependentPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDependentPopup.swift; sourceTree = "<group>"; };
+		2045E57A2BCEEBB4000D383D /* EditDependantPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDependantPopup.swift; sourceTree = "<group>"; };
+		2045E57C2BCEEF3A000D383D /* DeleteDependantPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDependantPopup.swift; sourceTree = "<group>"; };
 		20899E4F2B6CD59D00987CE5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		20E2C0FA2B6D433900F0AD6B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		20E2C0FC2B6D466B00F0AD6B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -138,7 +144,7 @@
 		D7F4D3052B6C92F3007B3B7C /* LockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockIcon.swift; sourceTree = "<group>"; };
 		D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserView.swift; sourceTree = "<group>"; };
 		D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHistoryView.swift; sourceTree = "<group>"; };
-		D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorizedUserView.swift; sourceTree = "<group>"; };
+		D7F4D3102B6CC22B007B3B7C /* SettingsDependentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDependentsView.swift; sourceTree = "<group>"; };
 		D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountView.swift; sourceTree = "<group>"; };
 		D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageView.swift; sourceTree = "<group>"; };
 		D7FAF8222B6B54CD00C0A303 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -243,9 +249,12 @@
 			children = (
 				D740F47C2BCD9D1E0068CEF6 /* Archive */,
 				D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */,
+				2045E5762BCED981000D383D /* CreateDependentPopup.swift */,
 				D76634EB2BCEB56500FEE6E4 /* CreateMedicationPopup.swift */,
 				D740F47D2BCDE0640068CEF6 /* DeleteMedicationPopup.swift */,
+				2045E57C2BCEEF3A000D383D /* DeleteDependantPopup.swift */,
 				D740F47F2BCDE3950068CEF6 /* EditMedicationPopup.swift */,
+				2045E57A2BCEEBB4000D383D /* EditDependantPopup.swift */,
 				D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */,
 				D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */,
 			);
@@ -340,7 +349,7 @@
 				D7F4D30C2B6CC070007B3B7C /* SettingsUserView.swift */,
 				D7F4D3122B6CC23C007B3B7C /* SettingsAccountView.swift */,
 				D7F4D30E2B6CC213007B3B7C /* SettingsHistoryView.swift */,
-				D7F4D3102B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift */,
+				D7F4D3102B6CC22B007B3B7C /* SettingsDependentsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -474,7 +483,7 @@
 				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
 				D740F4842BCE2E1C0068CEF6 /* CalendarEventsPopup.swift in Sources */,
 				D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */,
-				D7F4D3112B6CC22B007B3B7C /* SettingsAuthorizedUserView.swift in Sources */,
+				D7F4D3112B6CC22B007B3B7C /* SettingsDependentsView.swift in Sources */,
 				D7DB59B72B8459E200FF60FF /* SplashScreenView.swift in Sources */,
 				D740F47E2BCDE0640068CEF6 /* DeleteMedicationPopup.swift in Sources */,
 				D740F4762BCD91A30068CEF6 /* GetUsersAPITest.swift in Sources */,
@@ -487,6 +496,7 @@
 				D76634EC2BCEB56500FEE6E4 /* CreateMedicationPopup.swift in Sources */,
 				20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */,
 				20899E502B6CD59D00987CE5 /* HomeView.swift in Sources */,
+				2045E57D2BCEEF3A000D383D /* DeleteDependantPopup.swift in Sources */,
 				D740F4702BCD91A30068CEF6 /* DeleteMedicationByIdAPITest.swift in Sources */,
 				D740F4712BCD91A30068CEF6 /* GetMedicationByIdAPITest.swift in Sources */,
 				D7F4D3042B6C8931007B3B7C /* Colors.swift in Sources */,
@@ -509,11 +519,13 @@
 				D7F4D30F2B6CC213007B3B7C /* SettingsHistoryView.swift in Sources */,
 				D7F4D3062B6C92F3007B3B7C /* LockIcon.swift in Sources */,
 				D70ED44E2BC634CD0095369F /* Medications.swift in Sources */,
+				2045E57B2BCEEBB4000D383D /* EditDependantPopup.swift in Sources */,
 				D7DB59702B83DEC800FF60FF /* User.swift in Sources */,
 				D740F4692BCD91A30068CEF6 /* CreateMedEventAPITest.swift in Sources */,
 				D740F4732BCD91A30068CEF6 /* UpdateMedicationAPITest.swift in Sources */,
 				D7FAF8252B6B54DD00C0A303 /* RegisterView.swift in Sources */,
 				D740F46B2BCD91A30068CEF6 /* GetMedEventByIdAPITest.swift in Sources */,
+				2045E5772BCED981000D383D /* CreateDependentPopup.swift in Sources */,
 				D7FAF8272B6B54EE00C0A303 /* ForgotPasswordView.swift in Sources */,
 				D740F46C2BCD91A30068CEF6 /* GetMedEventsByMedication.swift in Sources */,
 				202DDA422B69F7CF00BD3109 /* TapRxApp.swift in Sources */,

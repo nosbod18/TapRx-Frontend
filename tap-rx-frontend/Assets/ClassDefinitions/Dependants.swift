@@ -1,5 +1,5 @@
 //
-//  Dependents.swift
+//  Dependants.swift
 //  tap-rx-frontend
 //
 //  Created by Drew Clutes on 4/9/24.
@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct Dependant: Codable {
+struct Dependant: Codable, Hashable {
     var dependant_id: String?
     var first_name: String
     var last_name: String
     var phone: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(dependant_id)
+    }
 }
 
 struct CreateDependant: Codable {
@@ -21,7 +25,7 @@ struct CreateDependant: Codable {
 }
 
 //decode a get dependant call
-typealias GetDependantByID = Dependant
+typealias GetDependantByID = CreateDependant
 
 //decode a get dependants list
 typealias GetDependants = [String: Dependant]

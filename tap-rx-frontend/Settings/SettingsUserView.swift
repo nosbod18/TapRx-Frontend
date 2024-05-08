@@ -8,13 +8,13 @@
 import SwiftUI
 
 enum SettingsToolbarItems: Int, CaseIterable {
-    case authorized_users = 0
+    case dependants = 0
     case home
     case history
     
     var icon: String{
         switch self {
-            case .authorized_users:
+            case .dependants:
                 return "person.badge.plus.fill"
             case .home:
                 return "person.fill"
@@ -31,8 +31,8 @@ struct SettingsHomeView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                SettingsAuthorizedUserView(user: user)
-                    .tag(SettingsToolbarItems.authorized_users)
+                SettingsDependantsView(user: user)
+                    .tag(SettingsToolbarItems.dependants)
                 
                 SettingsAccountView(user: user)
                     .tag(SettingsToolbarItems.home)
@@ -68,38 +68,6 @@ struct SettingsHomeView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//struct SettingsHomeView: View {
-//    var body: some View {
-//        VStack{
-//            TabView{
-//                Group {
-//                    SettingsAccountView()
-//                        .tabItem {
-//                            Label("Account",systemImage: "person")
-//                        }
-//                    
-//                    
-//                    SettingsUserView()
-//                        .tabItem {
-//                            Label("Authorized Users",systemImage: "person.badge.plus")
-//                        }
-//                            
-//                    
-//                    SettingsHistoryView()
-//                        .tabItem {
-//                            Label("History",systemImage: "clock")
-//                        }
-//                }
-//            }
-//            Spacer()
-//        }
-//            .ignoresSafeArea()
-//            .padding(.bottom,10)
-//            .padding(.top,-100.0)
-//    
-//    }
-//}
 
 #Preview {
     SettingsHomeView(user: User())

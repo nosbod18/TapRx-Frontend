@@ -11,6 +11,7 @@ import FirebaseAuth
 struct DeleteMedicationPopup: View {
     @Binding var isActive: Bool
     @Binding var medication_id: String
+    @ObservedObject var user: User
     
     @State private var userID = ""
     
@@ -48,10 +49,9 @@ struct DeleteMedicationPopup: View {
                         }
                     }
                     task.resume()
+                    self.user.refresh()
                 }
             }
-                    
-        
         }
     }
     var body: some View {
@@ -111,7 +111,7 @@ struct DeleteMedicationPopup_Previews: PreviewProvider {
         @State private var showSheet = true  // State to control the visibility
         @State private var medication_id = "-Nv4zIQD4996vlxbeq25"
         var body: some View {
-            DeleteMedicationPopup(isActive: $showSheet,medication_id: $medication_id)
+            DeleteMedicationPopup(isActive: $showSheet,medication_id: $medication_id, user: User())
         }
     }
 

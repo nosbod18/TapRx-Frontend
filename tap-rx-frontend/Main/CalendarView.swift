@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MonthlyCalendarView: View {
     @State private var calendarEventsPopup: Bool = false
     private let calendar: Calendar
     private let monthFormatter: DateFormatter
@@ -27,97 +27,112 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack{
-            HStack {
-                CalendarView(
-                    calendar: calendar,
-                    date: $selectedDate,
-                    content: { date in
-                        Button(action: {
-                            selectedDate = date
-                            calendarEventsPopup = true
-                        }) {
-                            
-                            Text("00")
-                                .padding(8)
-                                .foregroundColor(.clear)
-                                .background(
-                                    calendar.isDate(date, inSameDayAs: selectedDate) ? Color.medicalRed
-                                    : calendar.isDateInToday(date) ? Color.medicalLightBlue
-                                    : .clear
-                                )
-                                .cornerRadius(8)
-                                .accessibilityHidden(true)
-                                .overlay(
-                                    Text(dayFormatter.string(from: date))
-                                        .foregroundColor(.black)
-                                )
-                        }
-                    },
-                    trailing: { date in
-                        Text(dayFormatter.string(from: date))
-                            .foregroundColor(.secondary)
-                    },
-                    header: { date in
-                        Text(weekDayFormatter.string(from: date))
-                    },
-                    title: { date in
-                        HStack {
-                            Text(monthFormatter.string(from: date))
-                                .font(.headline)
-                                .padding()
-                            Spacer()
-                            Button {
-                                guard let newDate = calendar.date(
-                                    byAdding: .month,
-                                    value: -1,
-                                    to: selectedDate
-                                ) else {
-                                    return
-                                }
-                                calendarEventsPopup = false
-                                selectedDate = newDate
-                            } label: {
-                                Label(
-                                    title: { Text("Previous") },
-                                    icon: { Image(systemName: "chevron.left") }
-                                )
-                                .labelStyle(IconOnlyLabelStyle())
-                                .padding(.horizontal)
-                                .frame(maxHeight: .infinity)
+        ZStack {
+            VStack {
+                Section {
+                    Text("Your Monthly View")
+                        .font(.largeTitle)
+                        .foregroundColor(.medicalDarkBlue)
+                        .fontWeight(.black)
+                }
+                .padding(.bottom, 20)
+                
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.medicalRed)
+                    .frame(height: 5)
+                
+                HStack {
+                    CalendarView(
+                        calendar: calendar,
+                        date: $selectedDate,
+                        content: { date in
+                            Button(action: {
+                                selectedDate = date
+                                calendarEventsPopup = true
+                            }) {
+                                
+                                Text("00")
+                                    .padding(8)
+                                    .foregroundColor(.clear)
+                                    .background(
+                                        calendar.isDate(date, inSameDayAs: selectedDate) ? Color.medicalRed
+                                        : calendar.isDateInToday(date) ? Color.medicalLightBlue
+                                        : .clear
+                                    )
+                                    .cornerRadius(8)
+                                    .accessibilityHidden(true)
+                                    .overlay(
+                                        Text(dayFormatter.string(from: date))
+                                            .foregroundColor(.black)
+                                    )
                             }
-                            Button {
-                                guard let newDate = calendar.date(
-                                    byAdding: .month,
-                                    value: 1,
-                                    to: selectedDate
-                                ) else {
-                                    return
+                        },
+                        trailing: { date in
+                            Text(dayFormatter.string(from: date))
+                                .foregroundColor(.secondary)
+                        },
+                        header: { date in
+                            Text(weekDayFormatter.string(from: date))
+                        },
+                        title: { date in
+                            HStack {
+                                Text(monthFormatter.string(from: date))
+                                    .font(.headline)
+                                    .padding()
+                                Spacer()
+                                Button {
+                                    guard let newDate = calendar.date(
+                                        byAdding: .month,
+                                        value: -1,
+                                        to: selectedDate
+                                    ) else {
+                                        return
+                                    }
+                                    calendarEventsPopup = false
+                                    selectedDate = newDate
+                                } label: {
+                                    Label(
+                                        title: { Text("Previous") },
+                                        icon: { Image(systemName: "chevron.left") }
+                                    )
+                                    .labelStyle(IconOnlyLabelStyle())
+                                    .padding(.horizontal)
+                                    .frame(maxHeight: .infinity)
                                 }
-                                calendarEventsPopup = false
-                                selectedDate = newDate
-                            } label: {
-                                Label(
-                                    title: { Text("Next") },
-                                    icon: { Image(systemName: "chevron.right") }
-                                )
-                                .labelStyle(IconOnlyLabelStyle())
-                                .padding(.horizontal)
-                                .frame(maxHeight: .infinity)
+                                Button {
+                                    guard let newDate = calendar.date(
+                                        byAdding: .month,
+                                        value: 1,
+                                        to: selectedDate
+                                    ) else {
+                                        return
+                                    }
+                                    calendarEventsPopup = false
+                                    selectedDate = newDate
+                                } label: {
+                                    Label(
+                                        title: { Text("Next") },
+                                        icon: { Image(systemName: "chevron.right") }
+                                    )
+                                    .labelStyle(IconOnlyLabelStyle())
+                                    .padding(.horizontal)
+                                    .frame(maxHeight: .infinity)
+                                }
                             }
+                            .padding(.bottom, 6)
                         }
-                        .padding(.bottom, 6)
-                    }
-                )
-                .equatable()
+                    )
+                    .equatable()
+                }
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.top, 30)
             }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.top, 30)
             
             if calendarEventsPopup {
                 CalendarEventsPopup(isActive: $calendarEventsPopup, date: $selectedDate)
             }
         }
+        .frame(width: WIDTH)
     }
 }
 
@@ -246,5 +261,5 @@ private extension DateFormatter {
 // MARK: - Previews
 
 #Preview {
-    ContentView(calendar: Calendar(identifier: .gregorian))
+    MonthlyCalendarView(calendar: Calendar(identifier: .gregorian))
 }

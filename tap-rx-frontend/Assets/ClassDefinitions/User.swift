@@ -6,18 +6,7 @@
 //
 
 import Foundation
-//struct Schedule: Codable {
-//    var hour: String
-//    var minute: String?
-//}
-//
-//struct Meds: Codable {
-//    var dosage: String?
-//    var Med_id: String
-//    var name: String
-//    var nickname: String?
-//    var schedule: Schedule
-//}
+import FirebaseAuth
 
 class User: Codable, ObservableObject {
     @Published var first_name: String
@@ -25,6 +14,7 @@ class User: Codable, ObservableObject {
     @Published var medications: [String: Med]?
     @Published var phone: String?
     @Published var user_id: String?
+    @Published var dependants: [String: Dependant]?
     
     private enum CodingKeys: CodingKey {
         case first_name
@@ -32,16 +22,18 @@ class User: Codable, ObservableObject {
         case medications
         case phone
         case user_id
+        case dependants
     }
     
-    init(first_name: String = "<???>", last_name: String = "<???>", medications: [String : Med]? = nil, phone: String? = nil, user_id: String? = nil) {
+    init(first_name: String = "<???>", last_name: String = "<???>", medications: [String : Med]? = nil, phone: String? = nil, user_id: String? = nil, dependants: [String: Dependant]? = nil) {
         self.first_name = first_name
         self.last_name = last_name
         self.medications = medications
         self.phone = phone
         self.user_id = user_id
+        self.dependants = dependants
     }
-    
+
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.first_name = try container.decode(String.self, forKey: .first_name)
@@ -49,6 +41,7 @@ class User: Codable, ObservableObject {
         self.medications = try container.decodeIfPresent([String : Med].self, forKey: .medications)
         self.phone = try container.decodeIfPresent(String.self, forKey: .phone)
         self.user_id = try container.decodeIfPresent(String.self, forKey: .user_id)
+        self.dependants = try container.decodeIfPresent([String: Dependant].self, forKey: .dependants)
     }
     
     func encode(to encoder: any Encoder) throws {
@@ -58,10 +51,70 @@ class User: Codable, ObservableObject {
         try container.encodeIfPresent(medications, forKey: .medications)
         try container.encodeIfPresent(phone, forKey: .phone)
         try container.encodeIfPresent(user_id, forKey: .user_id)
+        try container.encodeIfPresent(dependants, forKey: .dependants)
     }
     
     var description: String {
         return "UserData(id: \(user_id ?? ""), name: \(first_name) \(last_name), phone: \(phone ?? "")"
+    }
+    
+    func update(with data: User) {
+        self.first_name = data.first_name
+        self.last_name = data.last_name
+        self.medications = data.medications
+        self.phone = data.phone
+        self.user_id = data.user_id
+        self.dependants = data.dependants
+    }
+    
+    func refresh() {
+        guard let user = Auth.auth().currentUser else { return }
+
+        let url = URL(string: "https://taprx.xyz/users/\(user.uid)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        user.getIDToken { idToken, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let idToken = idToken else {
+                return
+            }
+            
+            request.setValue(idToken, forHTTPHeaderField: "Authorization")
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        print("Network error: \(error.localizedDescription)")
+                    }
+                    return
+                }
+                
+                if let data = data {
+                    let responseString = String(data: data, encoding: .utf8)
+                    print("Response String: \(responseString ?? "nil")")
+
+                    do {
+                        let response = try JSONDecoder().decode(APIResponse.self, from: data)
+
+                        DispatchQueue.main.async {
+                            if response.success {
+                                self.update(with: response.data)
+                            }
+                        }
+
+                    } catch {
+                        print("Decoding error: \(error)")
+                    }
+                }
+            }
+
+            task.resume()
+        }
     }
 }
 

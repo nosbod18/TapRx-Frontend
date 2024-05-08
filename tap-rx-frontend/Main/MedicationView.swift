@@ -29,7 +29,7 @@ struct DayView: View {
     }
 }
 
-struct MedFullview: View {
+struct MedicationFullview: View {
     func getTime() -> String {
         var minute = ""
         if let minuteInt = item.schedule?.minute {
@@ -82,21 +82,18 @@ struct MedFullview: View {
         }
     }
     
-    
-    
-    
     static let height = 140.0
-    @Binding var aboutMedModal: Bool
-    @Binding var editMedModal: Bool
-    @Binding var deleteMedModal: Bool
+    @Binding var aboutMedicationModal: Bool
+    @Binding var editMedicationModal: Bool
+    @Binding var deleteMedicationModal: Bool
     @Binding var medication_id: String
     let item: Med
     
-    init(item: Med, aboutMedModal: Binding<Bool>, editMedModal: Binding<Bool>, deleteMedModal: Binding<Bool>,medication_id: Binding<String>) {
+    init(item: Med, aboutMedicationModal: Binding<Bool>, editMedicationModal: Binding<Bool>, deleteMedicationModal: Binding<Bool>,medication_id: Binding<String>) {
         self.item = item
-        self._aboutMedModal = aboutMedModal
-        self._editMedModal = editMedModal
-        self._deleteMedModal = deleteMedModal
+        self._aboutMedicationModal = aboutMedicationModal
+        self._editMedicationModal = editMedicationModal
+        self._deleteMedicationModal = deleteMedicationModal
         self._medication_id = medication_id
     }
 
@@ -105,7 +102,7 @@ struct MedFullview: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.medicalDarkBlue)
-                .frame(height: MedFullview.height)
+                .frame(height: MedicationFullview.height)
             
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
@@ -128,20 +125,20 @@ struct MedFullview: View {
                         Menu {
                             Button{
                                 medication_id = item.medication_id ?? ""
-                                aboutMedModal.toggle()
+                                aboutMedicationModal.toggle()
                             } label: {
                                 Label("About",systemImage:"i.circle")
                             }
                             Button{
                                 medication_id = item.medication_id ?? ""
-                                editMedModal.toggle()
+                                editMedicationModal.toggle()
                             } label: {
                                 Label("Edit",systemImage:"pencil")
                                     
                             }
                             Button{
                                 medication_id = item.medication_id ?? ""
-                                deleteMedModal.toggle()
+                                deleteMedicationModal.toggle()
                             } label: {
                                 Label("Delete",systemImage:"trash")
                                     .foregroundColor(.red)
@@ -155,23 +152,17 @@ struct MedFullview: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    
-                    
-                    
                     Text("\(getTime()) | \(item.dosage ?? "0mg")")
                         .foregroundColor(.medicalGrey)
                         .font(.footnote)
 
                     }
                 
-                
                 // TODO: Get active days from schedule
                 HStack{
                     Text(describeCron())
                         .foregroundColor(.white)
                         .font(.subheadline)
-                    
-                
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -183,51 +174,40 @@ struct MedFullview: View {
     }
 }
 
-struct AddMedButton: View {
-    @Binding var addMedModal: Bool
+struct AddMedicationButton: View {
+    @Binding var addMedicationModal: Bool
 
     var body: some View {
         ZStack{
             ZStack(alignment: .center) {
                 Capsule()
                     .stroke(Color.medicalRed)
-                    .frame(width: WIDTH * 0.4, height: 35)
+                    .frame(width: 200, height: 35)
                 
                 Button {
-                    addMedModal.toggle()
+                    addMedicationModal.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "plus")
                             .renderingMode(.template)
                             .foregroundColor(.medicalRed)
                         
-                        Text("Add Med")
+                        Text("Add Medication")
                             .foregroundColor(.medicalRed)
                     }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
-            
         }
     }
 }
 
-extension User {
-    func update(with data: User) {
-        self.first_name = data.first_name
-        self.last_name = data.last_name
-        self.medications = data.medications
-        self.phone = data.phone
-        self.user_id = data.user_id
-    }
-}
-
-struct MedView: View {
-    @State private var addMedModal: Bool = false
-    @State private var editMedModal: Bool = false
-    @State private var aboutMedModal: Bool = false
-    @State private var deleteMedModal: Bool = false
+struct MedicationView: View {
+    @State private var addMedicationModal: Bool = false
+    @State private var editMedicationModal: Bool = false
+    @State private var aboutMedicationModal: Bool = false
+    @State private var deleteMedicationModal: Bool = false
     @State private var selectedMedication: String = ""
     @ObservedObject var user: User
     
@@ -237,7 +217,7 @@ struct MedView: View {
         ZStack {
             VStack {
                 Section {
-                    Text("Your Meds")
+                    Text("Your Medications")
                         .font(.largeTitle)
                         .foregroundColor(.medicalDarkBlue)
                         .fontWeight(.black)
@@ -251,10 +231,10 @@ struct MedView: View {
                 ScrollView {
                     if let count = user.medications?.count, count > 0 {
                         ForEach(Array(user.medications!.values), id: \.self) { item in
-                            MedFullview(item: item,aboutMedModal: $aboutMedModal, editMedModal: $editMedModal, deleteMedModal: $deleteMedModal, medication_id: $selectedMedication)
+                            MedicationFullview(item: item, aboutMedicationModal: $aboutMedicationModal, editMedicationModal: $editMedicationModal, deleteMedicationModal: $deleteMedicationModal, medication_id: $selectedMedication)
                         }
                     } else {
-                        Text("No Meds added")
+                        Text("No medications yet!")
                             .padding(.vertical, 50)
                             .foregroundStyle(Color.medicalLightBlue)
                             .font(.title2)
@@ -267,22 +247,22 @@ struct MedView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 
-                AddMedButton(addMedModal: $addMedModal)
+                AddMedicationButton(addMedicationModal: $addMedicationModal)
             }
             .frame(width: WIDTH)
             .padding(.top, 30)
             
-            if addMedModal {
-                CreateMedicationPopup(isActive: $addMedModal)
+            if addMedicationModal {
+                CreateMedicationPopup(isActive: $addMedicationModal, user: user)
             }
-            if aboutMedModal {
-                AboutMedicationPopup(isActive: $aboutMedModal,medication_id: $selectedMedication)
+            if aboutMedicationModal {
+                AboutMedicationPopup(isActive: $aboutMedicationModal,medication_id: $selectedMedication)
             }
-            if editMedModal {
-                EditMedicationPopup(isActive: $editMedModal,medication_id: $selectedMedication)
+            if editMedicationModal {
+                EditMedicationPopup(isActive: $editMedicationModal,medication_id: $selectedMedication)
             }
-            if deleteMedModal {
-                DeleteMedicationPopup(isActive: $deleteMedModal,medication_id: $selectedMedication)
+            if deleteMedicationModal {
+                DeleteMedicationPopup(isActive: $deleteMedicationModal,medication_id: $selectedMedication, user: user)
             }
         }.onAppear {
             let encoder = JSONEncoder()
@@ -328,7 +308,7 @@ struct MedicationView_Previews: PreviewProvider {
                             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                                 if let error = error {
                                     DispatchQueue.main.async {
-                                        print( "Network error: \(error.localizedDescription)")
+                                        print("Network error: \(error.localizedDescription)")
                                     }
                                 } else if let data = data {
                                     let responseString = String(data: data, encoding: .utf8)
@@ -355,8 +335,9 @@ struct MedicationView_Previews: PreviewProvider {
                 }
             }
         }
+
         var body: some View {
-            MedView(user: user)
+            MedicationView(user: user)
                 .onAppear{ login() }
             
         }

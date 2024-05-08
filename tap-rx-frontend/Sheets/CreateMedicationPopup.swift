@@ -29,9 +29,9 @@ class ButtonsViewModel: ObservableObject {
 
 struct CreateMedicationPopup: View {
     @Binding var isActive: Bool
+    @ObservedObject var user: User
+
     @State private var userID: String = ""
-    
-    
     @State private var name: String = ""
     @State private var nickname: String = ""
     @State private var dosage: String = ""
@@ -182,6 +182,7 @@ struct CreateMedicationPopup: View {
                         }
                     }
                     task.resume()
+                    self.user.refresh()
                 } catch {
                     print("Error serializing JSON: \(error.localizedDescription)")
                 }
@@ -426,7 +427,7 @@ struct CreateMedicationPopup_Previews: PreviewProvider {
             }
         }
         var body: some View {
-            CreateMedicationPopup(isActive: $showSheet).onAppear{
+            CreateMedicationPopup(isActive: $showSheet, user: User()).onAppear{
                 login()
             }
         }
