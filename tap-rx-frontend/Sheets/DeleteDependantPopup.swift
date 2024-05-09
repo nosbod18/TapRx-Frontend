@@ -50,6 +50,7 @@ struct DeleteDependantPopup: View {
                         let response = try JSONDecoder().decode(DeleteDependantById.self, from: data)
                         DispatchQueue.main.async {
                             if let success = response.success, success {
+                                self.user.refresh()
                                 isActive.toggle()
                             }
                         }
@@ -118,19 +119,22 @@ struct DeleteDependantPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
         @State private var dependantID = "-Nv5HRJXV9pDL1okR_oW"
-
+        @ObservedObject var user = User()
+        
         func login() {
             Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
+                
+                user.refresh()
             }
         }
         
         var body: some View {
-            DeleteDependantPopup(isActive: $showSheet, dependantID: $dependantID, user: User())
-                .onAppear() {
+            DeleteDependantPopup(isActive: $showSheet, dependantID: $dependantID, user: user)
+                .onAppear{
                     login()
                 }
         }

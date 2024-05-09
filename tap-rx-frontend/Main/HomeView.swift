@@ -201,44 +201,9 @@ struct HomeView_Previews: PreviewProvider {
                     print(error.localizedDescription)
                     return
                 }
+                //test
                 
-                if let user = result?.user {
-                    self.userID = user.uid
-                    let url = URL(string: "https://taprx.xyz/users/\(self.userID)")!
-                    var request = URLRequest(url: url)
-                    request.httpMethod="GET"
-                    user.getIDToken { idToken, error in
-                        if let error = error {
-                            print("error: \(error.localizedDescription)")
-                        } else if let idToken = idToken {
-                            request.setValue(idToken, forHTTPHeaderField: "Authorization")
-                            
-                            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                                if let error = error {
-                                    DispatchQueue.main.async {
-                                        print( "Network error: \(error.localizedDescription)")
-                                    }
-                                } else if let data = data {
-                                    let responseString = String(data: data, encoding: .utf8)
-                                    print("Response String: \(responseString ?? "Test")")
-
-                                    do {
-                                        let response = try JSONDecoder().decode(APIResponse.self, from: data)
-                                        DispatchQueue.main.async {
-                                            if(response.success==true){
-                                                self.user.update(with: response.data)
-                                            }
-                                        }
-                                    } catch {
-                                        print("Decoding error: \(error)")
-                                    }
-                                }
-                            }
-                            task.resume()
-                        }
-                    }
-                    
-                }
+                user.refresh()
             }
         }
         var body: some View {

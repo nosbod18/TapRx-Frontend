@@ -20,19 +20,21 @@ struct ForgotPasswordView: View {
     }
     
     func sendPasswordResetEmail(to email: String) {
-        let actionCodeSettings = ActionCodeSettings()
+        /*let actionCodeSettings = ActionCodeSettings()
         actionCodeSettings.url = URL(string: "https://taprx.page.link")
         actionCodeSettings.handleCodeInApp = true
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)*/
         
-        Auth.auth().sendPasswordReset(withEmail: email, actionCodeSettings: actionCodeSettings) { error in
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 print("Error sending password reset email: \(error.localizedDescription)")
                 print("\(error)")
                 return
             }
             // Password reset email sent.
-            print("Password reset email sent.")
+            else{
+                pushActive = true
+            }
         }
     }
     

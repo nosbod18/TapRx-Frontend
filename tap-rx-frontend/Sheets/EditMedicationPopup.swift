@@ -11,6 +11,7 @@ import FirebaseAuth
 struct EditMedicationPopup: View {
     @Binding var isActive: Bool
     @Binding var medication_id: String
+    @ObservedObject var user: User
     @State private var userID: String = ""
     
     
@@ -31,6 +32,12 @@ struct EditMedicationPopup: View {
     @State private var selectedOption = "Daily"
     @StateObject var weeklyViewModel = ButtonsViewModel(count: 7)
     @StateObject var monthlyViewModel = ButtonsViewModel(count: 31)
+    
+    init(isActive: Binding<Bool>,medication_id: Binding<String>,user: User){
+        self._isActive = isActive
+        self._medication_id = medication_id
+        self.user = user
+    }
     
     func loadMedData(){
         if let user = Auth.auth().currentUser {
@@ -58,6 +65,7 @@ struct EditMedicationPopup: View {
                                 DispatchQueue.main.async {
                                     print(response)
                                     if(response.success==true){
+                                        user.reload()
                                         dosage = response.data?.dosage ?? ""
                                         name = response.data?.name ?? ""
                                         nickname = response.data?.nickname ?? ""
@@ -212,6 +220,7 @@ struct EditMedicationPopup: View {
                                 do {
                                     let response = try JSONDecoder().decode(CreateMed.self, from: data)
                                     if(response.data != nil){
+                                        self.user.refresh()
                                         isActive.toggle()
                                         name = ""
                                         nickname = ""
@@ -468,17 +477,20 @@ struct EditMedicationPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
         @State private var medication_id = "-Nv4zIQD4996vlxbeq25"
-        func login(){
+        @ObservedObject var user = User()
+        
+        func login() {
             Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    
                     return
                 }
+                
+                user.refresh()
             }
         }
         var body: some View {
-            EditMedicationPopup(isActive: $showSheet,medication_id: $medication_id).onAppear{
+            EditMedicationPopup(isActive: $showSheet,medication_id: $medication_id,user: user).onAppear{
                 login()
             }
         }

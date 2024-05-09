@@ -18,8 +18,8 @@
 		20E2C1012B6D59FA00F0AD6B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2C1002B6D59FA00F0AD6B /* UserView.swift */; };
 		D70ED44E2BC634CD0095369F /* Medications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED44D2BC634CD0095369F /* Medications.swift */; };
 		D70ED4632BC64C5E0095369F /* Dependants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ED4622BC64C5E0095369F /* Dependants.swift */; };
+		D70F6EFE2BEC80120072CC2A /* UpdateUserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F6EFD2BEC80120072CC2A /* UpdateUserPopup.swift */; };
 		D72AA5862B71768700EE58E8 /* Photo Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */; };
-		D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72AA5872B752B7400EE58E8 /* AccountUserView.swift */; };
 		D740F43B2BCD90CA0068CEF6 /* AboutMedicationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */; };
 		D740F43C2BCD90CA0068CEF6 /* chatgbtExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4382BCD90CA0068CEF6 /* chatgbtExample.swift */; };
 		D740F43D2BCD90CA0068CEF6 /* sheetTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740F4392BCD90CA0068CEF6 /* sheetTester.swift */; };
@@ -105,8 +105,8 @@
 		20E2C1002B6D59FA00F0AD6B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		D70ED44D2BC634CD0095369F /* Medications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medications.swift; sourceTree = "<group>"; };
 		D70ED4622BC64C5E0095369F /* Dependants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependants.swift; sourceTree = "<group>"; };
+		D70F6EFD2BEC80120072CC2A /* UpdateUserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPopup.swift; sourceTree = "<group>"; };
 		D72AA5852B71768700EE58E8 /* Photo Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Photo Assets.xcassets"; sourceTree = "<group>"; };
-		D72AA5872B752B7400EE58E8 /* AccountUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUserView.swift; sourceTree = "<group>"; };
 		D740F4372BCD90CA0068CEF6 /* AboutMedicationPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMedicationPopup.swift; sourceTree = "<group>"; };
 		D740F4382BCD90CA0068CEF6 /* chatgbtExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatgbtExample.swift; sourceTree = "<group>"; };
 		D740F4392BCD90CA0068CEF6 /* sheetTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sheetTester.swift; sourceTree = "<group>"; };
@@ -257,6 +257,7 @@
 				2045E57A2BCEEBB4000D383D /* EditDependantPopup.swift */,
 				D740F4812BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift */,
 				D740F4832BCE2E1C0068CEF6 /* CalendarEventsPopup.swift */,
+				D70F6EFD2BEC80120072CC2A /* UpdateUserPopup.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -358,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				D7F4D3152B6CC99F007B3B7C /* AccountManageView.swift */,
-				D72AA5872B752B7400EE58E8 /* AccountUserView.swift */,
 			);
 			path = SettingAssets;
 			sourceTree = "<group>";
@@ -480,7 +480,6 @@
 				D740F4672BCD91A30068CEF6 /* GetDependantsAPITest.swift in Sources */,
 				D740F4752BCD91A30068CEF6 /* GetUserByIdAPITest.swift in Sources */,
 				D740F4682BCD91A30068CEF6 /* UpdateDependantByIdAPITest.swift in Sources */,
-				D72AA5882B752B7400EE58E8 /* AccountUserView.swift in Sources */,
 				D740F4842BCE2E1C0068CEF6 /* CalendarEventsPopup.swift in Sources */,
 				D740F46F2BCD91A30068CEF6 /* CreateMedicationAPITest.swift in Sources */,
 				D7F4D3112B6CC22B007B3B7C /* SettingsDependentsView.swift in Sources */,
@@ -492,6 +491,7 @@
 				D740F46D2BCD91A30068CEF6 /* GetMedEventsByUserAPITest.swift in Sources */,
 				D7F4D3132B6CC23C007B3B7C /* SettingsAccountView.swift in Sources */,
 				D740F4822BCE1EF90068CEF6 /* ReportMedicationEventPopup.swift in Sources */,
+				D70F6EFE2BEC80120072CC2A /* UpdateUserPopup.swift in Sources */,
 				D740F46E2BCD91A30068CEF6 /* UpdateMedEventAPITest.swift in Sources */,
 				D76634EC2BCEB56500FEE6E4 /* CreateMedicationPopup.swift in Sources */,
 				20E2C0FF2B6D55FC00F0AD6B /* MedicationView.swift in Sources */,

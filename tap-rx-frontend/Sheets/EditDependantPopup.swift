@@ -122,6 +122,7 @@ struct EditDependantPopup: View {
                             do {
                                 let response = try JSONDecoder().decode(CreateMed.self, from: data)
                                 if let success = response.success, success {
+                                    self.user.refresh()
                                     isActive.toggle()
                                     firstName = ""
                                     lastName = ""
@@ -233,17 +234,21 @@ struct EditDependantPopup_Previews: PreviewProvider {
         @State private var showSheet = true  // State to control the visibility
         @State private var dependantID = "-Nv5HRJXV9pDL1okR_oW"
 
+        @ObservedObject var user = User()
+        
         func login() {
             Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
+                
+                user.refresh()
             }
         }
 
         var body: some View {
-            EditDependantPopup(isActive: $showSheet, dependantID: $dependantID, user: User()).onAppear{
+            EditDependantPopup(isActive: $showSheet, dependantID: $dependantID, user: user).onAppear{
                 login()
             }
         }

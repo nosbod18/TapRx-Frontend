@@ -33,7 +33,7 @@ class User: Codable, ObservableObject {
         self.user_id = user_id
         self.dependants = dependants
     }
-
+    
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.first_name = try container.decode(String.self, forKey: .first_name)
@@ -67,19 +67,98 @@ class User: Codable, ObservableObject {
         self.dependants = data.dependants
     }
     
+    
+    
+    func clear(){
+        self.first_name = ""
+        self.last_name = ""
+        self.medications = nil;
+        self.dependants = nil;
+        self.phone = nil;
+        self.user_id = nil;
+    }
+    
+    func populate_user(){
+        //print("populate user called")
+        guard let user = Auth.auth().currentUser else { return }
+        
+        let postData: [String: Any] = [
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "phone": self.phone ?? "",
+            "user_id": self.user_id ?? "",
+            //"medications": self.medications ?? [],
+        ]
+        
+        user.getIDToken { (idToken, error) in
+            //guard let self = self else { return }
+            
+            //print("HERE")
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+                return
+            }
+            //print("HERE")
+            guard let idToken = idToken else {
+                print("Failed to retrieve ID token.")
+                return
+            }
+            //print("HERE")
+            if let user_id = self.user_id {
+                //("HERE")
+                let url = URL(string: "https://taprx.xyz/users/\(user_id)")!
+                var request = URLRequest(url: url)
+                request.httpMethod = "PUT"
+                request.setValue(idToken, forHTTPHeaderField: "Authorization")
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                //print("HERE")
+                do {
+                    //print("BEFORE")
+                    //print("Post Data to serialize: \(postData)")
+
+                    let jsonData = try JSONSerialization.data(withJSONObject: postData, options: [])
+                    request.httpBody = jsonData
+                    
+                    //print("TEST")
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        DispatchQueue.main.async {
+                            if let error = error {
+                                print("Network error: \(error.localizedDescription)")
+                            } else if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                                //print("HERE")
+                                print("Response String: \(responseString)")
+                                do {
+                                    //print("HERE")
+                                    let response = try JSONDecoder().decode(CreateUser.self, from: data)
+                                    print(response)
+                                } catch {
+                                    print("Decoding error: \(error)")
+                                }
+                            }
+                        }
+                    }
+                    task.resume()
+                } catch {
+                    print("Error serializing JSON: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    
     func refresh() {
         guard let user = Auth.auth().currentUser else { return }
-
+        
         let url = URL(string: "https://taprx.xyz/users/\(user.uid)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-
+        
         user.getIDToken { idToken, error in
             if let error = error {
                 print("error: \(error.localizedDescription)")
                 return
             }
-
+            
             guard let idToken = idToken else {
                 return
             }
@@ -97,22 +176,22 @@ class User: Codable, ObservableObject {
                 if let data = data {
                     let responseString = String(data: data, encoding: .utf8)
                     print("Response String: \(responseString ?? "nil")")
-
+                    
                     do {
                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
-
+                        
                         DispatchQueue.main.async {
                             if response.success {
                                 self.update(with: response.data)
                             }
                         }
-
+                        
                     } catch {
                         print("Decoding error: \(error)")
                     }
                 }
             }
-
+            
             task.resume()
         }
     }

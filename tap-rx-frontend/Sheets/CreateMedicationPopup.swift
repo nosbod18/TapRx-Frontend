@@ -161,6 +161,7 @@ struct CreateMedicationPopup: View {
                                 do {
                                     let response = try JSONDecoder().decode(CreateMed.self, from: data)
                                     if(response.data != nil){
+                                        self.user.refresh()
                                         isActive.toggle()
                                         name = ""
                                         nickname = ""
@@ -416,18 +417,21 @@ struct CreateMedicationPopup: View {
 struct CreateMedicationPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
+        @ObservedObject var user = User()
         
-        func login(){
+        func login() {
             Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    
                     return
                 }
+                
+                user.refresh()
             }
         }
+        
         var body: some View {
-            CreateMedicationPopup(isActive: $showSheet, user: User()).onAppear{
+            CreateMedicationPopup(isActive: $showSheet, user: user).onAppear{
                 login()
             }
         }

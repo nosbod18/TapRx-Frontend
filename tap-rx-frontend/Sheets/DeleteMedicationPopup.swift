@@ -40,6 +40,7 @@ struct DeleteMedicationPopup: View {
                                 let response = try JSONDecoder().decode(DeleteMedById.self, from: data)
                                 DispatchQueue.main.async {
                                     if(response.success == true){
+                                        self.user.refresh()
                                         isActive.toggle()
                                     }
                                 }
@@ -110,8 +111,22 @@ struct DeleteMedicationPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
         @State private var medication_id = "-Nv4zIQD4996vlxbeq25"
+        @ObservedObject var user = User()
+        
+        func login() {
+            Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                user.refresh()
+            }
+        }
         var body: some View {
-            DeleteMedicationPopup(isActive: $showSheet,medication_id: $medication_id, user: User())
+            DeleteMedicationPopup(isActive: $showSheet,medication_id: $medication_id, user: user).onAppear{
+                login()
+            }
         }
     }
 

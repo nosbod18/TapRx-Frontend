@@ -78,6 +78,7 @@ struct CreateDependantPopup: View {
                                 let response = try JSONDecoder().decode(CreateDependant.self, from: data)
                                 
                                 if let success = response.success, success {
+                                    self.user.refresh()
                                     isActive.toggle()
                                     email = ""
                                     firstName = ""
@@ -203,19 +204,21 @@ struct CreateDependantPopup: View {
 struct CreateDependantPopup_Previews: PreviewProvider {
     struct WrapperView: View {
         @State private var showSheet = true  // State to control the visibility
+        @ObservedObject var user = User()
         
-        func login(){
+        func login() {
             Auth.auth().signIn(withEmail: "drewclutes@gmail.com", password: "123456") { (result, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    
                     return
                 }
+                
+                user.refresh()
             }
         }
 
         var body: some View {
-            CreateDependantPopup(isActive: $showSheet, user: User()).onAppear{
+            CreateDependantPopup(isActive: $showSheet, user: user).onAppear{
                 login()
             }
         }

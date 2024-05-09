@@ -15,7 +15,92 @@ struct CalendarEventsPopup: View {
     @State private var userID: String = ""
     @State private var data: String = "loading.."
     
-  
+    func get_data(i: MedEvent, completion: @escaping (String) -> Void) {
+        // Convert iso8601 to readable format
+        let readable = readableISO(from: i.timestamp)
+        
+        guard let user = Auth.auth().currentUser else {
+            completion("")
+            return
+        }
+
+        guard let url = URL(string: "https://taprx.xyz/medications/\(i.medication_id)") else {
+            completion("")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        user.getIDToken { idToken, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                completion("")
+                return
+            }
+            
+            guard let idToken = idToken else {
+                completion("")
+                return
+            }
+
+            request.setValue(idToken, forHTTPHeaderField: "Authorization")
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        print("Network error: \(error.localizedDescription)")
+                        completion("")
+                    }
+                    return
+                }
+
+                guard let data = data, let responseString = String(data: data, encoding: .utf8) else {
+                    DispatchQueue.main.async {
+                        print("Failed to decode response.")
+                        completion("")
+                    }
+                    return
+                }
+                
+                print("Response String: \(responseString)")
+                
+                do {
+                    let response = try JSONDecoder().decode(GetMedById.self, from: data)
+                    DispatchQueue.main.async {
+                        let name = response.data?.name ?? ""
+                        completion("\(name), \(i.dosage)mg, \(readable)\n")
+                    }
+                } catch {
+                    print("Decoding error: \(error)")
+                    DispatchQueue.main.async {
+                        completion("")
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+
+    
+    func readableISO(from isoDate: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)  // Adjust as necessary for your use case
+
+        guard let date = dateFormatter.date(from: isoDate) else {
+            print("Failed to parse date with custom formatter")
+            print(isoDate)
+            return ""
+        }
+
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateFormat = nil  // Reset to use dateStyle and timeStyle for output
+
+        return dateFormatter.string(from: date)
+    }
+    
     func iso8601String(from date: Date) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -86,7 +171,9 @@ struct CalendarEventsPopup: View {
                                             } else {
                                                 self.data = ""
                                                 for i in res_data {
-                                                    self.data += "\(i.medication_id), \(i.dosage)mg, \(i.timestamp)\n"
+                                                    get_data(i:i) { resultString in
+                                                        self.data += resultString
+                                                    }
                                                 }
                                             }
                                         }
